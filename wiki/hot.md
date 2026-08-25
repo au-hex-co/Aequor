@@ -16,7 +16,7 @@ updated: 2026-08-24T00:00:00
 - Flagship relic [[Nectaris]] (Tellus's heart) mechanically enforces the "nothing is free, only deferred" theme via a 3-tier ability list.
 
 ## Recent Changes
-- Created: full `wiki/` structure — [[world/_index|World]], [[timeline/_index|Timeline]], [[characters/_index|Characters]], [[gameplay/_index|Gameplay]], [[concepts/_index|Concepts]], [[sources]].
+- Created: full `wiki/` structure — [[world/_index|World]], [[timeline/_index|Timeline]], [[characters/_index|Characters]], [[gameplay/_index|Gameplay]], [[concepts/_index|Concepts]], [[sources/_index|Sources]].
 - Ingested: [[merchant-of-fate-pitch]], [[artifact-nectar]].
 
 ## Active Threads
