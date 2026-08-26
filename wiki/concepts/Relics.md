@@ -20,7 +20,7 @@ The design philosophy in practice is proven out by the flagship relic, **[[Necta
 > No relic should offer a free escape. Every dodge, reroute, or reboot should queue consequence into a later fight — mechanically enforcing the same rule the mythology states outright: a price is always exacted. This is the load-bearing design constraint for any future relic beyond [[Nectaris]].
 
 > [!gap] Only one relic is designed so far
-> [[Anima]] and [[Aequor (deity)|Aequor]] have no relic of their own yet, unlike [[Tellus]] → [[Nectaris]]. A second or third relic tied to the other two gods would round out the pantheon mechanically.
+> [[Anima]] and [[Aequor|Aequor]] have no relic of their own yet, unlike [[Tellus]] → [[Nectaris]]. A second or third relic tied to the other two gods would round out the pantheon mechanically.
 
 ## See Also
 - [[Nectaris]]

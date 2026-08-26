@@ -8,12 +8,12 @@ updated: 2026-08-24
 
 # Cosmology
 
-Three beings — [[Tellus]] of the earth, [[Aequor (deity)|Aequor]] of the ocean, and [[Anima]] of the wind — were the first things to wake on the world of **Terra**.
+Three beings — [[Tellus]] of the earth, [[Aequor|Aequor]] of the ocean, and [[Anima]] of the wind — were the first things to wake on the world of **Terra**.
 
 Bored of their own creation, they made a man, [[Primum]], and gave him three gifts: agency, wisdom, and duty. Each gift was paid for in flesh, blood, or divinity — nothing in this world is ever simply given.
 
 > [!gap] Which god gave which gift?
-> The pitch text confirms [[Anima]] gave **agency** (tied to breath — Anima tore out his own heart so his children's children could breathe free) and [[Tellus]] gave **duty** ("the very humanity he gave duty to" betrayed him). By elimination, [[Aequor (deity)|Aequor]] likely gave **wisdom**, but this isn't stated outright in the source. Confirm with the author.
+> The pitch text confirms [[Anima]] gave **agency** (tied to breath — Anima tore out his own heart so his children's children could breathe free) and [[Tellus]] gave **duty** ("the very humanity he gave duty to" betrayed him). By elimination, [[Aequor|Aequor]] likely gave **wisdom**, but this isn't stated outright in the source. Confirm with the author.
 
 ## Primum's Descendants
 

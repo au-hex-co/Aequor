@@ -9,7 +9,7 @@ updated: 2026-08-24
 Game design wiki for **Merchant of Fate**, a pirate roguelike shipbuilder and 2D naval combat game.
 
 ## World
-- [[world/_index|World]] — [[Cosmology]], [[Tellus]], [[Anima]], [[Aequor (deity)|Aequor]], [[Primum]], [[Ferus]]
+- [[world/_index|World]] — [[Cosmology]], [[Tellus]], [[Anima]], [[Aequor|Aequor]], [[Primum]], [[Ferus]]
 
 ## Timeline
 - [[timeline/_index|Timeline]] — [[Timeline of the Aetas]]
@@ -29,7 +29,7 @@ Game design wiki for **Merchant of Fate**, a pirate roguelike shipbuilder and 2D
 
 ## Open Gaps (flagged during ingest)
 - Which god gave which gift — see [[Cosmology]]
-- Aequor's relic/role is undeveloped — see [[Aequor (deity)|Aequor]]
+- Aequor's relic/role is undeveloped — see [[Aequor|Aequor]]
 - Anima's relic/role is undeveloped — see [[Anima]]
 - "Ferus" vs. "Ferrin" naming — see [[Ferus]]
 - "Vesta" is referenced but undefined — see [[Primum]]

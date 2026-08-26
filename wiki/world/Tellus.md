@@ -8,7 +8,7 @@ updated: 2026-08-24
 
 # Tellus
 
-One of the three first beings, dragon of the earth. Along with [[Anima]] and [[Aequor (deity)|Aequor]], Tellus helped create [[Primum]], the first man, and gave him the gift of **duty**.
+One of the three first beings, dragon of the earth. Along with [[Anima]] and [[Aequor|Aequor]], Tellus helped create [[Primum]], the first man, and gave him the gift of **duty**.
 
 ## Fate
 

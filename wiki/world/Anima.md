@@ -8,7 +8,7 @@ updated: 2026-08-24
 
 # Anima
 
-One of the three first beings, dragon of the wind. Along with [[Tellus]] and [[Aequor (deity)|Aequor]], Anima helped create [[Primum]], the first man, and gave him the gift of **agency**.
+One of the three first beings, dragon of the wind. Along with [[Tellus]] and [[Aequor|Aequor]], Anima helped create [[Primum]], the first man, and gave him the gift of **agency**.
 
 Anima tore out his own heart so his children's children could breathe free — the wind god's death is tied directly to the ability to breathe (agency/free will as breath).
 
