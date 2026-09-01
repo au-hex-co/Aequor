@@ -98,7 +98,7 @@ When [[Vesta]] saw the Two coming towards her, she prostrated herself. "Oh fathe
 
 "Eat this, and your children from henceforth shall breathe of their own volition," [[Tellus]] told [[Vesta]].
 
-"Oh father, I doubt you not, but if I may ask, what is it you wish for me to eat?" [[Vesta]] asked, with as much respect as she could manage. [[Tellus]] just looked at the orb, saw a golden glint, and smiled, giving a one word answer: "Sacrarium."
+"Oh father, I doubt you not, but if I may ask, what is it you wish for me to eat?" [[Vesta]] asked, with as much respect as she could manage. [[Tellus]] just looked at the orb, saw a golden glint, and smiled, giving a one word answer: "[[Sacrarium]]."
 
 Three days after the Two left, [[Vesta]] was finally convinced by [[Primum]] and ate the orb. When she did, she felt the wind rustle through her hair, and felt whispers in the wind. That night when they coupled, it was different.
 

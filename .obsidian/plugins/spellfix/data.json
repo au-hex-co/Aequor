@@ -1,0 +1,12 @@
+{
+  "ignoreSingleLetterSuggestions": true,
+  "singleLetterExceptions": "I_a",
+  "suggestionsToIgnore": "",
+  "suggestionsToPrioritize": "the_of_and_a_to_is_that_it",
+  "keepIteratingWhenFiltered": false,
+  "autocorrect": true,
+  "skipCodeBlocks": true,
+  "skipLatexMath": true,
+  "ignoreCapitalizedIfLowercaseInDictionary": true,
+  "ignorePluralIfSingularInDictionary": false
+}

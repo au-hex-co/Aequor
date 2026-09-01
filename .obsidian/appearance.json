@@ -1,4 +1,5 @@
 {
   "accentColor": "#8c00ff",
-  "theme": "obsidian"
+  "theme": "obsidian",
+  "textFontFamily": "Excalifont"
 }

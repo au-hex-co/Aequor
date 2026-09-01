@@ -21,7 +21,7 @@ Nectaris cannot cancel fate, only delay where and when it lands. Anything dodged
 
 - **The Debt Remembers** — every wound this ship has ever taken is not forgotten. Damage previously suffered can be called due, inflicted retroactively on whoever strikes you next. Your scars become a ledger you collect on.
 - **What the Ground Refuses** — for a duration, this stretch of sea belongs to Tellus and refuses to let anything sink here. Ships cannot be destroyed while inside it, only driven out. Death becomes banishment, not defeat.
-- **Inheritance of the First Wound** — recalls [[Primum]]'s arm and leg torn away to make **Vesta**. Anything sacrificed — hull, crew, or cargo — is never simply lost. It is transmuted into something else of equal cost.
+- **Inheritance of the First Wound** — recalls [[Primum]]'s arm and leg torn away to make **[[Vesta]]**. Anything sacrificed — hull, crew, or cargo — is never simply lost. It is transmuted into something else of equal cost.
 
 ## Greater Tier (active, long cooldown, once per encounter)
 

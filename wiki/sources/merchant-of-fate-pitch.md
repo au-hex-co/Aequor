@@ -15,8 +15,8 @@ The original pitch document for **Merchant of Fate**, a pirate roguelike shipbui
 - Logline and world premise
 - [[Cosmology]] — the three gods, [[Primum]], the Malum
 - [[Timeline of the Aetas]] — full age-by-age history
-- [[The Protagonist]] — the Cede Amare / Cedere / Caedere name arc
-- [[Core Gameplay]] — roguelike structure, naval combat, relics
+- [[The Protagonist]] — the Cede Amare / [[Cedere]] / Caedere name arc
+- [[Core Gameplay]] — roguelike structure, naval combat, [[Relics|relics]]
 - [[Nectaris]] — introduced here as the proof-of-concept relic (full ability list came from [[artifact-nectar]])
 
 ## Raw File

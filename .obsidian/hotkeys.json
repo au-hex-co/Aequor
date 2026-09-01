@@ -1,0 +1,10 @@
+{
+  "simple-autolink:scan-whole-vault": [
+    {
+      "modifiers": [
+        "Mod"
+      ],
+      "key": "\\"
+    }
+  ]
+}

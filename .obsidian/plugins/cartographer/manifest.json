@@ -1,0 +1,10 @@
+{
+	"id": "cartographer",
+	"name": "Cartographer",
+	"version": "0.1.0",
+	"minAppVersion": "1.4.0",
+	"description": "Relational map canvas, procedural terrain painter, and heightmap-driven view modes for worldbuilding vaults.",
+	"author": "luckytilakrao",
+	"authorUrl": "",
+	"isDesktopOnly": false
+}

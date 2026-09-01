@@ -1,4 +1,8 @@
 [
   "obsidian-excalidraw-plugin",
-  "obsidian-tasks-plugin"
+  "obsidian-tasks-plugin",
+  "simple-autolink",
+  "spellfix",
+  "harper",
+  "cartographer"
 ]

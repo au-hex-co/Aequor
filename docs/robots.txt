@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://au-hex-co.github.io/Aequor/sitemap.xml

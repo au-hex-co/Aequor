@@ -9,7 +9,7 @@ tags:
 # Excalidraw Data
 
 ## Text Elements
-Aequor ^Iz0gcjAT
+[[Aequor]] ^Iz0gcjAT
 
 Lore ^59SrCbER
 
@@ -26,7 +26,7 @@ History ^y3NBKs13
 Man Vs. Self ^TlFky30M
 
 
-Cedere has to decide his fate and decide 
+[[Cedere]] has to decide his fate and decide 
 whether he follows his fathers footsteps.
  ^jsnOh7QQ
 

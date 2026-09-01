@@ -10,7 +10,7 @@ updated: 2026-08-24
 
 History is measured in **Aetas** — ages named for the event that defined them, not assigned in advance. The current age remains unnamed for exactly that reason: it hasn't happened yet.
 
-Dates are given as **BM** (Before Malum) / **AM** (After Malum) — see [[Cosmology]] for why the calendar splits at the Malum.
+Dates are given as **BM** (Before Malum) / **AM** (After Malum) 
 
 | Aetas | Range | Length | Defining event |
 |---|---|---|---|
@@ -29,7 +29,8 @@ Dates are given as **BM** (Before Malum) / **AM** (After Malum) — see [[Cosmol
 > This table names the clan **"Ferrin"** as nearly wiped out in the Aetas of War. The main pitch text names the firstborn **"Ferus."** See [[Ferus]] for the open question of whether these are the same lineage.
 
 > [!key-insight] The current era is a design hook
-> The unnamed "Current Era" is explicitly where the player's run(s) take place, and where [[The Protagonist]]'s name arc plays out. Whatever the player does may retroactively *become* the defining event that names this Aetas — a strong narrative frame for run-to-run stakes.
+> The unnamed "Current Era" is explicitly where the player's run(s) take place, and where [[Cedere]]'s name arc plays out. Whatever the player does may retroactively *become* the defining event that names this Aetas — a strong narrative frame for run-to-run stakes.
+>
 
 ## See Also
 - [[Cosmology]]

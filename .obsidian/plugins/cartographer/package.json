@@ -1,0 +1,23 @@
+{
+	"name": "cartographer",
+	"version": "0.1.0",
+	"description": "Relational map canvas, procedural terrain painter, and heightmap-driven view modes for Obsidian.",
+	"main": "main.js",
+	"scripts": {
+		"dev": "node esbuild.config.mjs",
+		"build": "tsc -noEmit -skipLibCheck && node esbuild.config.mjs production"
+	},
+	"license": "MIT",
+	"devDependencies": {
+		"@types/node": "^20.0.0",
+		"@types/three": "^0.185.4",
+		"builtin-modules": "^3.3.0",
+		"esbuild": "^0.21.0",
+		"obsidian": "latest",
+		"tslib": "2.4.0",
+		"typescript": "^5.4.0"
+	},
+	"dependencies": {
+		"three": "^0.185.1"
+	}
+}
