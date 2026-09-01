@@ -8,12 +8,20 @@ import { HistoryManager } from "../editor/HistoryManager";
 import { CellRect } from "../editor/CellRect";
 import { MOUNTAIN_START, bandedTerrainColor } from "./palette";
 import { hashSeed, mulberry32 } from "./prng";
+import { terrainTileIndex } from "./terrainTextures";
+import { GRASS_BLADE_TEXTURES } from "./grassSprites";
 
-// True orbit-able 3D scene: a triangulated, vertex-colored heightmap mesh,
-// instanced procedural trees on forest cells below the treeline, and an
-// animated shader-driven water plane (vertex ripple + shifting color band —
-// no textures, matches the "no external asset" rule the rest of the plugin
-// follows).
+// True orbit-able 3D scene: a triangulated heightmap mesh whose material
+// detail (grass, rock, sand, snow, roads...) is computed live per-fragment
+// from real noise functions in the terrain shader (see TERRAIN_FRAGMENT_
+// SHADER below) rather than sampled from a baked raster texture — there is
+// no fixed texel grid, so it never looks pixelated no matter how close the
+// camera gets, and it stays the "no external asset" rule the rest of the
+// plugin follows (generated math, not a loaded PNG). The mesh is tinted by
+// the existing height-banded vertex color, has instanced procedural trees
+// on forest cells below the treeline, and an animated shader-driven water
+// plane (rippling + a directional scrolling-noise "flow" look) sitting a
+// little below the painted terrain height at every water/river cell.
 //
 // The terrain is built as one mesh PER CHUNK, sampled at exactly one vertex
 // per grid cell (chunkSize+1 verts/side so edges stitch seamlessly with
@@ -27,8 +35,30 @@ import { hashSeed, mulberry32 } from "./prng";
 // has real geometry to move, and only the chunks a brush stroke actually
 // touches need rebuilding — cheap enough to do live while painting.
 const MAX_TREES = 4000;
+
+// Real grass blade "cross cards" (see GRASS_BLADE_TEXTURES) scattered over
+// grass/plains cells so zooming into a plains cell shows actual standing
+// grass instead of just the terrain shader's flat procedural color. Grass
+// is expensive to keep everywhere on a big painted map, so it's only ever
+// built in a radius around wherever the camera is currently looking —
+// re-centered as the camera flies (see updateGrassStreaming) — rather than
+// once across the whole map like trees/water.
+const GRASS_RADIUS_METERS = 55;
+const MAX_GRASS_CLUMPS = 9000;
+// Re-center (rebuild) the grass field once the camera target has drifted
+// this far from where it was last built.
+const GRASS_REBUILD_DISTANCE_METERS = GRASS_RADIUS_METERS * 0.45;
+const GRASS_REBUILD_MIN_INTERVAL_SECONDS = 0.5;
+const GRASS_DENSITY_THRESHOLD = 0.08; // mirrors TerrainRenderer's 2D drawGrass cutoff
+
 // Radians of camera orbit per wheel-delta unit for Shift+scroll look-around.
 const LOOK_AROUND_SPEED = 0.002;
+// Water always sits this many real meters below the painted terrain height
+// at that cell (converted to world units via worldUnitsPerMeter so it reads
+// consistently at any map scale), independent of the ripple/flow animation
+// riding on top — otherwise a river painted at the same height as its bank
+// would fight the terrain in the z-buffer and flicker.
+const WATER_DEPRESSION_METERS = 0.4;
 
 const MOVE_KEY_CODES = new Set([
 	"KeyW",
@@ -44,6 +74,333 @@ const MOVE_KEY_CODES = new Set([
 const FLY_MIN_SPEED = 40; // world units/sec, floor for when the camera is very close to its target
 const FLY_SPEED_FACTOR = 0.9; // world units/sec added per world unit of camera-to-target distance — flying is faster when zoomed out
 const FLY_BOOST_MULTIPLIER = 3; // held Ctrl
+
+// Single source of truth for the scene's (fixed, non-interactive) lighting —
+// shared between setupLights()'s actual THREE.Light objects and the terrain
+// shader's hand-rolled lighting uniforms (a RawShaderMaterial doesn't sit in
+// three's normal lit-material pipeline, so it can't read scene lights
+// automatically; it needs these values passed in directly instead).
+const SUN_POSITION = new THREE.Vector3(-60, 90, -40); // matches the 2D views' upper-left hillshade direction
+const SUN_COLOR_HEX = 0xfff3d6;
+const SUN_INTENSITY = 1.1;
+const AMBIENT_COLOR_HEX = 0xffffff;
+const AMBIENT_INTENSITY = 0.55;
+
+// Terrain shader: picks one discrete MATERIAL per vertex (see
+// terrainTextures.ts's terrainTileIndex — 0=grass, 1=forest, 2=sand,
+// 3=rock, 4=snow, 5=dirt road, 6=cobblestone, 7=paved, 8=bare dirt) and
+// renders that material's per-fragment procedural noise pattern, multiplied
+// by the existing height-banded vertex tint, then simple fixed-direction
+// Lambert shading matching setupLights(). Because the pattern is computed
+// live from world-space position instead of sampled from a raster texture,
+// there is no fixed pixel resolution to it — it stays crisp at any zoom —
+// and it never visibly repeats/tiles the way a small baked swatch would. A
+// RawShaderMaterial (not the usual ShaderMaterial) because picking a
+// material per-vertex needs a `flat` varying — interpolating the material
+// index across a triangle would blend two unrelated materials together at
+// every boundary — and `flat`/`in`/`out` require GLSL3, which needs the raw
+// variant so three doesn't also inject its own legacy `attribute`/`varying`
+// declarations on top of these.
+const TERRAIN_VERTEX_SHADER = /* glsl */ `
+precision highp float;
+in vec3 position;
+in vec3 normal;
+in vec3 color;
+in vec2 uv;
+in float tileIndex;
+
+uniform mat4 modelViewMatrix;
+uniform mat4 projectionMatrix;
+uniform mat3 normalMatrix;
+
+out vec3 vColor;
+out vec2 vWorldXZ;
+out vec3 vNormal;
+flat out float vTileIndex;
+
+void main() {
+	vColor = color;
+	vWorldXZ = uv; // world-space meters, see buildChunkGeometry's uv fill
+	vNormal = normalize(normalMatrix * normal);
+	vTileIndex = tileIndex;
+	gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0);
+}
+`;
+
+const TERRAIN_FRAGMENT_SHADER = /* glsl */ `
+precision highp float;
+in vec3 vColor;
+in vec2 vWorldXZ;
+in vec3 vNormal;
+flat in float vTileIndex;
+
+uniform vec3 uSunDirection;
+uniform vec3 uSunColor;
+uniform vec3 uAmbientColor;
+// Offsets the "uneven ground" bump sample (see bumpedNormal below) so the
+// specific relief pattern differs each time the 3D view is opened, the same
+// way grass clump placement does (see Land3DView's grassSeed) — it's a
+// cosmetic close-up detail, not map data, so it isn't pinned to one fixed
+// pattern forever.
+uniform vec2 uBumpSeed;
+
+out vec4 outColor;
+
+// ---- generic per-fragment coherent noise (not tiled/periodic — sampled
+// straight from continuous world-space position, so it has no fixed
+// resolution and never visibly repeats across a real map) ----
+float hash(vec2 p) {
+	p = fract(p * vec2(123.34, 456.21));
+	p += dot(p, p + 45.32);
+	return fract(p.x * p.y);
+}
+
+float valueNoise(vec2 p) {
+	vec2 i = floor(p);
+	vec2 f = fract(p);
+	float a = hash(i);
+	float b = hash(i + vec2(1.0, 0.0));
+	float c = hash(i + vec2(0.0, 1.0));
+	float d = hash(i + vec2(1.0, 1.0));
+	vec2 u = f * f * (3.0 - 2.0 * f);
+	return mix(mix(a, b, u.x), mix(c, d, u.x), u.y);
+}
+
+float fbm(vec2 p) {
+	float sum = 0.0;
+	float amp = 0.5;
+	for (int i = 0; i < 4; i++) {
+		sum += amp * valueNoise(p);
+		p *= 2.03;
+		amp *= 0.5;
+	}
+	return sum;
+}
+
+// Distance to the nearest of a jittered grid of feature points — gives
+// rounded cell shapes (cobblestones) instead of blotchy noise.
+float worley(vec2 p) {
+	vec2 i = floor(p);
+	vec2 f = fract(p);
+	float minDist = 1.5;
+	for (int y = -1; y <= 1; y++) {
+		for (int x = -1; x <= 1; x++) {
+			vec2 cell = vec2(float(x), float(y));
+			vec2 jitter = vec2(hash(i + cell), hash(i + cell + vec2(19.1, 7.3)));
+			minDist = min(minDist, length(cell + jitter - f));
+		}
+	}
+	return minDist;
+}
+
+// Nudges the sample position by a second noise field so patterns read as
+// organic/irregular instead of grid-aligned — a standard procedural-texture
+// trick ("domain warping").
+vec2 warp(vec2 p, float amount) {
+	return p + amount * (vec2(fbm(p * 0.6 + 11.0), fbm(p * 0.6 - 7.0)) - 0.5);
+}
+
+vec3 grassColor(vec2 p) {
+	vec2 wp = warp(vec2(p.x, p.y * 1.6), 0.8);
+	float macro = fbm(wp * 0.18);
+	float blade = fbm(vec2(p.x * 1.6, p.y * 0.55) + 9.0);
+	vec3 dark = vec3(0.27, 0.42, 0.18);
+	vec3 light = vec3(0.56, 0.73, 0.34);
+	vec3 col = mix(dark, light, clamp(macro * 0.7 + blade * 0.45, 0.0, 1.0));
+	float fleck = smoothstep(0.93, 1.0, hash(floor(p * 30.0)));
+	return col + fleck * vec3(0.08, 0.1, 0.04);
+}
+
+vec3 forestColor(vec2 p) {
+	vec2 wp = warp(vec2(p.x, p.y * 1.4), 0.9);
+	float macro = fbm(wp * 0.22);
+	float grain = fbm(p * 2.1 + 31.0);
+	vec3 dark = vec3(0.1, 0.22, 0.11);
+	vec3 light = vec3(0.28, 0.42, 0.22);
+	vec3 col = mix(dark, light, clamp(macro * 0.8 + grain * 0.3, 0.0, 1.0));
+	float fleck = smoothstep(0.9, 1.0, hash(floor(p * 22.0) + 3.0));
+	return col - fleck * 0.08;
+}
+
+vec3 sandColor(vec2 p) {
+	vec2 wp = warp(p, 0.6);
+	float dune = fbm(wp * 0.12);
+	float grain = fbm(p * 3.5 + 5.0);
+	vec3 col = mix(vec3(0.72, 0.63, 0.42), vec3(0.87, 0.79, 0.56), clamp(dune * 0.8 + grain * 0.25, 0.0, 1.0));
+	float fleck = smoothstep(0.85, 1.0, hash(floor(p * 45.0) + 7.0));
+	return col + fleck * 0.08;
+}
+
+vec3 rockColor(vec2 p) {
+	vec2 wp = warp(p, 1.0);
+	float macro = fbm(wp * 0.16);
+	// Faint strata bands running along a fixed diagonal, like sedimentary
+	// rock layers.
+	float strata = sin((p.x * 0.35 + p.y * 0.12) + macro * 2.0) * 0.5 + 0.5;
+	float grain = fbm(p * 2.6 + 17.0);
+	vec3 col = mix(vec3(0.42, 0.39, 0.35), vec3(0.62, 0.58, 0.52), clamp(macro * 0.6 + strata * 0.3 + grain * 0.2, 0.0, 1.0));
+	float fleck = smoothstep(0.88, 1.0, hash(floor(p * 26.0) + 2.0));
+	return col + fleck * 0.15;
+}
+
+vec3 snowColor(vec2 p) {
+	float undulate = fbm(p * 0.2);
+	vec3 col = mix(vec3(0.85, 0.87, 0.9), vec3(0.98, 0.99, 1.0), undulate);
+	float sparkle = smoothstep(0.9, 1.0, hash(floor(p * 55.0) + 4.0));
+	return col + sparkle * 0.25;
+}
+
+vec3 dirtColor(vec2 p, vec3 base) {
+	vec2 wp = warp(p, 0.7);
+	float macro = fbm(wp * 0.2);
+	float grain = fbm(p * 2.8 + 21.0);
+	vec3 col = base * (0.82 + macro * 0.3 + grain * 0.15);
+	float fleck = smoothstep(0.87, 1.0, hash(floor(p * 32.0) + 6.0));
+	return col + fleck * 0.1;
+}
+
+vec3 pavedColor(vec2 p) {
+	// Low-frequency asphalt mottling plus sparse light-fleck aggregate —
+	// deliberately smoother/less grainy than the dirt materials.
+	float macro = fbm(p * 0.3 + 41.0);
+	vec3 col = vec3(0.22, 0.22, 0.24) * (0.85 + macro * 0.3);
+	float fleck = smoothstep(0.92, 1.0, hash(floor(p * 60.0) + 8.0));
+	return col + fleck * 0.12;
+}
+
+vec3 cobbleColor(vec2 p) {
+	float d = worley(p * 2.4);
+	float stoneShade = hash(floor(p * 2.4) + 51.0);
+	vec3 stone = mix(vec3(0.5, 0.5, 0.5), vec3(0.68, 0.68, 0.68), stoneShade);
+	vec3 grout = vec3(0.22, 0.22, 0.22);
+	float edge = smoothstep(0.28, 0.46, d);
+	vec3 col = mix(stone, grout, edge);
+	float grain = fbm(p * 4.0 + 13.0);
+	return col * (0.9 + grain * 0.15);
+}
+
+// Fakes fine, blade-scale "uneven ground" on grass cells by perturbing the
+// LIT normal from a high-frequency noise height field's local slope (finite
+// differences), the same trick a normal map does — at this mesh's actual
+// resolution (one vertex per cell) there's no real geometry left to
+// displace at that scale, so this is the cheap way to still make a
+// close-up plains cell read as bumpy dirt-and-root ground under the grass
+// rather than a billiard-flat plane. Only applied to the grass tile: other
+// materials either aren't meant to look soft/organic (rock, paved) or
+// already vary height for real (banded elevation).
+vec3 bumpedNormal(vec3 baseNormal, vec2 p) {
+	vec2 bp = p * 2.3 + uBumpSeed;
+	float eps = 0.08;
+	float hl = fbm(vec2(bp.x - eps, bp.y));
+	float hr = fbm(vec2(bp.x + eps, bp.y));
+	float hd = fbm(vec2(bp.x, bp.y - eps));
+	float hu = fbm(vec2(bp.x, bp.y + eps));
+	vec3 bump = normalize(vec3((hl - hr) * 3.5, 1.0, (hd - hu) * 3.5));
+	return normalize(mix(baseNormal, bump, 0.4));
+}
+
+vec3 materialColor(int tile, vec2 p) {
+	if (tile == 0) return grassColor(p);
+	if (tile == 1) return forestColor(p);
+	if (tile == 2) return sandColor(p);
+	if (tile == 3) return rockColor(p);
+	if (tile == 4) return snowColor(p);
+	if (tile == 5) return dirtColor(p, vec3(0.54, 0.41, 0.27));
+	if (tile == 6) return cobbleColor(p);
+	if (tile == 7) return pavedColor(p);
+	return dirtColor(p, vec3(0.47, 0.42, 0.34)); // 8: bare dirt
+}
+
+void main() {
+	int tile = int(vTileIndex + 0.5);
+	vec3 texel = materialColor(tile, vWorldXZ);
+
+	vec3 albedo = texel * vColor * 1.7;
+	vec3 n = normalize(vNormal);
+	if (tile == 0) n = bumpedNormal(n, vWorldXZ);
+	float ndotl = max(dot(n, uSunDirection), 0.0);
+	vec3 lit = albedo * (uAmbientColor + uSunColor * ndotl);
+	outColor = vec4(lit, 1.0);
+}
+`;
+
+// Grass blade instancing shader: a small "cross card" (two perpendicular
+// quads, see buildGrassCardGeometry) per clump, textured with one of the
+// real photographed/rendered blade cutouts in GRASS_BLADE_TEXTURES and
+// tinted per-instance via instanceColor for the same dark/light variance
+// the procedural grassColor() above gives the flat terrain shader. Instanced
+// (not per-frame-billboarded) — a static cross card reads convincingly as a
+// grass clump from any angle without needing to face the camera, the same
+// convention Minecraft-style voxel/low-poly games use for foliage cards.
+// Bottom vertices (local y=0) are pinned to the ground; top vertices sway
+// with a per-instance-phased wind so a whole field doesn't wave in lockstep.
+const GRASS_VERTEX_SHADER = /* glsl */ `
+#ifdef USE_INSTANCING
+attribute mat4 instanceMatrix;
+#endif
+#ifdef USE_INSTANCING_COLOR
+attribute vec3 instanceColor;
+#endif
+
+uniform float uTime;
+uniform vec2 uWindDir;
+
+varying vec2 vUv;
+varying vec3 vColor;
+varying float vAo;
+
+void main() {
+	vUv = uv;
+	#ifdef USE_INSTANCING_COLOR
+	vColor = instanceColor;
+	#else
+	vColor = vec3(1.0);
+	#endif
+
+	vec3 pos = position;
+	vAo = clamp(pos.y, 0.0, 1.0);
+
+	#ifdef USE_INSTANCING
+	vec3 instancePos = (instanceMatrix * vec4(0.0, 0.0, 0.0, 1.0)).xyz;
+	#else
+	vec3 instancePos = vec3(0.0);
+	#endif
+	float phase = dot(instancePos.xz, vec2(0.13, 0.09));
+	float sway = pos.y * pos.y; // pinned at the base, swings most at the tip
+	float wind = sin(uTime * 1.6 + phase) * 0.16 + sin(uTime * 0.7 + phase * 1.7) * 0.07;
+	pos.x += uWindDir.x * wind * sway;
+	pos.z += uWindDir.y * wind * sway;
+
+	#ifdef USE_INSTANCING
+	vec4 worldPos = instanceMatrix * vec4(pos, 1.0);
+	#else
+	vec4 worldPos = vec4(pos, 1.0);
+	#endif
+	gl_Position = projectionMatrix * modelViewMatrix * worldPos;
+}
+`;
+
+const GRASS_FRAGMENT_SHADER = /* glsl */ `
+uniform sampler2D uMap;
+uniform vec3 uSunColor;
+uniform vec3 uAmbientColor;
+
+varying vec2 vUv;
+varying vec3 vColor;
+varying float vAo;
+
+void main() {
+	vec4 tex = texture2D(uMap, vUv);
+	if (tex.a < 0.5) discard;
+	// The sprite's own gradient (bright tip, dark base) doubles as cheap
+	// ambient occlusion; blended with vAo (also 0 at the base) so it reads
+	// consistently even for the flattest of the three blade textures.
+	float ao = mix(0.45, 1.0, max(tex.r, vAo));
+	vec3 albedo = vColor * ao;
+	vec3 lit = albedo * (uAmbientColor + uSunColor * 0.85);
+	gl_FragColor = vec4(lit, 1.0);
+}
+`;
 
 export type Land3DPaintMode = "navigate" | "sculpt" | "paint";
 
@@ -71,7 +428,7 @@ export class Land3DView {
 	private waterMaterial: THREE.ShaderMaterial | null = null;
 	private waterMesh: THREE.Mesh | null = null;
 	private treeMeshes: THREE.Object3D[] = [];
-	private terrainMaterial: THREE.MeshStandardMaterial;
+	private terrainMaterial: THREE.RawShaderMaterial;
 	private chunkMeshes = new Map<string, THREE.Mesh>();
 	private brushCursor: THREE.Mesh;
 	private raycaster = new THREE.Raycaster();
@@ -89,6 +446,19 @@ export class Land3DView {
 	// would either flatten tall mountains to nothing or blow small hills up
 	// to absurd size depending on a map's chosen scale.
 	private readonly worldUnitsPerMeter: number;
+
+	private grassMeshes: THREE.InstancedMesh[] = [];
+	private grassGeometry: THREE.BufferGeometry | null = null;
+	private grassMaterials: THREE.ShaderMaterial[] = [];
+	private grassAnchorWorld: THREE.Vector2 | null = null;
+	private lastGrassBuildElapsed = -Infinity;
+	// Regenerated fresh every time the 3D view is opened. Grass clump
+	// placement (and the terrain shader's matching uBumpSeed "uneven ground"
+	// offset) is a purely cosmetic, unsaved concept render layered on top of
+	// the real painted map data — not map data itself — so it's fine, even
+	// expected, for it to look a little different on every open rather than
+	// being pinned to one fixed arrangement forever.
+	private readonly grassSeed: number = Math.floor(Math.random() * 0xffffffff);
 
 	constructor(private container: HTMLElement, private data: CartographerMapData, private brushCtx: Land3DBrushContext) {
 		this.worldUnitsPerMeter = this.data.cellSize / this.data.metersPerCell;
@@ -110,7 +480,34 @@ export class Land3DView {
 		this.controls = new OrbitControls(this.camera, this.renderer.domElement);
 		this.controls.enableDamping = true;
 
-		this.terrainMaterial = new THREE.MeshStandardMaterial({ vertexColors: true, roughness: 0.95 });
+		const lightUniforms = Land3DView.terrainLightUniforms();
+		this.terrainMaterial = new THREE.RawShaderMaterial({
+			glslVersion: THREE.GLSL3,
+			uniforms: {
+				uSunDirection: { value: lightUniforms.sunDirection },
+				uSunColor: { value: lightUniforms.sunColor },
+				uAmbientColor: { value: lightUniforms.ambientColor },
+				uBumpSeed: { value: Land3DView.bumpSeedFromSessionSeed(this.grassSeed) },
+			},
+			vertexShader: TERRAIN_VERTEX_SHADER,
+			fragmentShader: TERRAIN_FRAGMENT_SHADER,
+		});
+
+		this.grassMaterials = Land3DView.loadGrassTextures().map(
+			(texture) =>
+				new THREE.ShaderMaterial({
+					uniforms: {
+						uMap: { value: texture },
+						uTime: { value: 0 },
+						uWindDir: { value: new THREE.Vector2(1, 0.4).normalize() },
+						uSunColor: { value: lightUniforms.sunColor },
+						uAmbientColor: { value: lightUniforms.ambientColor },
+					},
+					vertexShader: GRASS_VERTEX_SHADER,
+					fragmentShader: GRASS_FRAGMENT_SHADER,
+					side: THREE.DoubleSide,
+				})
+		);
 
 		this.brushCursor = new THREE.Mesh(
 			new THREE.RingGeometry(0.9, 1, 48),
@@ -163,7 +560,6 @@ export class Land3DView {
 				else mat.dispose();
 			}
 		});
-
 		this.renderer.dispose();
 		this.container.removeChild(this.renderer.domElement);
 	}
@@ -275,10 +671,48 @@ export class Land3DView {
 	}
 
 	private setupLights(): void {
-		this.scene.add(new THREE.AmbientLight(0xffffff, 0.55));
-		const sun = new THREE.DirectionalLight(0xfff3d6, 1.1);
-		sun.position.set(-60, 90, -40); // matches the 2D views' upper-left hillshade direction
+		this.scene.add(new THREE.AmbientLight(AMBIENT_COLOR_HEX, AMBIENT_INTENSITY));
+		const sun = new THREE.DirectionalLight(SUN_COLOR_HEX, SUN_INTENSITY);
+		sun.position.copy(SUN_POSITION);
 		this.scene.add(sun);
+	}
+
+	// Builds the terrain material's fixed (non-uniform-updating) shading
+	// uniforms from the same SUN_*/AMBIENT_* constants setupLights() uses, so
+	// the two never drift apart.
+	private static terrainLightUniforms(): { sunDirection: THREE.Vector3; sunColor: THREE.Color; ambientColor: THREE.Color } {
+		return {
+			sunDirection: SUN_POSITION.clone().normalize(),
+			sunColor: new THREE.Color(SUN_COLOR_HEX).multiplyScalar(SUN_INTENSITY),
+			ambientColor: new THREE.Color(AMBIENT_COLOR_HEX).multiplyScalar(AMBIENT_INTENSITY),
+		};
+	}
+
+	// Decoded/uploaded once for the whole plugin session and reused by every
+	// Land3DView instance (and every rebuildGrass() call within one) — these
+	// are real image assets (see grassSprites.ts), not cheap-to-regenerate
+	// procedural geometry, so unlike the tree/water materials below they're
+	// deliberately NOT recreated on every rebuild.
+	private static grassTextureCache: THREE.Texture[] | null = null;
+
+	private static loadGrassTextures(): THREE.Texture[] {
+		if (!Land3DView.grassTextureCache) {
+			const loader = new THREE.TextureLoader();
+			Land3DView.grassTextureCache = GRASS_BLADE_TEXTURES.map((dataUri) => {
+				const texture = loader.load(dataUri);
+				texture.colorSpace = THREE.SRGBColorSpace;
+				return texture;
+			});
+		}
+		return Land3DView.grassTextureCache;
+	}
+
+	// Derives the terrain shader's uBumpSeed from the same per-session random
+	// seed grass placement uses, so both "unsaved concept" details shuffle
+	// together on every open rather than needing two unrelated random calls.
+	private static bumpSeedFromSessionSeed(seed: number): THREE.Vector2 {
+		const rng = mulberry32(seed ^ 0x9e3779b9);
+		return new THREE.Vector2(rng() * 1000, rng() * 1000);
 	}
 
 	private paintedChunkKeys(): Set<string> {
@@ -297,6 +731,7 @@ export class Land3DView {
 		this.addWater(chunkKeys);
 
 		this.frameCameraToContent();
+		this.rebuildGrass();
 	}
 
 	private frameCameraToContent(): void {
@@ -335,29 +770,43 @@ export class Land3DView {
 		const grid = this.brushCtx.grid;
 		const size = this.data.chunkSize;
 		const cellSize = this.data.cellSize;
+		const metersPerCell = this.data.metersPerCell;
 		const minCx = chunkX * size;
 		const minCy = chunkY * size;
 		const verts = size + 1;
 
 		const positions = new Float32Array(verts * verts * 3);
 		const colors = new Float32Array(verts * verts * 3);
+		const uvs = new Float32Array(verts * verts * 2);
+		const tileIndices = new Float32Array(verts * verts);
 		let vi = 0;
 		let ci = 0;
+		let ui = 0;
+		let ti = 0;
 		for (let gy = 0; gy < verts; gy++) {
 			for (let gx = 0; gx < verts; gx++) {
 				const cx = minCx + gx;
 				const cy = minCy + gy;
 				const h = grid.getHeight(cx, cy);
+				const type = grid.getTerrain(cx, cy);
 
 				positions[vi++] = cx * cellSize;
 				positions[vi++] = h * this.worldUnitsPerMeter;
 				positions[vi++] = cy * cellSize;
 
-				const type = grid.getTerrain(cx, cy);
 				const [r, g, b] = type ? bandedTerrainColor(type, h) : [90, 90, 90];
 				colors[ci++] = r / 255;
 				colors[ci++] = g / 255;
 				colors[ci++] = b / 255;
+
+				// World-space meters (not 0..1-per-chunk) so the noise pattern
+				// is continuous across chunk seams instead of resetting phase
+				// at every chunk boundary — this is what the fragment shader
+				// samples its per-material noise from directly.
+				uvs[ui++] = cx * metersPerCell;
+				uvs[ui++] = cy * metersPerCell;
+
+				tileIndices[ti++] = terrainTileIndex(type, h, grid.getDetail(cx, cy));
 			}
 		}
 
@@ -375,6 +824,8 @@ export class Land3DView {
 		const geometry = new THREE.BufferGeometry();
 		geometry.setAttribute("position", new THREE.BufferAttribute(positions, 3));
 		geometry.setAttribute("color", new THREE.BufferAttribute(colors, 3));
+		geometry.setAttribute("uv", new THREE.BufferAttribute(uvs, 2));
+		geometry.setAttribute("tileIndex", new THREE.BufferAttribute(tileIndices, 1));
 		geometry.setIndex(indices);
 		geometry.computeVertexNormals();
 		return geometry;
@@ -545,7 +996,7 @@ export class Land3DView {
 					const z0 = cy * cellSize;
 					const x1 = (cx + 1) * cellSize;
 					const z1 = (cy + 1) * cellSize;
-					const y = grid.getHeight(cx, cy) * this.worldUnitsPerMeter - 0.15;
+					const y = (grid.getHeight(cx, cy) - WATER_DEPRESSION_METERS) * this.worldUnitsPerMeter;
 
 					const base = vertCount;
 					positions.push(x0, y, z0, x1, y, z0, x0, y, z1, x1, y, z1);
@@ -562,28 +1013,61 @@ export class Land3DView {
 		geometry.setIndex(indices);
 		geometry.computeVertexNormals();
 
+		// Ripple amplitude is kept well under WATER_DEPRESSION_METERS (scaled
+		// by the same worldUnitsPerMeter) so a wave crest never pokes back up
+		// through the terrain it's sitting below.
 		const material = new THREE.ShaderMaterial({
 			transparent: true,
 			side: THREE.DoubleSide,
-			uniforms: { uTime: { value: this.elapsed } },
+			uniforms: {
+				uTime: { value: this.elapsed },
+				uRippleAmplitude: { value: 0.12 * this.worldUnitsPerMeter },
+			},
 			vertexShader: /* glsl */ `
 				uniform float uTime;
+				uniform float uRippleAmplitude;
 				varying vec2 vWorldXZ;
 				void main() {
 					vWorldXZ = position.xz;
 					vec3 p = position;
-					p.y += sin((p.x + uTime * 18.0) * 0.06) * 0.35 + cos((p.z + uTime * 14.0) * 0.08) * 0.35;
+					p.y += (sin((p.x + uTime * 18.0) * 0.06) + cos((p.z + uTime * 14.0) * 0.08)) * uRippleAmplitude * 0.5;
 					gl_Position = projectionMatrix * modelViewMatrix * vec4(p, 1.0);
 				}
 			`,
 			fragmentShader: /* glsl */ `
 				uniform float uTime;
 				varying vec2 vWorldXZ;
+
+				float hash(vec2 p) {
+					p = fract(p * vec2(123.34, 456.21));
+					p += dot(p, p + 45.32);
+					return fract(p.x * p.y);
+				}
+				float noise(vec2 p) {
+					vec2 i = floor(p);
+					vec2 f = fract(p);
+					float a = hash(i);
+					float b = hash(i + vec2(1.0, 0.0));
+					float c = hash(i + vec2(0.0, 1.0));
+					float d = hash(i + vec2(1.0, 1.0));
+					vec2 u = f * f * (3.0 - 2.0 * f);
+					return mix(mix(a, b, u.x), mix(c, d, u.x), u.y);
+				}
+
 				void main() {
+					// Two noise layers scrolling along a fixed direction at
+					// different speeds/scales, blended — reads as flowing
+					// current rather than a stationary standing-wave pattern.
+					vec2 flowDir = normalize(vec2(1.0, 0.4));
+					vec2 flowUv = vWorldXZ * 0.08;
+					float n1 = noise(flowUv + flowDir * uTime * 0.6);
+					float n2 = noise(flowUv * 1.7 - flowDir * uTime * 0.9 + 5.0);
+					float flow = mix(n1, n2, 0.5);
 					float wave = sin((vWorldXZ.x * 0.12) + uTime * 1.6) * 0.5 + sin((vWorldXZ.y * 0.1) - uTime * 1.1) * 0.5;
-					vec3 base = vec3(0.16, 0.32, 0.55);
+					vec3 base = vec3(0.14, 0.3, 0.53);
 					vec3 highlight = vec3(0.45, 0.68, 0.85);
-					vec3 color = mix(base, highlight, clamp(wave * 0.5 + 0.5, 0.0, 1.0) * 0.6);
+					float mixAmount = clamp(wave * 0.35 + 0.35 + flow * 0.5, 0.0, 1.0);
+					vec3 color = mix(base, highlight, mixAmount);
 					gl_FragColor = vec4(color, 0.82);
 				}
 			`,

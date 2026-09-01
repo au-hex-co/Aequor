@@ -1,3 +1,25 @@
+---
+type: lore
+status: developing
+tags: [lore, narrative, world]
+created: 2026-08-24
+updated: 2026-09-01
+sources: ["[[merchant-of-fate-pitch]]"]
+---
+
+# Lore in Order
+
+The canonical, chronological telling of the origin myth: the creation of Primum, the making of Vesta, the birth of Ferus and Silvia, and the founding of the Sacrarium. This supersedes earlier draft fragments — it is the single source of truth for these scenes.
+
+## See Also
+- [[Cosmology]]
+- [[Vesta]]
+- [[Silvia]]
+- [[Sacrarium]]
+- [[Timeline of the Aetas]]
+
+---
+
 #### Chapter 1: Silvia
 
 [[Vesta]] held the small child in her arms. It was so... fragile, the soft skin of the babe and the small tight grip, but it was not breathing. The child lay in her arms, unmoving.

@@ -12,10 +12,10 @@ The first man, made by [[Tellus]], [[Aequor|Aequor]], and [[Anima]] out of bored
 
 His descendants scattered into clans, each shaped by a piece of the original bargain, including [[Ferus]], the firstborn made before agency was understood.
 
-> [!gap] Vesta
-> The relic ability *Inheritance of the First Wound* (see [[Nectaris]]) says Primum's arm and leg were "torn away to make **[[Vesta]]**." [[Vesta]] is not otherwise defined anywhere in the source material — unclear if it's a place, an object, or a being. Needs a definition.
+His flesh and bone, torn away by [[Tellus]] as the price of company, were reshaped into [[Vesta]] — see her page for the full account of how she was made and what she became.
 
 ## See Also
 - [[Cosmology]]
 - [[Ferus]]
+- [[Vesta]]
 - [[Nectaris]]

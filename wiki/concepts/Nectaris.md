@@ -40,10 +40,8 @@ Nectaris cannot cancel fate, only delay where and when it lands. Anything dodged
 > [!key-insight] Design note (from source)
 > *Sortis, Unbroken* and *Fate's Reboot* draw from the same Deferred Fate queue at different scales — one hit versus one encounter — and should be mutually exclusive as capstone picks, so a player cannot stack two deferral sources into a single future reckoning.
 
-> [!gap] Undefined term: Vesta
-> *Inheritance of the First Wound* references "Vesta" as what [[Primum]]'s severed arm and leg became. Not defined anywhere else in the source material — see [[Primum]].
-
 ## See Also
 - [[Tellus]]
 - [[Relics]]
 - [[Primum]]
+- [[Vesta]]

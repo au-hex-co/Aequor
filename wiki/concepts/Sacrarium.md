@@ -1,3 +1,14 @@
+---
+type: concept
+status: developing
+tags: [concept, relic, inheritance, vesta]
+created: 2026-08-24
+updated: 2026-09-01
+sources: ["[[merchant-of-fate-pitch]]"]
+---
+
+# Sacrarium
+
 **Type:** Inherited trait / bodily gift, carried by all fertile women descended from Vesta **Origin:** Given by [[Tellus]] and [[Aequor]] (the Two) to Vesta, now passed down through her line **Domain:** Agency, free breath, inherited will
 
 ## Description
@@ -62,3 +73,10 @@ A man can take the Sacrarium from a woman by force — a violation counted among
     - How does theft actually happen — is it a ritual act, a specific kind of violence, or something a man can do unknowingly? This decides whether it reads as a targeted mythic transgression or an ever-present danger.
     - Does a woman who is stolen from simply become infertile, or does something worse happen to her — does it also cost her the years of life or vitality the Sacrarium was sustaining?
     - What happens to a stolen portion once a man holds it — does he keep it, does it curse him, does it decay outside a woman's body? Worth deciding if theft is ever going to be a plot event rather than background lore.
+
+## See Also
+- [[Vesta]]
+- [[Anima]]
+- [[Silvia]]
+- [[Primum]]
+- [[Lore in order]]

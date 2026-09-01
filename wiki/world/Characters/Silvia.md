@@ -1,3 +1,13 @@
+---
+type: world
+status: developing
+tags: [world, character]
+created: 2026-08-24
+updated: 2026-09-01
+---
+
+# Silvia
+
 **Type:** First daughter of [[Vesta]] and [[Primum]], founder of the wildwood line **Domain:** The wildwood, kinship with the trees
 
 ## Birth
@@ -19,6 +29,16 @@ Following this encounter, Silvia met with the dragon daily for the next ten year
 ## Notes
 
 - Silvia's silver hair and eyes (with gold flecks from birth) may serve as a visual marker of her carrying the [[Sacrarium]], distinguishing her from those who do not.
-- She is the founder of House Silvanus, the clan of the wildwood.
+- She is the founder of House Silvanus, the clan of the wildwood — see [[The clans]].
 - Her attacker at the shore is [[Ferus]], her elder sibling, born without agency.
 - Open thread: Silvia later grows to fear, then track, then befriend, then love Ferus, eventually asking [[Aequor]] how he came to exist.
+- Her younger brother is [[Nexus]], born the day this chapter opens.
+
+## See Also
+- [[Vesta]]
+- [[Primum]]
+- [[Nexus]]
+- [[Ferus]]
+- [[Sacrarium]]
+- [[The clans]]
+- [[Lore in order]]
