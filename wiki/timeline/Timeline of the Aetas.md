@@ -25,8 +25,8 @@ Dates are given as **BM** (Before Malum) / **AM** (After Malum)
 | **The Malum** | Year 0 | — | The death of [[Tellus]] |
 | Current Era | 1 AM onward | ongoing | Unnamed — awaiting its defining event |
 
-> [!contradiction] Ferrin vs. Ferus
-> This table names the clan **"Ferrin"** as nearly wiped out in the Aetas of War. The main pitch text names the firstborn **"Ferus."** See [[Ferus]] for the open question of whether these are the same lineage.
+> [!key-insight] Ferrin vs. Ferus
+> This table names the clan **"Ferrin"** as nearly wiped out in the Aetas of War. The main pitch text names the firstborn **"Ferus."** See [[The clans]] and [[Ferus]] — treated as the same lineage (Ferrin = "the line of Ferus"), pending confirmation with the author.
 
 > [!key-insight] The current era is a design hook
 > The unnamed "Current Era" is explicitly where the player's run(s) take place, and where [[Cedere]]'s name arc plays out. Whatever the player does may retroactively *become* the defining event that names this Aetas — a strong narrative frame for run-to-run stakes.
@@ -41,3 +41,4 @@ Dated events within the Current Era go here, one row per event — add a row bel
 ## See Also
 - [[Cosmology]]
 - [[The Protagonist]]
+- [[The clans]]

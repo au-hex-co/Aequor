@@ -44,12 +44,31 @@ const MAX_TREES = 4000;
 // re-centered as the camera flies (see updateGrassStreaming) — rather than
 // once across the whole map like trees/water.
 const GRASS_RADIUS_METERS = 55;
-const MAX_GRASS_CLUMPS = 9000;
+const MAX_GRASS_CLUMPS = 16000;
 // Re-center (rebuild) the grass field once the camera target has drifted
 // this far from where it was last built.
 const GRASS_REBUILD_DISTANCE_METERS = GRASS_RADIUS_METERS * 0.45;
 const GRASS_REBUILD_MIN_INTERVAL_SECONDS = 0.5;
-const GRASS_DENSITY_THRESHOLD = 0.08; // mirrors TerrainRenderer's 2D drawGrass cutoff
+const GRASS_DENSITY_THRESHOLD = 0.03; // mirrors TerrainRenderer's 2D drawGrass cutoff, lowered so sparse-detail plains still get some cover
+
+// Small stones/pebbles scattered alongside grass on any solid ground cell
+// (not just "plains" — forest floor and beaches get them too), independent
+// of the grass detail threshold above, so bare-looking ground still reads
+// as textured up close. Shares grass's radius-based camera streaming (see
+// rebuildGroundDetail) since it's the same kind of close-up-only detail.
+const MAX_PEBBLES = 6000;
+const PEBBLE_CHANCE_PER_CELL = 0.35;
+const PEBBLE_MIN_RADIUS_METERS = 0.05;
+const PEBBLE_MAX_RADIUS_METERS = 0.22;
+
+// Small per-vertex height jitter added to solid-ground cells (see
+// buildChunkGeometry) so the terrain isn't a billiard-flat plane between
+// painted elevation changes — little rolling dips and rises at ground
+// scale, on top of (not replacing) the real painted height. Sampled from a
+// smooth low-frequency value noise in world meters so neighboring chunks
+// stay seamless (pure function of world position, not per-chunk random).
+const GROUND_DIP_AMPLITUDE_METERS = 0.4;
+const GROUND_DIP_FREQUENCY = 0.12; // cycles per meter
 
 // Radians of camera orbit per wheel-delta unit for Shift+scroll look-around.
 const LOOK_AROUND_SPEED = 0.002;
@@ -57,8 +76,46 @@ const LOOK_AROUND_SPEED = 0.002;
 // at that cell (converted to world units via worldUnitsPerMeter so it reads
 // consistently at any map scale), independent of the ripple/flow animation
 // riding on top — otherwise a river painted at the same height as its bank
-// would fight the terrain in the z-buffer and flicker.
+// would fight the terrain in the z-buffer and flicker. Rivers sit deeper
+// than still lakes/ponds — a carved channel reads as a river, a shallow
+// puddle-depth sheet reads as a lake.
 const WATER_DEPRESSION_METERS = 0.4;
+const RIVER_DEPRESSION_METERS = 1.6;
+// A river cell whose downstream neighbor's water surface sits more than this
+// many meters lower gets rendered as a falls (see addWater's per-corner
+// height ramp) instead of a flat quad — the river brush now carves a channel
+// that follows the painted terrain's own slope (see BrushEngine's isRiver
+// branch), so this only actually triggers where the ground itself is steep.
+const WATERFALL_DROP_METERS = 0.9;
+
+// Deterministic smooth 2D value noise (same construction as the terrain
+// shader's own hash/valueNoise, just evaluated on the CPU instead of the
+// GPU) used to jitter ground-cell vertex heights — see GROUND_DIP_AMPLITUDE_
+// METERS. Pure function of world position, so it needs no seed and matches
+// exactly across chunk boundaries.
+function groundHash(x: number, z: number): number {
+	const n = Math.sin(x * 127.1 + z * 311.7) * 43758.5453123;
+	return n - Math.floor(n);
+}
+
+function groundValueNoise(x: number, z: number): number {
+	const xi = Math.floor(x);
+	const zi = Math.floor(z);
+	const xf = x - xi;
+	const zf = z - zi;
+	const a = groundHash(xi, zi);
+	const b = groundHash(xi + 1, zi);
+	const c = groundHash(xi, zi + 1);
+	const d = groundHash(xi + 1, zi + 1);
+	const u = xf * xf * (3 - 2 * xf);
+	const v = zf * zf * (3 - 2 * zf);
+	return a + (b - a) * u + (c - a) * v + (a - b - c + d) * u * v;
+}
+
+function groundDipMeters(worldX: number, worldZ: number): number {
+	const n = groundValueNoise(worldX * GROUND_DIP_FREQUENCY, worldZ * GROUND_DIP_FREQUENCY);
+	return (n - 0.5) * 2 * GROUND_DIP_AMPLITUDE_METERS;
+}
 
 const MOVE_KEY_CODES = new Set([
 	"KeyW",
@@ -335,12 +392,10 @@ void main() {
 // Bottom vertices (local y=0) are pinned to the ground; top vertices sway
 // with a per-instance-phased wind so a whole field doesn't wave in lockstep.
 const GRASS_VERTEX_SHADER = /* glsl */ `
-#ifdef USE_INSTANCING
-attribute mat4 instanceMatrix;
-#endif
-#ifdef USE_INSTANCING_COLOR
-attribute vec3 instanceColor;
-#endif
+// instanceMatrix/instanceColor are declared automatically by three.js
+// (guarded by these same #ifdefs) whenever the mesh is a THREE.InstancedMesh
+// with a non-null instanceColor — see WebGLProgram's vertex prefix — so they
+// are used here, not redeclared.
 
 uniform float uTime;
 uniform vec2 uWindDir;
@@ -452,6 +507,12 @@ export class Land3DView {
 	private grassMaterials: THREE.ShaderMaterial[] = [];
 	private grassAnchorWorld: THREE.Vector2 | null = null;
 	private lastGrassBuildElapsed = -Infinity;
+	// Small stones scattered alongside grass — see MAX_PEBBLES. Built in the
+	// same pass/streaming cadence as grass (rebuildGroundDetail) since it's
+	// the same kind of close-up-only ground dressing.
+	private pebbleMeshes: THREE.InstancedMesh[] = [];
+	private pebbleGeometry: THREE.BufferGeometry | null = null;
+	private readonly pebbleMaterial: THREE.MeshStandardMaterial;
 	// Regenerated fresh every time the 3D view is opened. Grass clump
 	// placement (and the terrain shader's matching uBumpSeed "uneven ground"
 	// offset) is a purely cosmetic, unsaved concept render layered on top of
@@ -509,6 +570,13 @@ export class Land3DView {
 				})
 		);
 
+		// Plain lit material (three's normal PBR pipeline, unlike the terrain/
+		// grass's hand-rolled shaders) — pebbles are small enough that fixed
+		// per-instance ambient+directional lighting reads fine, same choice as
+		// the tree trunk/canopy materials below. vertexColors on so setColorAt
+		// per-instance tinting (see rebuildGroundDetail) actually shows.
+		this.pebbleMaterial = new THREE.MeshStandardMaterial({ color: 0xffffff, roughness: 1, vertexColors: true });
+
 		this.brushCursor = new THREE.Mesh(
 			new THREE.RingGeometry(0.9, 1, 48),
 			new THREE.MeshBasicMaterial({ color: 0xffe9a8, transparent: true, opacity: 0.75, side: THREE.DoubleSide, depthTest: false })
@@ -560,6 +628,13 @@ export class Land3DView {
 				else mat.dispose();
 			}
 		});
+		// Disposed explicitly too, in case the variant currently had zero
+		// instances (and so no mesh in the scene for the traverse above to
+		// find) — these are per-instance materials (see the constructor),
+		// unlike the session-cached textures they reference, which are
+		// intentionally left alone.
+		for (const material of this.grassMaterials) material.dispose();
+		this.pebbleMaterial.dispose();
 		this.renderer.dispose();
 		this.container.removeChild(this.renderer.domElement);
 	}
@@ -689,7 +764,7 @@ export class Land3DView {
 	}
 
 	// Decoded/uploaded once for the whole plugin session and reused by every
-	// Land3DView instance (and every rebuildGrass() call within one) — these
+	// Land3DView instance (and every rebuildGroundDetail() call within one) — these
 	// are real image assets (see grassSprites.ts), not cheap-to-regenerate
 	// procedural geometry, so unlike the tree/water materials below they're
 	// deliberately NOT recreated on every rebuild.
@@ -731,7 +806,7 @@ export class Land3DView {
 		this.addWater(chunkKeys);
 
 		this.frameCameraToContent();
-		this.rebuildGrass();
+		this.rebuildGroundDetail();
 	}
 
 	private frameCameraToContent(): void {
@@ -790,8 +865,15 @@ export class Land3DView {
 				const h = grid.getHeight(cx, cy);
 				const type = grid.getTerrain(cx, cy);
 
+				// Real (not just shaded-in) ground unevenness: water/river stay
+				// exactly at their painted height so the water depression math
+				// above still lines up, but solid ground gets a little vertical
+				// jitter so the mesh reads as rolling/uneven rather than a flat
+				// plane wherever it hasn't been deliberately sculpted.
+				const dip = type === "water" || type === "river" ? 0 : groundDipMeters(cx * metersPerCell, cy * metersPerCell);
+
 				positions[vi++] = cx * cellSize;
-				positions[vi++] = h * this.worldUnitsPerMeter;
+				positions[vi++] = (h + dip) * this.worldUnitsPerMeter;
 				positions[vi++] = cy * cellSize;
 
 				const [r, g, b] = type ? bandedTerrainColor(type, h) : [90, 90, 90];
@@ -907,6 +989,234 @@ export class Land3DView {
 		this.addWater(chunkKeys);
 	}
 
+	private clearGroundDetail(): void {
+		for (const mesh of this.grassMeshes) this.scene.remove(mesh);
+		this.grassMeshes = [];
+		// Geometry is rebuilt fresh each call (see rebuildGroundDetail) rather
+		// than shared long-term, so it's safe — and necessary, to avoid leaking
+		// the old buffer's GPU memory — to dispose it here the same way
+		// clearTreesAndWater disposes its own freshly-built-per-call
+		// geometries. Materials/textures are the session-cached, reused
+		// resources and are deliberately left alone.
+		this.grassGeometry?.dispose();
+		this.grassGeometry = null;
+
+		for (const mesh of this.pebbleMeshes) this.scene.remove(mesh);
+		this.pebbleMeshes = [];
+		this.pebbleGeometry?.dispose();
+		this.pebbleGeometry = null;
+	}
+
+	// One small "cross card" (two perpendicular unit quads, base at y=0, tip
+	// at y=1) shared by every grass instance in this build — per-instance
+	// position/rotation/scale/tint all come from instanceMatrix/instanceColor,
+	// so the same 8 vertices serve every clump regardless of how many there
+	// are.
+	private static buildGrassCardGeometry(): THREE.BufferGeometry {
+		const positions = new Float32Array([
+			// Plane A, spanning local X
+			-0.5, 0, 0, 0.5, 0, 0, -0.5, 1, 0, 0.5, 1, 0,
+			// Plane B, spanning local Z
+			0, 0, -0.5, 0, 0, 0.5, 0, 1, -0.5, 0, 1, 0.5,
+		]);
+		const uvs = new Float32Array([0, 0, 1, 0, 0, 1, 1, 1, 0, 0, 1, 0, 0, 1, 1, 1]);
+		const indices = [0, 1, 2, 1, 3, 2, 4, 5, 6, 5, 7, 6];
+
+		const geometry = new THREE.BufferGeometry();
+		geometry.setAttribute("position", new THREE.BufferAttribute(positions, 3));
+		geometry.setAttribute("uv", new THREE.BufferAttribute(uvs, 2));
+		geometry.setIndex(indices);
+		return geometry;
+	}
+
+	// Low-poly stone shape (radius-1 icosahedron) shared by every pebble
+	// instance, the same "one static geometry, per-instance transform" trick
+	// buildGrassCardGeometry uses.
+	private static buildPebbleGeometry(): THREE.BufferGeometry {
+		return new THREE.IcosahedronGeometry(1, 0);
+	}
+
+	// Rebuilds both the grass field AND the pebble scatter centered on
+	// wherever the camera is currently looking (see updateGrassStreaming for
+	// what re-triggers this as the camera flies). Scans real cells within
+	// GRASS_RADIUS_METERS rather than every painted chunk — both are a
+	// "zoomed in" detail, so there's no value in placing (and paying the
+	// cost of) them far outside where the camera can currently resolve them,
+	// unlike trees/water which cover the whole map. One shared scan for
+	// both since they're triggered by the same camera movement anyway.
+	private rebuildGroundDetail(): void {
+		this.clearGroundDetail();
+
+		const grid = this.brushCtx.grid;
+		const cellSize = this.data.cellSize;
+		const metersPerCell = this.data.metersPerCell;
+		const target = this.controls.target;
+		this.grassAnchorWorld = new THREE.Vector2(target.x, target.z);
+		this.lastGrassBuildElapsed = this.elapsed;
+
+		const anchorCx = Math.round(target.x / cellSize);
+		const anchorCy = Math.round(target.z / cellSize);
+		const radiusCells = Math.max(3, Math.ceil(GRASS_RADIUS_METERS / metersPerCell));
+		const radiusMetersSq = GRASS_RADIUS_METERS * GRASS_RADIUS_METERS;
+
+		type GrassInstance = { variant: number; x: number; y: number; z: number; rotY: number; scale: number; color: THREE.Color };
+		const grassInstances: GrassInstance[] = [];
+		type PebbleInstance = { x: number; y: number; z: number; rotY: number; sx: number; sy: number; sz: number; color: THREE.Color };
+		const pebbleInstances: PebbleInstance[] = [];
+
+		for (let cy = anchorCy - radiusCells; cy <= anchorCy + radiusCells; cy++) {
+			for (let cx = anchorCx - radiusCells; cx <= anchorCx + radiusCells; cx++) {
+				// Circular cull first, before any chunk lookups — the scan
+				// square's corners sit outside GRASS_RADIUS_METERS, so this
+				// skips the (much more expensive) grid reads for most of them.
+				const dcx = cx - target.x / cellSize;
+				const dcy = cy - target.z / cellSize;
+				if ((dcx * dcx + dcy * dcy) * metersPerCell * metersPerCell > radiusMetersSq) continue;
+
+				const terrain = grid.getTerrain(cx, cy);
+				const height = grid.getHeight(cx, cy);
+				if (height >= MOUNTAIN_START) continue;
+
+				// Pebbles: any solid ground (not just plains — forest floor and
+				// beaches get them too), independent of the grass density
+				// gate below, so bare-looking ground still reads as textured.
+				if (terrain === "plains" || terrain === "forest" || terrain === "sand") {
+					const pebbleRng = mulberry32(hashSeed(cx, cy, 6161, this.grassSeed));
+					if (pebbleRng() < PEBBLE_CHANCE_PER_CELL) {
+						const count = 1 + Math.floor(pebbleRng() * 2);
+						for (let i = 0; i < count; i++) {
+							const fx = cx + pebbleRng() - 0.5;
+							const fy = cy + pebbleRng() - 0.5;
+							const groundHeight = grid.sampleHeight(fx, fy);
+							const radius = PEBBLE_MIN_RADIUS_METERS + pebbleRng() * (PEBBLE_MAX_RADIUS_METERS - PEBBLE_MIN_RADIUS_METERS);
+							const shade = 0.5 + pebbleRng() * 0.45;
+							pebbleInstances.push({
+								x: fx * cellSize,
+								y: groundHeight * this.worldUnitsPerMeter,
+								z: fy * cellSize,
+								rotY: pebbleRng() * Math.PI * 2,
+								sx: radius * (0.8 + pebbleRng() * 0.4) * this.worldUnitsPerMeter,
+								sy: radius * (0.45 + pebbleRng() * 0.25) * this.worldUnitsPerMeter,
+								sz: radius * (0.8 + pebbleRng() * 0.4) * this.worldUnitsPerMeter,
+								color: new THREE.Color(shade * 0.6, shade * 0.56, shade * 0.52),
+							});
+						}
+					}
+				}
+
+				if (terrain !== "plains" || this.grassMaterials.length === 0) continue;
+				const density = grid.getDetail(cx, cy);
+				if (density < GRASS_DENSITY_THRESHOLD) continue;
+
+				const cellRng = mulberry32(hashSeed(cx, cy, 5150, this.grassSeed));
+				const clumpCount = 1 + Math.floor(density * 3 + cellRng() * 1.5);
+				for (let i = 0; i < clumpCount; i++) {
+					const fx = cx + cellRng() - 0.5;
+					const fy = cy + cellRng() - 0.5;
+					const groundHeight = grid.sampleHeight(fx, fy);
+					const bladeHeightM = 0.22 + density * 0.4 + cellRng() * 0.18;
+					const tone = 0.7 + cellRng() * 0.5;
+					const warmth = cellRng() * 0.3;
+					grassInstances.push({
+						variant: Math.floor(cellRng() * this.grassMaterials.length),
+						x: fx * cellSize,
+						y: groundHeight * this.worldUnitsPerMeter,
+						z: fy * cellSize,
+						rotY: cellRng() * Math.PI * 2,
+						scale: bladeHeightM * this.worldUnitsPerMeter,
+						color: new THREE.Color((0.3 + warmth * 0.35) * tone, 0.62 * tone, 0.24 * tone),
+					});
+				}
+			}
+		}
+
+		const m = new THREE.Matrix4();
+		const pos = new THREE.Vector3();
+		const quat = new THREE.Quaternion();
+		const euler = new THREE.Euler();
+		const scaleVec = new THREE.Vector3();
+
+		if (grassInstances.length > 0 && this.grassMaterials.length > 0) {
+			// Uniform random cull (not a positional step) rather than trimming
+			// by scan order, so an overfull field thins out evenly instead of
+			// losing whole rows of cells.
+			if (grassInstances.length > MAX_GRASS_CLUMPS) {
+				const rng = mulberry32(hashSeed(anchorCx, anchorCy, this.grassSeed, 8181));
+				for (let i = grassInstances.length - 1; i > 0; i--) {
+					const j = Math.floor(rng() * (i + 1));
+					[grassInstances[i], grassInstances[j]] = [grassInstances[j], grassInstances[i]];
+				}
+				grassInstances.length = MAX_GRASS_CLUMPS;
+			}
+
+			this.grassGeometry = Land3DView.buildGrassCardGeometry();
+
+			const byVariant: GrassInstance[][] = this.grassMaterials.map(() => []);
+			for (const inst of grassInstances) byVariant[inst.variant].push(inst);
+
+			byVariant.forEach((list, variantIndex) => {
+				if (list.length === 0) return;
+				const mesh = new THREE.InstancedMesh(this.grassGeometry!, this.grassMaterials[variantIndex], list.length);
+				list.forEach((inst, i) => {
+					pos.set(inst.x, inst.y, inst.z);
+					euler.set(0, inst.rotY, 0);
+					quat.setFromEuler(euler);
+					scaleVec.set(inst.scale, inst.scale, inst.scale);
+					m.compose(pos, quat, scaleVec);
+					mesh.setMatrixAt(i, m);
+					mesh.setColorAt(i, inst.color);
+				});
+				mesh.instanceMatrix.needsUpdate = true;
+				if (mesh.instanceColor) mesh.instanceColor.needsUpdate = true;
+				this.scene.add(mesh);
+				this.grassMeshes.push(mesh);
+			});
+		}
+
+		if (pebbleInstances.length > 0) {
+			let culled = pebbleInstances;
+			if (culled.length > MAX_PEBBLES) {
+				const rng = mulberry32(hashSeed(anchorCx, anchorCy, this.grassSeed, 3773));
+				for (let i = culled.length - 1; i > 0; i--) {
+					const j = Math.floor(rng() * (i + 1));
+					[culled[i], culled[j]] = [culled[j], culled[i]];
+				}
+				culled = culled.slice(0, MAX_PEBBLES);
+			}
+
+			this.pebbleGeometry = Land3DView.buildPebbleGeometry();
+			const mesh = new THREE.InstancedMesh(this.pebbleGeometry, this.pebbleMaterial, culled.length);
+			culled.forEach((inst, i) => {
+				pos.set(inst.x, inst.y, inst.z);
+				euler.set(0, inst.rotY, 0);
+				quat.setFromEuler(euler);
+				scaleVec.set(inst.sx, inst.sy, inst.sz);
+				m.compose(pos, quat, scaleVec);
+				mesh.setMatrixAt(i, m);
+				mesh.setColorAt(i, inst.color);
+			});
+			mesh.instanceMatrix.needsUpdate = true;
+			if (mesh.instanceColor) mesh.instanceColor.needsUpdate = true;
+			this.scene.add(mesh);
+			this.pebbleMeshes.push(mesh);
+		}
+	}
+
+	// Called every frame (cheap: one distance check) so grass follows the
+	// camera as it flies across a big map instead of only ever existing near
+	// wherever the view happened to open. The actual rebuild is throttled by
+	// both distance and a minimum time interval so continuous flight doesn't
+	// re-scan cells every frame.
+	private updateGrassStreaming(): void {
+		if (!this.grassAnchorWorld) return;
+		if (this.elapsed - this.lastGrassBuildElapsed < GRASS_REBUILD_MIN_INTERVAL_SECONDS) return;
+
+		const dx = this.controls.target.x - this.grassAnchorWorld.x;
+		const dz = this.controls.target.z - this.grassAnchorWorld.y;
+		const distanceMeters = Math.sqrt(dx * dx + dz * dz) / this.worldUnitsPerMeter;
+		if (distanceMeters > GRASS_REBUILD_DISTANCE_METERS) this.rebuildGroundDetail();
+	}
+
 	private addTrees(chunkKeys: Set<string>): void {
 		const grid = this.brushCtx.grid;
 		const size = this.data.chunkSize;
@@ -932,8 +1242,8 @@ export class Land3DView {
 		const cullStep = Math.max(1, Math.ceil(candidates.length / MAX_TREES));
 		const chosen = candidates.filter((_, i) => i % cullStep === 0);
 
-		const trunkGeo = new THREE.CylinderGeometry(0.35, 0.5, 3, 5);
-		const canopyGeo = new THREE.ConeGeometry(2.2, 5, 6);
+		const trunkGeo = new THREE.CylinderGeometry(0.5, 0.75, 5, 6);
+		const canopyGeo = new THREE.ConeGeometry(3.6, 8, 7);
 		const trunkMat = new THREE.MeshStandardMaterial({ color: 0x5b4632, roughness: 1 });
 		const canopyMat = new THREE.MeshStandardMaterial({ color: 0x2f5c34, roughness: 0.9 });
 
@@ -949,14 +1259,14 @@ export class Land3DView {
 			const worldX = cx * cellSize + (rng() - 0.5) * cellSize * 0.6;
 			const worldZ = cy * cellSize + (rng() - 0.5) * cellSize * 0.6;
 			const h = grid.getHeight(cx, cy) * this.worldUnitsPerMeter;
-			const scale = 0.7 + rng() * 0.6;
+			const scale = 1.1 + rng() * 0.9;
 			scaleVec.set(scale, scale, scale);
 
-			pos.set(worldX, h + 1.5 * scale, worldZ);
+			pos.set(worldX, h + 2.5 * scale, worldZ);
 			m.compose(pos, quat, scaleVec);
 			trunks.setMatrixAt(i, m);
 
-			pos.set(worldX, h + 4 * scale, worldZ);
+			pos.set(worldX, h + 7 * scale, worldZ);
 			m.compose(pos, quat, scaleVec);
 			canopies.setMatrixAt(i, m);
 		});
@@ -978,6 +1288,8 @@ export class Land3DView {
 		const cellSize = this.data.cellSize;
 
 		const positions: number[] = [];
+		const flowDirs: number[] = [];
+		const fallsFlags: number[] = [];
 		const indices: number[] = [];
 		let vertCount = 0;
 
@@ -996,10 +1308,82 @@ export class Land3DView {
 					const z0 = cy * cellSize;
 					const x1 = (cx + 1) * cellSize;
 					const z1 = (cy + 1) * cellSize;
-					const y = (grid.getHeight(cx, cy) - WATER_DEPRESSION_METERS) * this.worldUnitsPerMeter;
+					const depression = t === "river" ? RIVER_DEPRESSION_METERS : WATER_DEPRESSION_METERS;
+					const y = (grid.getHeight(cx, cy) - depression) * this.worldUnitsPerMeter;
+
+					// Rivers flow downstream: steepest-descent direction from the
+					// surrounding bank height, so the current visibly follows the
+					// channel instead of every water tile on the map sliding the
+					// same fixed diagonal. Still ponds/lakes get (0,0), which the
+					// fragment shader reads as "no current, just a slow ambient
+					// ripple" (see uFlowDir handling below).
+					let flowX = 0;
+					let flowZ = 0;
+					if (t === "river") {
+						const hL = grid.getHeight(cx - 1, cy);
+						const hR = grid.getHeight(cx + 1, cy);
+						const hD = grid.getHeight(cx, cy - 1);
+						const hU = grid.getHeight(cx, cy + 1);
+						flowX = hL - hR;
+						flowZ = hD - hU;
+						const len = Math.hypot(flowX, flowZ);
+						if (len > 1e-4) {
+							flowX /= len;
+							flowZ /= len;
+						} else {
+							flowX = 0;
+							flowZ = 0;
+						}
+					}
+
+					// Waterfalls: where the channel the brush carved (see
+					// BrushEngine's isRiver branch — it now follows the terrain's
+					// own slope instead of flattening it) drops steeply to its
+					// downstream neighbor, ramp this quad's two downstream
+					// corners down to that neighbor's water height instead of
+					// keeping all four corners flat. Chained across several
+					// consecutive steep cells this reads as a cascading
+					// staircase of falls rather than one cliff-edge jump.
+					let yA = y;
+					let yB = y;
+					let yC = y;
+					let yD = y; // corners: A=(x0,z0) B=(x1,z0) C=(x0,z1) D=(x1,z1)
+					let isFalls = 0;
+					if (t === "river" && (flowX !== 0 || flowZ !== 0)) {
+						const dirX = Math.abs(flowX) >= Math.abs(flowZ) ? Math.sign(flowX) : 0;
+						const dirZ = dirX === 0 ? Math.sign(flowZ) : 0;
+						const downCx = cx + dirX;
+						const downCy = cy + dirZ;
+						const downType = grid.getTerrain(downCx, downCy);
+						if (downType === "river" || downType === "water") {
+							const downDepression = downType === "river" ? RIVER_DEPRESSION_METERS : WATER_DEPRESSION_METERS;
+							const downY = (grid.getHeight(downCx, downCy) - downDepression) * this.worldUnitsPerMeter;
+							const dropMeters = (y - downY) / this.worldUnitsPerMeter;
+							if (dropMeters > WATERFALL_DROP_METERS) {
+								isFalls = 1;
+								if (dirX > 0) {
+									yB = downY;
+									yD = downY;
+								} else if (dirX < 0) {
+									yA = downY;
+									yC = downY;
+								} else if (dirZ > 0) {
+									yC = downY;
+									yD = downY;
+								} else {
+									yA = downY;
+									yB = downY;
+								}
+							}
+						}
+					}
 
 					const base = vertCount;
-					positions.push(x0, y, z0, x1, y, z0, x0, y, z1, x1, y, z1);
+					positions.push(x0, yA, z0, x1, yB, z0, x0, yC, z1, x1, yD, z1);
+					for (let v = 0; v < 4; v++) {
+						flowDirs.push(flowX, flowZ);
+						fallsFlags.push(isFalls);
+					}
 					indices.push(base, base + 2, base + 1, base + 1, base + 2, base + 3);
 					vertCount += 4;
 				}
@@ -1010,6 +1394,8 @@ export class Land3DView {
 
 		const geometry = new THREE.BufferGeometry();
 		geometry.setAttribute("position", new THREE.Float32BufferAttribute(positions, 3));
+		geometry.setAttribute("flowDir", new THREE.Float32BufferAttribute(flowDirs, 2));
+		geometry.setAttribute("isFalls", new THREE.Float32BufferAttribute(fallsFlags, 1));
 		geometry.setIndex(indices);
 		geometry.computeVertexNormals();
 
@@ -1024,19 +1410,35 @@ export class Land3DView {
 				uRippleAmplitude: { value: 0.12 * this.worldUnitsPerMeter },
 			},
 			vertexShader: /* glsl */ `
+				attribute vec2 flowDir;
+				attribute float isFalls;
 				uniform float uTime;
 				uniform float uRippleAmplitude;
 				varying vec2 vWorldXZ;
+				varying vec2 vFlowDir;
+				varying float vIsFalls;
 				void main() {
 					vWorldXZ = position.xz;
+					vFlowDir = flowDir;
+					vIsFalls = isFalls;
 					vec3 p = position;
-					p.y += (sin((p.x + uTime * 18.0) * 0.06) + cos((p.z + uTime * 14.0) * 0.08)) * uRippleAmplitude * 0.5;
+					// Falls corners already ramp steeply between their real
+					// upstream/downstream heights (see addWater) — layer in
+					// extra high-frequency jitter on top of the normal ripple so
+					// that ramp reads as churning white water, not a smooth slide.
+					float turbulence = 1.0 + isFalls * 2.5;
+					p.y += (sin((p.x + uTime * 18.0) * 0.06) + cos((p.z + uTime * 14.0) * 0.08)) * uRippleAmplitude * 0.5 * turbulence;
+					if (isFalls > 0.0) {
+						p.y += sin((p.x * 0.4 + p.z * 0.4) + uTime * 9.0) * uRippleAmplitude * 0.6;
+					}
 					gl_Position = projectionMatrix * modelViewMatrix * vec4(p, 1.0);
 				}
 			`,
 			fragmentShader: /* glsl */ `
 				uniform float uTime;
 				varying vec2 vWorldXZ;
+				varying vec2 vFlowDir;
+				varying float vIsFalls;
 
 				float hash(vec2 p) {
 					p = fract(p * vec2(123.34, 456.21));
@@ -1055,20 +1457,37 @@ export class Land3DView {
 				}
 
 				void main() {
-					// Two noise layers scrolling along a fixed direction at
-					// different speeds/scales, blended — reads as flowing
-					// current rather than a stationary standing-wave pattern.
-					vec2 flowDir = normalize(vec2(1.0, 0.4));
-					vec2 flowUv = vWorldXZ * 0.08;
-					float n1 = noise(flowUv + flowDir * uTime * 0.6);
-					float n2 = noise(flowUv * 1.7 - flowDir * uTime * 0.9 + 5.0);
+					// Rivers (vFlowDir set from bank-height steepest-descent in
+					// addWater) scroll fast and directionally, so the current
+					// visibly runs downstream along the actual channel. Still
+					// water (vFlowDir zero length, lakes/ponds) gets a slow
+					// fixed-direction drift instead of a real current.
+					float flowLen = length(vFlowDir);
+					bool isRiver = flowLen > 0.001;
+					vec2 flowDir = isRiver ? vFlowDir / flowLen : normalize(vec2(1.0, 0.4));
+					// Falls run much faster than ordinary current — a steep drop
+					// is where the water is actually accelerating.
+					float flowSpeed = isRiver ? mix(2.2, 6.0, vIsFalls) : 0.35;
+					vec2 flowUv = vWorldXZ * 0.09;
+					float n1 = noise(flowUv + flowDir * uTime * flowSpeed);
+					float n2 = noise(flowUv * 1.8 - flowDir * uTime * flowSpeed * 1.4 + 5.0);
 					float flow = mix(n1, n2, 0.5);
 					float wave = sin((vWorldXZ.x * 0.12) + uTime * 1.6) * 0.5 + sin((vWorldXZ.y * 0.1) - uTime * 1.1) * 0.5;
-					vec3 base = vec3(0.14, 0.3, 0.53);
-					vec3 highlight = vec3(0.45, 0.68, 0.85);
-					float mixAmount = clamp(wave * 0.35 + 0.35 + flow * 0.5, 0.0, 1.0);
+					vec3 base = vec3(0.11, 0.27, 0.5);
+					vec3 highlight = vec3(0.56, 0.79, 0.92);
+					float contrast = isRiver ? 0.7 : 0.5;
+					float mixAmount = clamp(wave * 0.3 + 0.3 + flow * contrast, 0.0, 1.0);
 					vec3 color = mix(base, highlight, mixAmount);
-					gl_FragColor = vec4(color, 0.82);
+					// Fast-moving current gets brighter foam-like streaks where
+					// the two noise layers momentarily agree, reinforcing the
+					// sense of flow beyond just the base-color blend.
+					float streak = isRiver ? smoothstep(0.82, 1.0, n1 * n2 * 1.6) : 0.0;
+					color = mix(color, vec3(0.92, 0.97, 1.0), streak * 0.5);
+					// A falls is mostly whitewater/spray, not blue water — heavy,
+					// noisy foam coverage instead of the streak accent above.
+					float foam = noise(flowUv * 3.0 + flowDir * uTime * flowSpeed * 1.8) * noise(flowUv * 5.0 - flowDir * uTime * flowSpeed * 2.3 + 11.0);
+					color = mix(color, vec3(0.95, 0.98, 1.0), vIsFalls * clamp(foam * 1.6, 0.0, 1.0));
+					gl_FragColor = vec4(color, mix(0.85, 0.95, vIsFalls));
 				}
 			`,
 		});
@@ -1140,6 +1559,7 @@ export class Land3DView {
 		else this.brushCtx.heightBrushEngine.endStroke();
 		this.brushCtx.history?.endStroke();
 		this.rebuildTreesAndWater();
+		this.rebuildGroundDetail();
 		this.brushCtx.onEdit();
 	};
 
@@ -1153,7 +1573,9 @@ export class Land3DView {
 		this.elapsed += dt;
 
 		if (this.waterMaterial) this.waterMaterial.uniforms.uTime.value = this.elapsed;
+		for (const material of this.grassMaterials) material.uniforms.uTime.value = this.elapsed;
 		this.updateFlyMovement(dt);
+		this.updateGrassStreaming();
 		this.controls.update();
 		this.renderer.render(this.scene, this.camera);
 	};

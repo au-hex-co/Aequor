@@ -10,10 +10,11 @@ updated: 2026-08-24
 
 The firstborn child of [[Primum]], made on instinct alone before agency was understood. Ferus was never counted among the true children — a wound the family carries into its own naming conventions generations later.
 
-> [!contradiction] Ferus vs. Ferrin
-> [[Timeline of the Aetas]] refers to a clan called **"Ferrin"** ("nearly wiped out" during the Aetas of War), while the main pitch text names the firstborn **"Ferus."** These may be the same lineage (Ferus → clan Ferrin) or a spelling inconsistency in the source document. Confirm with the author and standardize.
+> [!key-insight] Ferus vs. Ferrin
+> [[Timeline of the Aetas]] refers to a clan called **"Ferrin"** ("nearly wiped out" during the Aetas of War), while the main pitch text names the firstborn **"Ferus."** [[The clans]] now treats these as the same lineage — Ferrin as "the line of Ferus" — with one of his children lost defending the clan during the Aetas of War, tying the near-wipeout directly to him. Worth confirming with the author that this reading is the intended one rather than a spelling inconsistency.
 
 ## See Also
 - [[Cosmology]]
 - [[Primum]]
+- [[The clans]]
 - [[Timeline of the Aetas]]

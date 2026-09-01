@@ -18,13 +18,15 @@
 		plains: [0x9a, 0xc3, 0x6c],
 		forest: [0x3f, 0x6b, 0x3f],
 		road: [0x8a, 0x7a, 0x5c],
+		mountain: [0x8f, 0x85, 0x78],
+		snow: [0xee, 0xf3, 0xf5],
 	};
 	const EMPTY_CELL_COLOR = [0xcf, 0xc6, 0xae];
 	const HILL_COLOR = [0xa3, 0xa8, 0x6c];
 	const MOUNTAIN_COLOR = [0x8a, 0x80, 0x78];
 	const SNOW_COLOR = [0xf2, 0xf2, 0xf2];
 	const HILL_START = 15, MOUNTAIN_START = 60, SNOW_START = 250, SNOW_FULL = 600;
-	const BANDED = new Set(["plains", "forest", "sand"]);
+	const BANDED = new Set(["plains", "forest", "sand", "mountain"]);
 
 	function lerpRgb(a, b, t) {
 		const c = Math.max(0, Math.min(1, t));
@@ -413,7 +415,11 @@
 		// --- Render loop ---
 
 		render() {
-			if (this.dirty && this.ready) {
+			// See map-viewer.js's render() for why the hidden check matters:
+			// without it the hidden viewer can still sneak a draw in (e.g. via
+			// its own ResizeObserver firing) and overwrite the shared readout
+			// span with its own text.
+			if (this.dirty && this.ready && !this.canvas.hidden) {
 				this.draw();
 				this.dirty = false;
 			}

@@ -11,22 +11,22 @@
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://au-hex-co.github.io/Aequor/characters/lore/aetas-of-creation.html</loc>
-    <lastmod>2026-09-01</lastmod>
-    <priority>0.7</priority>
-  </url>
-  <url>
     <loc>https://au-hex-co.github.io/Aequor/characters/lore/lore-in-order.html</loc>
     <lastmod>2026-09-01</lastmod>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://au-hex-co.github.io/Aequor/characters/lore/maiden-of-fog.html</loc>
+    <loc>https://au-hex-co.github.io/Aequor/characters/lore/index.html</loc>
     <lastmod>2026-09-01</lastmod>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://au-hex-co.github.io/Aequor/characters/lore/the-aetas-of-humanity.html</loc>
+    <loc>https://au-hex-co.github.io/Aequor/characters/the-protagonist.html</loc>
+    <lastmod>2026-09-01</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://au-hex-co.github.io/Aequor/characters/index.html</loc>
     <lastmod>2026-09-01</lastmod>
     <priority>0.7</priority>
   </url>
@@ -46,9 +46,24 @@
     <priority>0.7</priority>
   </url>
   <url>
+    <loc>https://au-hex-co.github.io/Aequor/concepts/index.html</loc>
+    <lastmod>2026-09-01</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://au-hex-co.github.io/Aequor/gameplay/index.html</loc>
     <lastmod>2026-09-01</lastmod>
     <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://au-hex-co.github.io/Aequor/gameplay/index.html</loc>
+    <lastmod>2026-09-01</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://au-hex-co.github.io/Aequor/</loc>
+    <lastmod>2026-09-01</lastmod>
+    <priority>1.0</priority>
   </url>
   <url>
     <loc>https://au-hex-co.github.io/Aequor/overview.html</loc>
@@ -106,7 +121,22 @@
     <priority>0.7</priority>
   </url>
   <url>
+    <loc>https://au-hex-co.github.io/Aequor/world/index.html</loc>
+    <lastmod>2026-09-01</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://au-hex-co.github.io/Aequor/world/cosmology.html</loc>
+    <lastmod>2026-09-01</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://au-hex-co.github.io/Aequor/world/the-clans.html</loc>
+    <lastmod>2026-09-01</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://au-hex-co.github.io/Aequor/world/index.html</loc>
     <lastmod>2026-09-01</lastmod>
     <priority>0.7</priority>
   </url>

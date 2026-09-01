@@ -15,6 +15,8 @@
 		plains: [0x9a, 0xc3, 0x6c],
 		forest: [0x3f, 0x6b, 0x3f],
 		road: [0x8a, 0x7a, 0x5c],
+		mountain: [0x8f, 0x85, 0x78],
+		snow: [0xee, 0xf3, 0xf5],
 	};
 	const EMPTY_CELL_COLOR = [0xcf, 0xc6, 0xae];
 	const HILL_COLOR = [0xa3, 0xa8, 0x6c];
@@ -22,7 +24,7 @@
 	const SNOW_COLOR = [0xf2, 0xf2, 0xf2];
 	const HILL_START = 15, MOUNTAIN_START = 60, SNOW_START = 250, SNOW_FULL = 600;
 	const HILLSHADE_REFERENCE_METERS = 8, SHADE_STRENGTH = 0.9, MIN_SHADE = 0.65, MAX_SHADE = 1.3;
-	const BANDED = new Set(["plains", "forest", "sand"]);
+	const BANDED = new Set(["plains", "forest", "sand", "mountain"]);
 	const ROAD_STYLE_COLORS = { dirt: [0x8a, 0x6a, 0x45], cobblestone: [0x8f, 0x8f, 0x8f], paved: [0x3a, 0x3a, 0x3f] };
 	const DEFAULT_DETAIL = 0.5;
 
@@ -337,7 +339,12 @@
 		// --- Render loop ---
 
 		render() {
-			if (this.dirty && this.manifest) {
+			// Hiding this canvas (switching to the other mode) fires a
+			// ResizeObserver callback that marks us dirty one more time —
+			// skip drawing while hidden so we don't clobber the shared
+			// readout span with our own text, and so the hidden viewer
+			// isn't spending GPU/CPU it can't show anyway.
+			if (this.dirty && this.manifest && !this.canvas.hidden) {
 				this.draw();
 				this.dirty = false;
 			}

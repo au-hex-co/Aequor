@@ -519,6 +519,11 @@ code { font-family: var(--font-mono); font-size: 0.88em; }
 	border: 1px solid var(--border); background: #cfc6ae; cursor: grab;
 }
 .map-viewer canvas[data-canvas-3d] { background: var(--ink-900); }
+/* The 2D/3D toggle sets the "hidden" attribute on the inactive canvas, but
+   the block rule above outranks the UA default [hidden]{display:none} —
+   without this, both canvases stay in flow and the 3D one just gets pushed
+   below the 2D one instead of replacing it. */
+.map-viewer canvas[hidden] { display: none; }
 .map-viewer canvas:active { cursor: grabbing; }
 .map-viewer canvas:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
 .map-viewer__fallback { display: none; color: var(--text-faint); font-size: 0.85rem; margin-top: 0.6rem; }

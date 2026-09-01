@@ -13,4 +13,4 @@ Player-facing character material — how these figures show up in an actual run,
 - [[Aequor (Ingame)]] — in-game entity card for Aequor (Excalidraw); see [[Aequor]] for the lore deity
 
 ## Lore
-- [[Lore/_index|Lore]] — the narrative chapters, told in order
+- [[wiki/characters/Lore/_index|Lore]] — the narrative chapters, told in order

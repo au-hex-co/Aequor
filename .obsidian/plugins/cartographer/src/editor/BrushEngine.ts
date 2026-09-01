@@ -34,6 +34,11 @@ const MAX_APPLIED_RADIUS = 400;
 export class BrushEngine {
 	private activeStroke: TerrainStroke | null = null;
 	private lastPoint: { x: number; y: number } | null = null;
+	// Pre-stroke height per touched cell, keyed "cx,cy" — see the isRiver
+	// branch in stamp(). Only ever populated/read while type is "river"; a
+	// fresh Map per stroke is what keeps repeated overlapping stamps from
+	// digging the channel deeper than one pass's depth.
+	private strokeBaseHeights: Map<string, number> | null = null;
 
 	constructor(private settings: BrushSettings) {}
 
@@ -57,6 +62,7 @@ export class BrushEngine {
 			erase: this.settings.erase,
 		};
 		this.lastPoint = { x: fx, y: fy };
+		this.strokeBaseHeights = new Map();
 		return this.stamp(grid, fx, fy);
 	}
 
@@ -87,6 +93,7 @@ export class BrushEngine {
 		const stroke = this.activeStroke;
 		this.activeStroke = null;
 		this.lastPoint = null;
+		this.strokeBaseHeights = null;
 		if (stroke) data.terrainStrokes.push(stroke);
 		return stroke;
 	}
@@ -114,6 +121,22 @@ export class BrushEngine {
 		const seed = this.activeStroke?.seed ?? 0;
 		const noiseScale = 1 / Math.max(4, radius * 0.6);
 		const ruggedness = 0.5 + density * 1.5;
+
+		// Unlike every other type, "river" doesn't flatten toward one fixed
+		// absolute elevation — it carves a shallow, roughly constant-depth
+		// channel into whatever ground is already there, so a river painted
+		// down a hillside follows the hill's existing slope (and actually
+		// drops in elevation going downhill) instead of leveling it into a
+		// flat shelf. That real per-cell slope is what lets Land3DView detect
+		// steep runs and render them as a waterfall instead of flat water.
+		// The depth is captured once per touched cell at its PRE-stroke
+		// height (see strokeBaseHeights, populated lazily below) rather than
+		// re-read fresh every stamp — re-reading would make repeated
+		// overlapping stamps (normal for a dragged stroke) dig the channel
+		// progressively deeper each pass instead of converging, the way
+		// every other type's fixed target already does.
+		const isRiver = type === "river" && !erase;
+		const channelDepth = -flatTargetHeight; // flatTargetHeight is a small negative offset; this is its magnitude
 
 		const minCx = Math.floor(fx - radius);
 		const maxCx = Math.ceil(fx + radius);
@@ -146,6 +169,14 @@ export class BrushEngine {
 					const ridge = ridgedFbm2D(cx * noiseScale, cy * noiseScale, seed, 4);
 					const shaped = Math.pow(ridge, 1 / ruggedness);
 					targetHeight = range.min + shaped * (range.max - range.min);
+				} else if (isRiver) {
+					const key = `${cx},${cy}`;
+					let base = this.strokeBaseHeights!.get(key);
+					if (base === undefined) {
+						base = grid.getHeight(cx, cy);
+						this.strokeBaseHeights!.set(key, base);
+					}
+					targetHeight = base - channelDepth;
 				}
 				grid.blendHeight(cx, cy, targetHeight, strength);
 				grid.blendDetail(cx, cy, density, strength);
