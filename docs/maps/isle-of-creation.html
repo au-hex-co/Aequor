@@ -51,7 +51,7 @@
 		<div class="section-head section-head--tight">
 			<p class="eyebrow">Map</p>
 			<h1>Isle of creation</h1>
-			<p class="section-lede">405 painted chunks. Drag to pan, scroll to zoom. Unpainted ground streams in as parchment until you reach it.</p>
+			<p class="section-lede">405 painted chunks, 32m across each. Drag to pan, scroll to zoom. Unpainted ground streams in as parchment until you reach it.</p>
 		</div>
 		<div class="map-viewer" data-map="isle-of-creation">
 			<div class="map-viewer__toolbar">
@@ -59,19 +59,27 @@
 				<button type="button" data-action="zoom-in" aria-label="Zoom in">+</button>
 				<button type="button" data-action="fit">Fit map</button>
 				<span class="map-viewer__readout" data-readout>—</span>
+				<div class="map-viewer__modes" role="tablist" aria-label="View mode">
+					<button type="button" data-mode="2d" role="tab" aria-selected="true">2D</button>
+					<button type="button" data-mode="3d" role="tab" aria-selected="false">3D</button>
+				</div>
 			</div>
-			<canvas data-canvas tabindex="0" role="img" aria-label="Interactive terrain map of Isle of creation. Arrow keys pan, plus and minus zoom, 0 fits the map."></canvas>
+			<div class="map-viewer__stage">
+				<canvas data-canvas tabindex="0" role="img" aria-label="Interactive terrain map of Isle of creation. Arrow keys pan, plus and minus zoom, 0 fits the map."></canvas>
+				<canvas data-canvas-3d tabindex="0" role="img" aria-label="Interactive 3D terrain view of Isle of creation, streamed in 32 meter chunks. Drag to rotate, scroll to zoom, arrow keys pan, shift+arrow rotates, plus and minus zoom, 0 fits the map." hidden></canvas>
+			</div>
 			<p class="map-viewer__fallback">Loading terrain… if this doesn't clear, your browser may not support the canvas features this viewer needs.</p>
+			<p class="map-viewer__fallback map-viewer__fallback-3d" style="display:none"></p>
 		</div>
 </main>
 
 	<footer class="site-footer">
 		<div class="site-footer__inner">
-			<p>Aequor Codex — the worldbuilding wiki for <strong>Merchant of Fate</strong>. Generated from the vault's markdown; painted maps rendered from live Cartographer data.</p>
+			<p>Aequor Codex — the worldbuilding wiki for <strong>Aequor</strong>. Generated from the vault's markdown; painted maps rendered from live Cartographer data.</p>
 			<p class="site-footer__meta">Source vault lives in this repository under <code>wiki/</code>. Built with a zero-dependency static generator in <code>site/</code>.</p>
 		</div>
 	</footer>
 <script src="../assets/js/site.js" defer></script>
-<script src="../assets/js/map-viewer.js" defer></script>
+<script src="../assets/js/map3d-viewer.js" defer></script><script src="../assets/js/map-viewer.js" defer></script>
 </body>
 </html>

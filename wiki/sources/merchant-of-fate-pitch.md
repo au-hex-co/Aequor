@@ -9,7 +9,7 @@ tags: [source]
 
 # Source: Merchant of Fate — Pitch
 
-The original pitch document for **Merchant of Fate**, a pirate roguelike shipbuilder and 2D naval combat game. Ingested 2026-08-24.
+The original pitch document for **Merchant of Fate** — the game's working title before it became **Aequor** — a pirate roguelike shipbuilder and 2D naval combat game. Ingested 2026-08-24.
 
 ## Covers
 - Logline and world premise

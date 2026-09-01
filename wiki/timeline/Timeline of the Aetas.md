@@ -32,6 +32,12 @@ Dates are given as **BM** (Before Malum) / **AM** (After Malum)
 > The unnamed "Current Era" is explicitly where the player's run(s) take place, and where [[Cedere]]'s name arc plays out. Whatever the player does may retroactively *become* the defining event that names this Aetas — a strong narrative frame for run-to-run stakes.
 >
 
+## Events
+Dated events within the Current Era go here, one row per event — add a row below and rebuild the site to have it appear on the timeline automatically.
+
+| Date | Title | Description |
+|---|---|---|
+
 ## See Also
 - [[Cosmology]]
 - [[The Protagonist]]

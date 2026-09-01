@@ -49,9 +49,9 @@
 			card.style.setProperty("--i", i % 8);
 			io.observe(card);
 		});
-		document.querySelectorAll(".callout").forEach((c) => io.observe(c));
+		document.querySelectorAll(".callout, .timeline__era, .timeline-events__item").forEach((c) => io.observe(c));
 	} else {
-		document.querySelectorAll(".card, .callout").forEach((el) => el.classList.add("is-visible"));
+		document.querySelectorAll(".card, .callout, .timeline__era, .timeline-events__item").forEach((el) => el.classList.add("is-visible"));
 	}
 
 	// --- Hero constellation: a slow-drifting graph of the pantheon ---

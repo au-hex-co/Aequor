@@ -149,10 +149,6 @@
 				{ passive: false }
 			);
 
-			this.root.querySelector('[data-action="zoom-in"]')?.addEventListener("click", () => this.zoomAt(this.canvas.clientWidth / 2, this.canvas.clientHeight / 2, 1.25));
-			this.root.querySelector('[data-action="zoom-out"]')?.addEventListener("click", () => this.zoomAt(this.canvas.clientWidth / 2, this.canvas.clientHeight / 2, 1 / 1.25));
-			this.root.querySelector('[data-action="fit"]')?.addEventListener("click", () => this.fit());
-
 			// Keyboard: arrow keys pan, +/- zoom, 0 fits — mirrors the pointer
 			// and toolbar controls so the map is usable without a mouse.
 			const PAN_STEP = 60;
@@ -200,6 +196,11 @@
 			this.camera.y = worldY - screenY / this.camera.scale;
 			this.dirty = true;
 		}
+
+		// Thin wrappers so the shared toolbar can zoom whichever mode (2D/3D)
+		// is currently active through one common interface.
+		zoomIn() { this.zoomAt(this.canvas.clientWidth / 2, this.canvas.clientHeight / 2, 1.25); }
+		zoomOut() { this.zoomAt(this.canvas.clientWidth / 2, this.canvas.clientHeight / 2, 1 / 1.25); }
 
 		fit() {
 			const m = this.manifest;
@@ -385,5 +386,38 @@
 		}
 	}
 
-	document.querySelectorAll(".map-viewer[data-map]").forEach((root) => new MapViewer(root));
+	// One .map-viewer root hosts two independent viewers (2D canvas + 3D
+	// WebGL canvas) behind a mode toggle. The 3D viewer is only constructed
+	// on first switch to it, so pages nobody flips to 3D never pay for a
+	// WebGL context or chunk meshing at all.
+	document.querySelectorAll(".map-viewer[data-map]").forEach((root) => {
+		const viewer2d = new MapViewer(root);
+		let viewer3d = null;
+		let mode = "2d";
+
+		const canvas2d = root.querySelector("[data-canvas]");
+		const canvas3d = root.querySelector("[data-canvas-3d]");
+		const modeButtons = root.querySelectorAll("[data-mode]");
+
+		function activeViewer() { return mode === "3d" ? viewer3d : viewer2d; }
+
+		modeButtons.forEach((btn) => {
+			btn.addEventListener("click", () => {
+				const next = btn.dataset.mode;
+				if (next === mode) return;
+				mode = next;
+				modeButtons.forEach((b) => b.setAttribute("aria-selected", String(b === btn)));
+				canvas2d.hidden = mode !== "2d";
+				canvas3d.hidden = mode !== "3d";
+				if (mode === "3d" && !viewer3d) {
+					viewer3d = new Map3DViewer(root, canvas3d);
+					viewer3d.init();
+				}
+			});
+		});
+
+		root.querySelector('[data-action="zoom-in"]')?.addEventListener("click", () => activeViewer()?.zoomIn());
+		root.querySelector('[data-action="zoom-out"]')?.addEventListener("click", () => activeViewer()?.zoomOut());
+		root.querySelector('[data-action="fit"]')?.addEventListener("click", () => activeViewer()?.fit());
+	});
 })();

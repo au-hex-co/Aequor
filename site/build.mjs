@@ -4,6 +4,8 @@ import { fileURLToPath } from "node:url";
 import { loadVault } from "./lib/vault.mjs";
 import { buildMapSegments } from "./lib/maps.mjs";
 import { generateOgImage } from "./lib/og-image.mjs";
+import { renderExcalidrawSvg } from "./lib/excalidraw.mjs";
+import { renderInline } from "./lib/markdown.mjs";
 import {
 	page,
 	finalizeLinks,
@@ -71,6 +73,23 @@ function excerpt(html, len = 150) {
 	return text.slice(0, len).replace(/\s+\S*$/, "") + "…";
 }
 
+// A page counts as a stub if it's explicitly flagged one, or if it simply
+// has no body yet — the badge used to only fire on the former, which made
+// truly empty pages (e.g. Nexus) look broken instead of just unwritten.
+function stubBadge(p) {
+	if (p.frontmatter.status === "stub") return "stub";
+	if (!p.isCanvas && !p.rawBody.trim()) return "stub";
+	return "";
+}
+
+// Canvas cards used to hardcode "not yet rendered" regardless of whether we
+// could actually decode and draw the Excalidraw scene. Once renderArticlePage
+// has run, vpage.canvasRendered tells us which is true.
+function canvasExcerpt(p) {
+	if (!p.isCanvas) return null;
+	return p.canvasRendered ? "An Excalidraw diagram, rendered below." : "Not written yet.";
+}
+
 const SECTION_LABELS = {
 	pantheon: { label: "World", url: "/world/index.html" },
 	world: { label: "World", url: "/world/index.html" },
@@ -106,7 +125,9 @@ function renderArticlePage(vpage) {
 		vpage.frontmatter
 	)}</div>`;
 
-	const body = vpage.isCanvas ? canvasNotice(vpage.title) : vpage.html;
+	const canvasSvg = vpage.isCanvas ? renderExcalidrawSvg(vpage.rawBody, vpage.title) : null;
+	vpage.canvasRendered = Boolean(canvasSvg);
+	const body = vpage.isCanvas ? canvasSvg || canvasNotice(vpage.title) : vpage.html;
 	const toc = vpage.isCanvas ? "" : tocHtml(vpage.headings);
 	const backlinks = backlinksHtml(vpage.backlinks);
 
@@ -145,6 +166,7 @@ function main() {
 	// sources index instead of publishing its own near-duplicate page).
 	for (const vpage of pages) {
 		if (vpage.group === "sources" && vpage.isIndex) continue;
+		if (vpage.group === "timeline") continue;
 		write(vpage.url, renderArticlePage(vpage), { noindex: vpage.group === "meta" });
 	}
 
@@ -163,6 +185,7 @@ function main() {
 	buildConceptsIndex(pages);
 	buildSourcesIndex(pages);
 	buildQuestionsIndex(callouts, unresolved);
+	buildTimelinePage(pages, vault.resolveWikilink);
 	buildHome(pages, callouts, manifests);
 
 	fs.writeFileSync(path.join(OUT_DIR, "assets", "og-image.png"), generateOgImage());
@@ -200,16 +223,17 @@ function buildWorldIndex(pages) {
 	const pantheonCards = pantheon.map((p) => ({
 		url: p.url,
 		title: p.title,
-		kicker: "Deity",
-		excerpt: p.isCanvas ? "Excalidraw canvas — not yet rendered." : p.rawBody.trim() ? excerpt(p.html, 110) : "No content yet.",
-		badge: p.frontmatter.status === "stub" ? "stub" : "",
+		kicker: p.isCanvas ? "Diagram" : "Deity",
+		excerpt: canvasExcerpt(p) ?? (p.rawBody.trim() ? excerpt(p.html, 110) : "Not written yet."),
+		badge: stubBadge(p),
 	}));
 
 	const otherCards = worldExtra.map((p) => ({
 		url: p.url,
 		title: p.title,
-		kicker: p.isCanvas ? "Canvas" : "World",
-		excerpt: p.isCanvas ? "Excalidraw canvas — not yet rendered." : excerpt(p.html, 110),
+		kicker: p.isCanvas ? "Diagram" : "World",
+		excerpt: canvasExcerpt(p) ?? excerpt(p.html, 110),
+		badge: stubBadge(p),
 	}));
 
 	const content = `
@@ -239,8 +263,9 @@ function buildCharactersIndex(pages) {
 	const charCards = chars.map((p) => ({
 		url: p.url,
 		title: p.title,
-		kicker: p.isCanvas ? "Canvas" : "Character",
-		excerpt: p.isCanvas ? "Excalidraw canvas — not yet rendered." : excerpt(p.html, 110),
+		kicker: p.isCanvas ? "Diagram" : "Character",
+		excerpt: canvasExcerpt(p) ?? excerpt(p.html, 110),
+		badge: stubBadge(p),
 	}));
 
 	const loreCards = lore.map((p) => ({
@@ -280,12 +305,12 @@ function buildConceptsIndex(pages) {
 	<div class="section-head">
 		<p class="eyebrow">Concepts</p>
 		<h1>Design Concepts</h1>
-		<p class="section-lede">The mechanical vocabulary of <em>Merchant of Fate</em> — how mythology becomes a rule, not just a reference.</p>
+		<p class="section-lede">The mechanical vocabulary of <em>Aequor</em> — how mythology becomes a rule, not just a reference.</p>
 	</div>
 	<section class="section-block">${cardGrid(cards)}</section>`;
 	write(
 		"/concepts/index.html",
-		page({ title: "Concepts", description: "Design concepts behind Merchant of Fate.", section: "concepts", content, url: "/concepts/index.html" })
+		page({ title: "Concepts", description: "Design concepts behind Aequor.", section: "concepts", content, url: "/concepts/index.html" })
 	);
 }
 
@@ -371,6 +396,159 @@ function buildQuestionsIndex(callouts, unresolved) {
 	);
 }
 
+function escText(s) {
+	return String(s || "")
+		.replace(/&/g, "&amp;")
+		.replace(/</g, "&lt;")
+		.replace(/>/g, "&gt;")
+		.replace(/"/g, "&quot;");
+}
+
+function splitTableRow(line) {
+	return line
+		.trim()
+		.replace(/^\|/, "")
+		.replace(/\|$/, "")
+		.split("|")
+		.map((c) => c.trim());
+}
+
+// A small standalone pipe-table scanner (mirrors markdown.mjs's table
+// detection) — used here instead of the shared renderer because the
+// timeline needs the raw cell values as data, not pre-rendered HTML.
+function findPipeTables(rawBody) {
+	const lines = rawBody.replace(/\r\n/g, "\n").split("\n");
+	const tables = [];
+	let heading = null;
+	let i = 0;
+	while (i < lines.length) {
+		const h = /^(#{1,6})\s+(.*)$/.exec(lines[i]);
+		if (h) {
+			heading = h[2].trim();
+			i++;
+			continue;
+		}
+		if (/^\|.*\|\s*$/.test(lines[i]) && lines[i + 1] && /^\|?[\s:|-]+\|?$/.test(lines[i + 1])) {
+			const rows = [splitTableRow(lines[i])];
+			i += 2;
+			while (i < lines.length && /^\|.*\|\s*$/.test(lines[i])) {
+				rows.push(splitTableRow(lines[i]));
+				i++;
+			}
+			tables.push({ heading, rows });
+			continue;
+		}
+		i++;
+	}
+	return tables;
+}
+
+// "209 yrs" -> 209, "ongoing" -> "ongoing", "—" (a single instant) -> null.
+function parseYears(s) {
+	if (!s) return null;
+	const m = /^(\d+)/.exec(s.trim());
+	if (m) return parseInt(m[1], 10);
+	if (/ongoing/i.test(s)) return "ongoing";
+	return null;
+}
+
+function buildTimelinePage(pages, resolveWikilink) {
+	const vpage = pages.find((p) => p.group === "timeline");
+	if (!vpage) return;
+
+	const inlineCtx = { resolveWikilink, onWikilink() {}, onCallout() {} };
+	const tables = findPipeTables(vpage.rawBody);
+	const aetasTable = tables.find((t) => !t.heading || !/events/i.test(t.heading));
+	const eventsTable = tables.find((t) => t.heading && /events/i.test(t.heading));
+
+	const eras = (aetasTable ? aetasTable.rows.slice(1) : []).map((cols) => {
+		const lengthYears = parseYears(cols[2]);
+		return {
+			name: renderInline(cols[0] || "", inlineCtx),
+			range: escText(cols[1] || ""),
+			length: escText(cols[2] || ""),
+			event: renderInline(cols[3] || "", inlineCtx),
+			lengthYears,
+		};
+	});
+	const maxYears = Math.max(1, ...eras.map((e) => (typeof e.lengthYears === "number" ? e.lengthYears : 0)));
+
+	const eraCards = eras
+		.map((e, i) => {
+			const isPoint = e.lengthYears === null;
+			const isOngoing = e.lengthYears === "ongoing";
+			const barPct = isOngoing ? 100 : isPoint ? 0 : Math.max(6, Math.round((e.lengthYears / maxYears) * 100));
+			return `
+		<li class="timeline__era${isPoint ? " timeline__era--point" : ""}${isOngoing ? " timeline__era--current" : ""}" style="--i:${i}" data-reveal>
+			<span class="timeline__marker" aria-hidden="true"></span>
+			<div class="timeline__card">
+				<p class="timeline__range">${e.range}${e.length ? ` · ${e.length}` : ""}</p>
+				<h3 class="timeline__name">${e.name}</h3>
+				<p class="timeline__event">${e.event}</p>
+				${!isPoint ? `<div class="timeline__bar" aria-hidden="true"><span style="width:${barPct}%"></span></div>` : ""}
+			</div>
+		</li>`;
+		})
+		.join("");
+
+	const eventRows = eventsTable ? eventsTable.rows.slice(1).filter((cols) => cols.some((c) => c.trim())) : [];
+	const eventsHtml = eventRows.length
+		? `<ol class="timeline-events__list">${eventRows
+				.map(
+					(cols) => `
+			<li class="timeline-events__item" data-reveal>
+				<span class="timeline-events__date">${escText(cols[0] || "")}</span>
+				<div>
+					<h3>${renderInline(cols[1] || "", inlineCtx)}</h3>
+					<p>${renderInline(cols[2] || "", inlineCtx)}</p>
+				</div>
+			</li>`
+				)
+				.join("")}</ol>`
+		: `<p class="timeline-events__empty">No dated events logged yet — add a row to the Events table in <code>wiki/timeline/Timeline of the Aetas.md</code> and rebuild to have it appear here.</p>`;
+
+	// vpage.html already has both tables rendered as .table-wrap blocks (one
+	// per findPipeTables match, in document order) — split on those to
+	// recover the surrounding prose without re-running the markdown parser
+	// (which would double-count wikilinks/callouts already collected by
+	// vault.mjs's own pass).
+	const [introHtml, middleHtml, tailHtml] = vpage.html.split(/<div class="table-wrap">[\s\S]*?<\/table><\/div>/);
+	const calloutsHtml = (middleHtml || "").replace(/<h2 id="events">[\s\S]*$/, "");
+
+	const content = `
+	<div class="article-layout article-layout--full">
+		<article class="article">
+			<div class="page-head">
+				${breadcrumbsHtml([{ label: vpage.title, url: vpage.url }])}
+				<h1>${vpage.title}</h1>
+			</div>
+			<div class="article__body">${introHtml || ""}</div>
+			<div class="timeline">
+				<ol class="timeline__list">${eraCards}</ol>
+			</div>
+			<div class="article__body">${calloutsHtml}</div>
+			<section class="timeline-events">
+				<h2 id="events">Events</h2>
+				<p>Dated events within the unnamed Current Era — the run-to-run history this Aetas doesn't have a name for yet. Ready to fill in as the game defines them.</p>
+				${eventsHtml}
+			</section>
+			<div class="article__body">${tailHtml || ""}</div>
+		</article>
+	</div>`;
+
+	write(
+		vpage.url,
+		page({
+			title: vpage.title,
+			description: "An interactive timeline of the Aetas — the ages of Aequor's history, dated Before and After the Malum.",
+			section: "timeline",
+			content,
+			bodyClass: "page--article page--timeline",
+			url: vpage.url,
+		})
+	);
+}
+
 function buildMapsPages(manifests) {
 	const cards = manifests.map((m) => ({
 		url: `/maps/${m.slug}.html`,
@@ -388,11 +566,12 @@ function buildMapsPages(manifests) {
 	write("/maps/index.html", page({ title: "Maps", description: "Painted worldbuilding maps.", section: "maps", content: indexContent, url: "/maps/index.html" }));
 
 	for (const m of manifests) {
+		const worldSize = m.chunkSize * (m.metersPerCell || 1);
 		const viewerContent = `
 		<div class="section-head section-head--tight">
 			<p class="eyebrow">Map</p>
 			<h1>${m.name}</h1>
-			<p class="section-lede">${m.chunkCount} painted chunks. Drag to pan, scroll to zoom. Unpainted ground streams in as parchment until you reach it.</p>
+			<p class="section-lede">${m.chunkCount} painted chunks, ${worldSize}m across each. Drag to pan, scroll to zoom. Unpainted ground streams in as parchment until you reach it.</p>
 		</div>
 		<div class="map-viewer" data-map="${m.slug}">
 			<div class="map-viewer__toolbar">
@@ -400,9 +579,17 @@ function buildMapsPages(manifests) {
 				<button type="button" data-action="zoom-in" aria-label="Zoom in">+</button>
 				<button type="button" data-action="fit">Fit map</button>
 				<span class="map-viewer__readout" data-readout>—</span>
+				<div class="map-viewer__modes" role="tablist" aria-label="View mode">
+					<button type="button" data-mode="2d" role="tab" aria-selected="true">2D</button>
+					<button type="button" data-mode="3d" role="tab" aria-selected="false">3D</button>
+				</div>
 			</div>
-			<canvas data-canvas tabindex="0" role="img" aria-label="Interactive terrain map of ${m.name}. Arrow keys pan, plus and minus zoom, 0 fits the map."></canvas>
+			<div class="map-viewer__stage">
+				<canvas data-canvas tabindex="0" role="img" aria-label="Interactive terrain map of ${m.name}. Arrow keys pan, plus and minus zoom, 0 fits the map."></canvas>
+				<canvas data-canvas-3d tabindex="0" role="img" aria-label="Interactive 3D terrain view of ${m.name}, streamed in ${worldSize} meter chunks. Drag to rotate, scroll to zoom, arrow keys pan, shift+arrow rotates, plus and minus zoom, 0 fits the map." hidden></canvas>
+			</div>
 			<p class="map-viewer__fallback">Loading terrain… if this doesn't clear, your browser may not support the canvas features this viewer needs.</p>
+			<p class="map-viewer__fallback map-viewer__fallback-3d" style="display:none"></p>
 		</div>`;
 		write(
 			`/maps/${m.slug}.html`,
@@ -438,7 +625,7 @@ function buildHome(pages, callouts, manifests) {
 		<div class="hero__inner">
 			<p class="eyebrow">A worldbuilding wiki for a pirate roguelike</p>
 			<h1 class="hero__title" data-reveal-text>The Aequor Codex</h1>
-			<p class="hero__lede">Mythology, mechanics, and every open question behind <strong>Merchant of Fate</strong> — a game where escaping a debt only ever delays it. Built from the vault's own markdown; nothing here is written twice.</p>
+			<p class="hero__lede">Mythology, mechanics, and every open question behind <strong>Aequor</strong> — a game where escaping a debt only ever delays it. Built from the vault's own markdown; nothing here is written twice.</p>
 			<div class="hero__actions">
 				<a class="button button--primary" href="/world/index.html">Start with the pantheon</a>
 				<a class="button button--ghost" href="/questions/index.html">See open questions</a>
@@ -460,7 +647,7 @@ function buildHome(pages, callouts, manifests) {
 		<p>This isn't a polished lore bible — it's the working design wiki, gaps and contradictions left in on purpose. The <a href="/questions/index.html">Open Questions</a> page tracks every one automatically, straight from the vault's own <code>[!gap]</code>, <code>[!contradiction]</code>, and <code>[!key-insight]</code> callouts.</p>
 	</section>`;
 
-	const description = "The worldbuilding wiki for Merchant of Fate, a mythology-driven pirate roguelike.";
+	const description = "The worldbuilding wiki for Aequor, a mythology-driven pirate roguelike.";
 	write(
 		"/index.html",
 		page({

@@ -1,23 +1,29 @@
 import { TerrainGrid } from "../model/TerrainGrid";
 import { CellRect } from "./CellRect";
 
-export type HeightBrushMode = "raise" | "lower" | "smooth" | "flatten";
+export type HeightBrushMode = "raise" | "lower" | "smooth" | "flatten" | "set";
 
 export interface HeightBrushSettings {
 	mode: HeightBrushMode;
 	radius: number;
-	// Meters. For raise/lower this is added directly per full-falloff stamp
-	// (repeated strokes keep accumulating — there's no ceiling, so a 10km
-	// mountain is just a lot of strokes). For flatten/smooth it's instead
-	// used as a blend-rate fraction toward the target elevation, clamped to
-	// 1 (full snap in one stamp) since those modes converge rather than add.
+	// Meters. For raise/lower this is the total elevation change a single
+	// stroke adds relative to each cell's height when the stroke started —
+	// painting Strength 30 over a 3m spot brings it to 33m at the brush's
+	// full-strength plateau, tapering to less of a change near the edge, no
+	// matter how many times the stroke sweeps back over that cell (see
+	// strokeBaseHeights). For flatten/smooth/set it's instead used as a
+	// blend-rate fraction toward the target elevation, clamped to 1 (full
+	// snap in one stamp) since those modes converge rather than add.
 	strength: number;
+	// Absolute target elevation (meters) for "set" mode only.
+	targetHeight: number;
 }
 
 export const DEFAULT_HEIGHT_BRUSH: HeightBrushSettings = {
 	mode: "raise",
 	radius: 4,
 	strength: 0.4,
+	targetHeight: 0,
 };
 
 const MAX_APPLIED_RADIUS = 400;
@@ -42,6 +48,15 @@ function plateauFalloff(normalizedDist: number): number {
 // start, smooth blends each cell toward its live 3x3 neighborhood average.
 export class HeightBrushEngine {
 	private flattenReference = 0;
+	// Height each cell had when the *current* stroke started, recorded the
+	// first time raise/lower touches it. Raise/lower target this base plus
+	// or minus Strength meters rather than adding Strength on every stamp,
+	// so sweeping back over the same spot repeatedly during one drag can't
+	// run the height past base±strength — it converges there and stays,
+	// with the brush's edge falloff naturally softening the change near the
+	// boundary. A fresh stroke (new click) resets the base, so raising
+	// again afterward adds another full Strength on top as expected.
+	private strokeBaseHeights: Map<string, number> | null = null;
 
 	constructor(private settings: HeightBrushSettings) {}
 
@@ -57,6 +72,7 @@ export class HeightBrushEngine {
 		if (this.settings.mode === "flatten") {
 			this.flattenReference = grid.sampleHeight(fx, fy);
 		}
+		this.strokeBaseHeights = this.settings.mode === "raise" || this.settings.mode === "lower" ? new Map() : null;
 		return this.stamp(grid, fx, fy);
 	}
 
@@ -65,11 +81,11 @@ export class HeightBrushEngine {
 	}
 
 	endStroke(): void {
-		// no persistent state between strokes yet
+		this.strokeBaseHeights = null;
 	}
 
 	private stamp(grid: TerrainGrid, fx: number, fy: number): CellRect {
-		const { mode, strength } = this.settings;
+		const { mode, strength, targetHeight } = this.settings;
 		// See BrushEngine's MAX_APPLIED_RADIUS note — same reasoning here.
 		const radius = Math.min(this.settings.radius, MAX_APPLIED_RADIUS);
 
@@ -87,11 +103,32 @@ export class HeightBrushEngine {
 				if (falloff <= 0.001) continue;
 
 				switch (mode) {
-					case "raise":
-						grid.addHeight(cx, cy, falloff * strength);
+					case "raise": {
+						if (!this.strokeBaseHeights) this.strokeBaseHeights = new Map();
+						const key = `${cx},${cy}`;
+						let base = this.strokeBaseHeights.get(key);
+						if (base === undefined) {
+							base = grid.getHeight(cx, cy);
+							this.strokeBaseHeights.set(key, base);
+						}
+						const target = base + falloff * strength;
+						grid.setHeight(cx, cy, Math.max(grid.getHeight(cx, cy), target));
 						break;
-					case "lower":
-						grid.addHeight(cx, cy, -falloff * strength);
+					}
+					case "lower": {
+						if (!this.strokeBaseHeights) this.strokeBaseHeights = new Map();
+						const key = `${cx},${cy}`;
+						let base = this.strokeBaseHeights.get(key);
+						if (base === undefined) {
+							base = grid.getHeight(cx, cy);
+							this.strokeBaseHeights.set(key, base);
+						}
+						const target = base - falloff * strength;
+						grid.setHeight(cx, cy, Math.min(grid.getHeight(cx, cy), target));
+						break;
+					}
+					case "set":
+						grid.blendHeight(cx, cy, targetHeight, Math.min(1, falloff * strength));
 						break;
 					case "flatten":
 						grid.blendHeight(cx, cy, this.flattenReference, Math.min(1, falloff * strength));

@@ -56,7 +56,7 @@ function footerHtml() {
 	return `
 	<footer class="site-footer">
 		<div class="site-footer__inner">
-			<p>Aequor Codex — the worldbuilding wiki for <strong>Merchant of Fate</strong>. Generated from the vault's markdown; painted maps rendered from live Cartographer data.</p>
+			<p>Aequor Codex — the worldbuilding wiki for <strong>Aequor</strong>. Generated from the vault's markdown; painted maps rendered from live Cartographer data.</p>
 			<p class="site-footer__meta">Source vault lives in this repository under <code>wiki/</code>. Built with a zero-dependency static generator in <code>site/</code>.</p>
 		</div>
 	</footer>`;
@@ -185,7 +185,7 @@ ${content}
 </main>
 ${footerHtml()}
 <script src="/assets/js/site.js" defer></script>
-${bodyClass.includes("page--map") ? '<script src="/assets/js/map-viewer.js" defer></script>' : ""}
+${bodyClass.includes("page--map") ? '<script src="/assets/js/map3d-viewer.js" defer></script><script src="/assets/js/map-viewer.js" defer></script>' : ""}
 </body>
 </html>`;
 }

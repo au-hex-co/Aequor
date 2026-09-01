@@ -53,6 +53,10 @@ export class TerrainView extends FileView {
 	private showGridOverlay = true;
 	private showHoverCoords = true;
 	private hoverReadoutEl: HTMLElement | null = null;
+	// Tracked independently of showHoverCoords — the ruler drop-guides drawn
+	// by drawCoordinateOverlay follow the cursor whenever the grid overlay is
+	// on, regardless of whether the small DOM readout pill is toggled.
+	private hoverWorld: { wx: number; wy: number } | null = null;
 	// When set, the next canvas click drops a landmark prop instead of
 	// starting a brush stroke — see wirePainting()'s onPointerDown.
 	private placingProp: PropType | null = null;
@@ -228,6 +232,7 @@ export class TerrainView extends FileView {
 				onModeChange: (mode) => this.heightBrushEngine.updateSettings({ mode }),
 				onRadiusChange: (radius) => this.heightBrushEngine.updateSettings({ radius }),
 				onStrengthChange: (strength) => this.heightBrushEngine.updateSettings({ strength }),
+				onTargetHeightChange: (targetHeight) => this.heightBrushEngine.updateSettings({ targetHeight }),
 			});
 		} else if (this.viewMode === "3d-viewer") {
 			this.render3DBrushControls(container);
@@ -324,7 +329,8 @@ export class TerrainView extends FileView {
 		const metersPerCell = this.data.metersPerCell;
 		this.viewport.setOverlayCallback(
 			this.showGridOverlay
-				? (ctx, camera, viewW, viewH) => drawCoordinateOverlay(ctx, camera, viewW, viewH, cellSize, chunkSize, metersPerCell)
+				? (ctx, camera, viewW, viewH) =>
+						drawCoordinateOverlay(ctx, camera, viewW, viewH, cellSize, chunkSize, metersPerCell, this.hoverWorld)
 				: null
 		);
 	}
@@ -334,22 +340,25 @@ export class TerrainView extends FileView {
 		const cellSize = this.data.cellSize;
 		const metersPerCell = this.data.metersPerCell;
 		const readout = this.hoverReadoutEl;
+		const viewport = this.viewport;
 
-		if (!this.showHoverCoords) {
-			this.viewport.setHoverCallback(null);
-			readout.hide();
-			return;
-		}
+		if (!this.showHoverCoords) readout.hide(); // stays hidden until re-enabled or the pointer re-enters
 
-		readout.hide(); // stays hidden until the pointer actually enters the canvas
-		this.viewport.setHoverCallback(
+		viewport.setHoverCallback(
 			(wx, wy) => {
+				this.hoverWorld = { wx, wy };
+				viewport.scheduleDraw(); // repaints the ruler drop-guides every move
+				if (!this.showHoverCoords) return;
 				const mx = Math.round(worldToMeters(wx, cellSize, metersPerCell));
 				const my = Math.round(worldToMeters(wy, cellSize, metersPerCell));
 				readout.setText(`${mx}m, ${my}m`);
 				readout.show();
 			},
-			() => readout.hide()
+			() => {
+				this.hoverWorld = null;
+				readout.hide();
+				viewport.scheduleDraw();
+			}
 		);
 	}
 
@@ -450,6 +459,7 @@ export class TerrainView extends FileView {
 			onModeChange: (mode) => this.heightBrushEngine.updateSettings({ mode }),
 			onRadiusChange: (radius) => this.heightBrushEngine.updateSettings({ radius }),
 			onStrengthChange: (strength) => this.heightBrushEngine.updateSettings({ strength }),
+			onTargetHeightChange: (targetHeight) => this.heightBrushEngine.updateSettings({ targetHeight }),
 		});
 
 		this.threeDTerrainHost = container.createDiv();

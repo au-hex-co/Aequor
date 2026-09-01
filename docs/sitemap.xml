@@ -66,11 +66,6 @@
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://au-hex-co.github.io/Aequor/timeline/index.html</loc>
-    <lastmod>2026-09-01</lastmod>
-    <priority>0.7</priority>
-  </url>
-  <url>
     <loc>https://au-hex-co.github.io/Aequor/world/aequor.html</loc>
     <lastmod>2026-09-01</lastmod>
     <priority>0.7</priority>
@@ -152,6 +147,11 @@
   </url>
   <url>
     <loc>https://au-hex-co.github.io/Aequor/questions/index.html</loc>
+    <lastmod>2026-09-01</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://au-hex-co.github.io/Aequor/timeline/index.html</loc>
     <lastmod>2026-09-01</lastmod>
     <priority>0.7</priority>
   </url>

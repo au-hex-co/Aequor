@@ -5,12 +5,25 @@ const MODES: { id: HeightBrushMode; label: string }[] = [
 	{ id: "lower", label: "Lower" },
 	{ id: "smooth", label: "Smooth" },
 	{ id: "flatten", label: "Flatten" },
+	{ id: "set", label: "Set" },
 ];
+
+// "Strength" means something different per mode — meters added/removed for
+// raise/lower, a 0..1 convergence rate for the modes that blend toward a
+// target instead. Relabeled per-mode so the field isn't misleading.
+const STRENGTH_LABEL: Record<HeightBrushMode, string> = {
+	raise: "Strength (m)",
+	lower: "Strength (m)",
+	smooth: "Blend rate",
+	flatten: "Blend rate",
+	set: "Blend rate",
+};
 
 export interface HeightBrushToolbarCallbacks {
 	onModeChange: (mode: HeightBrushMode) => void;
 	onRadiusChange: (radius: number) => void;
 	onStrengthChange: (strength: number) => void;
+	onTargetHeightChange: (targetHeight: number) => void;
 }
 
 export class HeightBrushToolbar {
@@ -34,6 +47,9 @@ export class HeightBrushToolbar {
 			btn.addEventListener("click", () => {
 				this.callbacks.onModeChange(mode.id);
 				this.setActiveMode(mode.id);
+				// Field set (target-height only shows for "set") depends on
+				// mode, so rebuild rather than just toggling active state.
+				this.render();
 			});
 			this.modeButtons.set(mode.id, btn);
 		}
@@ -41,7 +57,22 @@ export class HeightBrushToolbar {
 
 		const sliders = this.container.createDiv({ cls: "cartographer-brush-sliders" });
 		this.buildNumberField(sliders, "Size", 1, this.settings.radius, (v) => this.callbacks.onRadiusChange(v));
-		this.buildNumberField(sliders, "Strength (m)", 0.01, this.settings.strength, (v) => this.callbacks.onStrengthChange(v));
+		this.buildNumberField(
+			sliders,
+			STRENGTH_LABEL[this.settings.mode],
+			0.01,
+			this.settings.strength,
+			(v) => this.callbacks.onStrengthChange(v)
+		);
+		if (this.settings.mode === "set") {
+			this.buildNumberField(
+				sliders,
+				"Target elevation (m)",
+				-Infinity,
+				this.settings.targetHeight,
+				(v) => this.callbacks.onTargetHeightChange(v)
+			);
+		}
 	}
 
 	// No upper bound — see BrushToolbar's identical note. Strength in
@@ -57,7 +88,7 @@ export class HeightBrushToolbar {
 		const wrap = parent.createDiv({ cls: "cartographer-slider" });
 		wrap.createEl("label", { text: label });
 		const input = wrap.createEl("input", { type: "number", cls: "cartographer-number-field" });
-		input.min = String(min);
+		if (Number.isFinite(min)) input.min = String(min);
 		input.step = "1";
 		input.value = String(value);
 		input.addEventListener("input", () => {
