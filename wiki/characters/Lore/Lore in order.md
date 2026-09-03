@@ -109,49 +109,47 @@ She watched as the scaly beautiful dragon circled her as the beast had done befo
 
 The dragon rested his head on the sea bank and looked at [[Silvia]]. Just as the dragon was about to speak, he saw a glint of gold in her eyes. This majestic beast looked shocked before reeling himself together. "[[Aequor]], you can call me [[Aequor]]."
 
-[[Silvia]] looked at the majestic beast and saw the blue scales outlined with white and a ancient face with two massive eyes on either side, the sound did not come from the dragons mouth, she didn't know where the sound came from.
-She kept walking backwards until she walked into the massive tail, at which point she fell to the ground in shock.
-
+[[Silvia]] looked at the majestic beast and saw the blue scales outlined with white and a ancient face with two massive eyes on either side. She kept walking backwards until she walked into the massive tail, at which point she fell to the ground in shock.
 [[Aequor]] looked at the small stunned child and said, "You are safe now child. However, if you are ever in danger say my name and I will help you. Now child return home"
 
-[[Silvia]] her hands at her throat watched the massive dragon defy the ground and fly up and dive into the water. Scared from the experience she ran home.
+
+"Wait!" [[Silvia]] tried to yell. Her hands at her throat watched the massive dragon defy the ground and fly up and dive into the water. Scared from the experience she ran home.
 
 [[Vesta]] woke up early to find her daughter missing, but wasn't concerned, for nothing could hurt them on this **safe** haven. When she saw her daughter run up to the house holding her neck, she ran outside and asked her child, "Silvie, Silvie, what happened, dear girl?"
 
-[[Silvia]], terrified of the beast, cried but didn't respond. [[Vesta]] didn't know what to feel, since she didn't know what **could** happen. She tried probing for what happened, but [[Silvia]] just lay in her mother's arms.
+[[Silvia]], terrified of the beast, cried but didn't respond. [[Vesta]] didn't know what to feel, since she didn't know what **could** happen. She tried probing for what happened, but [[Silvia]] just lay in her mother's arms. Finally not wanting to go back to having to be accompanied she softly said, "I fell."
 
 When [[Vesta]] tried talking to [[Primum]] about what happened to [[Silvia]], he didn't seem to think much of it, for this island was safe.
 
-The next day, [[Silvia]] first ran to her spot. She felt scared, suddenly this home that was **safe** no longer felt safe for her, so she went to the one place where she did feel safe. As she approached her spot, she saw the familiar clearing with the massive tree. She ran to the tree and yelled in joy, "Sir Tree, Sir Tree, you will not believe the experiences I had!"
+The next day, [[Silvia]] first ran to her spot. She felt scared, suddenly this home that was **safe** no longer felt safe for her, so she went to the one place where she did feel safe. As she approached her spot, she saw the familiar clearing with the massive tree. She ran to the tree and yelled in joy, "Sir Tree, Sir Tree, you will not believe the experiences I had!" for she was safe again, Mr. Tree would undoubtedly protect her!
 
 Although the tree could not talk, Silvia imagined it did. She considered the tree her best friend in the whole world. She, however, could not settle on a name for the tree. It was between Cara and Vera. Her mother, however, did once suggest Amica when a four-year-old [[Silvia]] asked for her opinion. That, however, was long lost to history.
 
-As [[Silvia]] hugged Mr. Tree and he hugged back, finally the branches slowly backed off allowing she to tell him the story...
+As [[Silvia]] hugged Mr. Tree and he hugged back, finally the branches slowly backed off allowing her to tell him the story...
 As the trees swayed Silvia told the story of how she reached the shore and saw the rock-water and finally how the dragon saved her from the beast.
-"An his name is [[Aequor]]" she concluded. The moment she said **H**is name the whole tree shook gently, almost as a warning. 
+"And his name is " she said before pausing, *he told me to only say his name if I'm in danger*. The tree gently shook as a warning before settling.
 
 [[Silvia]] spent all day on Mr. Tree and looked out to the sea wondering if she would see the dragon again. While she was returning home she saw her father and ran to him, [[Primum]] who just came back from the woods looked up and saw a bundle of silver run towards him and into his arms and he hoisted her up and carried her inside the home to have dinner as a family.
 
-The following day [[Silvia]]'s father disappeared again like he always did, but today Silvia had a plan. She grabbed her little brother and caried him to the sea. As she stood at the shore she sat on the rock-water again but this time she would not wait till dark, she was still scared of the beast. As dusk approached she finally gave up and returned home for [[Aequor]]. Alas [[Silvia]] did not give up, everyday, as soon as her father left she would walk the shore seeking the dragon, somedays with her brother somedays without, one day she even brought her mother but it was to no avail, the water kept smashing against the shore.
+The following day [[Silvia]]'s father disappeared again like he always did, but today Silvia had a plan. She grabbed her little brother and took him to the sea. As she stood at the shore she sat on the rock-water again but this time she would not wait till dark, she was still scared of the beast. As dusk approached she finally gave up and returned home for [[Aequor]]. Alas [[Silvia]] did not give up, every day, as soon as her father left she would walk the shore seeking the dragon, some days with her brother some without, one day she even brought her mother but it was to no avail, the water kept smashing against the shore.
 
-A week had past since she saw the dragon, [[Silvia]] was starting to lose hope of seeing the dragon again, she was planning to stay home and play with her brother but then she heard her parents in their room, they were talking to each other. She stood by the door hearing the muffled sounds, but she could not make out the words, eventually bored she grabbed her crying brother and left for the shore. As she approached the shore the wind started picking up.
+Three days had passed since she saw the dragon, [[Silvia]] was starting to lose hope of seeing the dragon again, she was planning to stay home and play with her brother but then she heard her parents in their room, they were talking to each other. She stood by the door hearing the muffled sounds, but she could not make out the words, eventually bored she grabbed her crying brother and left for the shore. As she approached the shore the wind started picking up.
 
-[[Silvia]] as usual started sitting and playing with her brother when she felt a slight tremble, almost a warning before seeing the shoreline recede back like the water running away. She excitedly got up waiting to see a dragon but nothing, *the dragon didn't come?* she thought as she continued to play with her brother. 
+[[Silvia]] as usual started sitting and playing with her brother when she felt a slight tremble, almost a warning before seeing the shoreline recede back like the water running away. She excitedly got up waiting to see a dragon but nothing, *the dragon didn't come?* She thought as she continued to play with her brother, building the little prince a big castle. 
 
 "What are you building?" 
 
 [[Silvia]] heard the voice inside her bones but she again full with excitement turned around to look at the majestic dragon and she was not disappointed, she saw the beautiful teal scales and massive whiskers as the dragon lay in the sand its giant eye open look at her from the side, although [[Silvia]] had planned this day for ages she was left speech less at the sight of [[Aequor]], when she finally got her speech she finally looked up and said, "[[Aequor]], [[Aequor]] Look I brought my brother" as she proudly presented the small infant to the eye.
 
-[[Aequor]] looked at the smaller child and saw teal eyes looking back, **H**e seemed a little disappointed, [[Silvia]] who could not understand why [[Aequor]] would look disappointed immediately hid [[Nexus]] and asked in a pitiful voice, "Do you not like him?" 
+[[Aequor]] looked at the smaller child and saw teal eyes looking back, **H**e looked at the infant who looked back, two teal eyes interlocked. [[Nexus]] who was originally crying stopped and looked at the ocean blue eye. Finally [[Aequor]] looked back to [[Silvia]] and replied, "He does not have it? I can sense its presence but he does not have it?"
 
-[[Aequor]] looking at the small child rushed to calm her fears, "No, it is not that. He just... I expected something different", but after all [[Silvia]] was only five and didn't understand what **H**e meant, so rushing to change the subject [[Aequor]] asked her, "I have told you my name, Will you return the favor child?"
+[[Silvia]] confused just stared at the dragon eye before hugging her baby brother, concerned she asked the massive eye. "What does he not have? How can i get it for him?"
 
-[[Silvia]] still a little disappointed grumbled, "Silvia"
+[[Aequor]]'s eyes softened and asked, "What's your name child?" 
 
-"Silvia, Of the wildwood, what a apt name!" [[Aequor]] remarked and moved his giant head to circle [[Silvia]].
+Blankly staring at him, she finally responded, "[[Silvia]]"
 
-[[Silvia]] even more scared for her brother took a step back. [[Aequor]] spoke again, "How about this child of the wildwood, I will tell you my story, and you tell me yours."
-
+[[Aequor]] spoke again, "How about this child of the wildwood, I will tell you my story, and you tell me yours."
 
 [[Silvia]] looked surprised and finally responded, "Your story?"
 
