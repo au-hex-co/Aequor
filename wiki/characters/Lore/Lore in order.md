@@ -22,19 +22,19 @@ The canonical, chronological telling of the origin myth: the creation of Primum,
 
 #### Chapter 1: Silvia
 
-[[Vesta]] held the small child in her arms. It was so... fragile, the soft skin of the babe and the small tight grip, but it was not breathing. The child lay in her arms, unmoving.
+[[Vesta]] held the small child in her arms. It was so... fragile, the soft skin of the child and the small tight grip, but it was not breathing. It lay in her arms, unmoving.
 
 [[Vesta]] looked at her child and felt the [[Sacrarium]] within her react and bubble. As she held her, gold light flooded the child's eyes, filling the house with light brighter than the sun. The child's eyes, once silver, now held flecks of gold within them, and the baby took its first breath... and cried.
 
 [[Vesta]] held her child and declared, "[[Silvia]], you are of the wildwood. With your birth I gift you what I was gifted, a piece of the [[Sacrarium]], and I make it so, from this day, it shall pass from mother to child of its own accord, so that no daughter after you be denied what I give you now."
 
-Then the tree closest to the house, the one [[Vesta]] had given voice and thought, spoke for the first time to a child of [[Vesta]]'s line. "As you live, [[Silvia]], we will protect you."
+Then the tree around the house gently shook as the welcomed her.
 
 ---
 
 [[Silvia]] stood on the porch of her wood hut. She had just recently turned five, and her younger brother [[Nexus]] was born today, but she wasn't allowed to watch. She was told to stand guard on the porch, so she did. She puffed her chest out and stared at the trees and bushes, daring anyone to jump out. Usually she wasn't allowed to leave the house without one of her parents; her father always went out, and her mother preferred to stay home and take care of the house, but when she turned five, her parents tentatively allowed her to go exploring on her own. Little did they know it hadn't stopped her wandering the forest alone even before that. But they had nothing to fear; they lived in a safe paradise.
 
-[[Silvia]] stood there for one minute, two minutes, five minutes, before she caved. _How am I to hold guard? There is no one here. It will be fine._ Slowly she walked down the gravel path and reached her spot. There was a small hill in a clearing surrounded by trees, and in the middle of the tall behemoths stood an even bigger tree. Atop the hill, it towered far above the others, reaching high into the clouds.
+[[Silvia]] stood there for one minute, two minutes, five minutes, before she caved. _How am I to hold guard? There is no one here. It will be fine._ Slowly she walked down the gravel path and reached her spot. There was a small hill in a clearing, and in the middle of the rolling hills stood an even bigger tree. It towered far above the others, reaching high into the clouds.
 
 She craned her little head and swiped her silver hair from her face. She looked up at the massive tree and yelled, "I'm here!"
 
@@ -44,23 +44,21 @@ When [[Silvia]] climbed onto it, the branches slowly and gently curled around he
 
 As she stood atop the clouds, [[Silvia]] looked at her home. It was a massive forest with a river running through the middle, a mountain range on one side towering so high it made the tree she stood on seem like an ant, and on the other side, an endless blue ocean with waves crashing into the land relentlessly. As she watched the sun slowly set, she saw a glint in the water, then scales flashing past, fast. As soon as she saw it, it was gone.
 
-The next morning, [[Silvia]] stayed home and, for the first time, saw someone other than her parents: her new brother, Nexus. As she held him and looked into his deep teal eyes, she felt like she was looking into an ocean. She felt joy and kinship. She felt love for him. She was too young to lift him, but it didn't matter to her. They were joined at the hip; everywhere their poor parents looked, they'd find two troublemakers crawling around the house.
+The next morning, [[Silvia]] stayed home and, for the first time, saw someone other than her parents: her new brother, [[Nexus]]. As she held him and looked into his deep teal eyes, she felt like she was looking into an ocean. She felt joy and kinship. She felt love for him. She was too young to lift him, but it didn't matter to her.
 
-[[Nexus]] and [[Silvia]] played until sundown, at which point their mother picked him up for dinner, and together they sat at a sturdy wooden table. The room was lit by three candles made of wax. As the candlelight flickered, [[Vesta]] brought dinner to the table: rice with a bit of salad. [[Silvia]] thought it tasted horrible, but she was starving, and there was no meat that day, so she scarfed it down anyway.
+[[Silvia]] played with [[Nexus]] until sundown, at which point their mother picked him up for dinner, and together they sat at a sturdy wooden table. The room was lit by candles made of wax. As the candlelight flickered, [[Vesta]] brought dinner.
 
-The next day, [[Silvia]] took her mother and brother to the clearing. It was a short five-minute walk, but halfway through, Vesta, exhausted, turned back for home, leaving the two siblings to finish their trek alone. When [[Silvia]] reached the tree with her brother, they climbed to the top together. She sat down and pouted. "Why do you only make sounds? I want someone to talk to," she said. She always wanted a companion, someone to keep her company. She leaned back into the branches and felt them caress her as she continued, "Mom said you would be able to talk like us, and to give it time. I can't wait!"
+The next day, [[Silvia]] took her mother and brother to the clearing. It was a short five-minute walk, but halfway through, Vesta, exhausted, turned back for home, leaving the two siblings to finish their trek alone. When [[Silvia]] reached the tree with her brother, she climbed to the top while holding her brother, it was eased by the tree gently pushing them up. She sat down and pouted. "Why do you only make sounds? I want someone to talk to," she said. She always wanted a companion, someone to keep her company. She leaned back into the branches and felt them caress her as she continued, "Mom said you would be able to talk like us, and to give it time. I can't wait!"
 
 As the sun set, she held her brother tightly and whispered, "It's you and me."
 
 ---
 
-[[Silvia]] woke to her father gently shaking her awake. "Let's go to the creek, go get your brother," he said. Suddenly filled with energy, [[Silvia]] jumped up and scampered to her brother's room. She saw her mother lying on the cotton bed, the one it had taken her father a year to make, hugging her baby boy. Not wanting to disturb her, [[Silvia]] slipped out quietly to meet her father on the porch.
-
-When [[Primum]] saw one of his children skipping toward him, he asked, "Where's your brother?"
+[[Silvia]] woke to her father gently shaking her awake. "Let's go to the creek!" he said. Suddenly filled with energy, [[Silvia]] jumped up and scampered to her brother's room. She saw her mother lying on the cotton bed, the one it had taken her father a year to make, hugging her baby boy. Not wanting to disturb her, [[Silvia]] slipped out quietly to meet her father on the porch.
 
 His little girl reached the porch, pulling some leather over her feet to protect her toes, and said, "Mum was sleeping. I didn't want to wake her up." Then she ran forward into the misty forest, her father following behind.
 
-Though it was still early, the first hours of sunrise, the birds and animals made the forest feel alive with chirping and the occasional cry of some exotic bird.
+Though it was still early, the first hours of sunrise, the birds, and animals made the forest feel alive with chirping and the occasional cry of some exotic bird.
 
 [[Silvia]] and her father walked at an easy, uneven pace; she usually ran ahead, but whenever she had something to say, she'd slow down and let her father catch up. Finally, as she ran, she spotted a red flower with petals hugging each other. She'd seen such flowers before and named them roses, but this time, there was water beaded on the green leaves of its thorny stem. Confused, she turned back to her father and asked, "Pa, it didn't rain, why is water on this flower?"
 
@@ -74,9 +72,7 @@ When [[Silvia]] looked up from the rose, she realized the forest had gone entire
 
 When [[Primum]] reached its edge, sensing a teaching moment, he turned to his daughter. "On the edge of a river is a bank, so right now, I'm standing on a bank. But the edge of the sea is called a shore." [[Silvia]], intrigued, repeated the words in halting syllables: "Sh...o...re. Ba...enk." They felt strange in her mouth, but right, somehow, all the same.
 
-Seeing that his daughter understood, he grabbed a spear from where he'd left it on the rocks and waded into the water.
-
-Over the next three hours, father and daughter fished in the quiet forest. Only when they got back home did [[Silvia]] realize she hadn't heard a single animal for most of the trip.
+As they walked up the bank, they saw a footprint alongside a handprint, like someone had crawled past. The second [[Primum]] saw that he got quiet, the returned home after that without fishing, but [[Silvia]] wasn't bothered, they were in a **Safe** paradise.
 
 The next day, [[Silvia]] played with [[Nexus]] and carried him everywhere. The following morning, however, she was so tired from playing that she stayed asleep long past midday. When she finally woke up, the house was quiet. No one was home. Feeling lonely, she went to her spot, her tree. When she reached the top, she looked out to the sea, searching for that glint of the beast moving through the water.
 
@@ -88,9 +84,11 @@ She plopped down onto the rock-water and waited, watching fish and small birds c
 
 Slowly the night passed, and [[Silvia]] still stood at the water's edge. She did not want to miss the chance to glance at that magnificent beast again, but as she waited, she heard a growl behind her. She sprang to her little feet and spun around, and saw... it looked like her father, but it wasn't. It walked on its hands and feet. It slowly moved closer, but she stood rooted in fear. What was it? Why did it look like her father? The more she looked at the beast, the more she saw: deep brown eyes, thick and dirty limbs. Looking at it, she felt something weird.
 
-The beast leapt towards her, reaching its hands out. It grabbed [[Silvia]]'s throat and pushed her hard against the rock-water. She felt the breath leave her lungs. She tried to yell, but she couldn't. She needed air. She scratched at the arms holding her throat, clawing for the sweet air that was right outside her reach, but it was to no avail. Thrashing, she felt herself grow weaker, but out of the corner of her eye she saw a scaled beast.
+As Silvia watched, the beast slowly circled her, watching keenly. Scared but still curious she spoke softly, "Hello, my name is [[Silvia]]." As she stood on the shore watching the beast, she felt a soft sucking on her feet, she looked down to see the water rushing back into the ocean. However, the second she broke eye contact the beast took its chance.
 
-The water around [[Silvia]] flowed back into the sea, almost as a warning, before a massive blue-scaled body flew out of the water and roared.
+The beast leapt towards her, reaching its hands out. It grabbed [[Silvia]]'s throat and pushed her hard against the rock-water. She felt the breath leave her lungs. She tried to yell, but she couldn't. She needed air. She scratched at the arms holding her throat, clawing for the sweet air that was right outside her reach, but it was to no avail. She spread her hands out trying to push her assailant off, but she was too weak. She grabbed some rock-water and flung it onto the beast, it seemed to barely flinch, but that's it.
+
+Just as [[Silvia]] closed her eyes...All the sound seemed to vacate the area, [[Silvia]] wasn't sure if it was because she was losing consciousness but she found it very peaceful, and then it was interrupted.
 
 The roar was deafening. It wasn't terrifying, but rather mind-numbing. As the dragon flew out of the water and approached, [[Silvia]] felt the ground tremble and the chirping birds fall silent. The beast let go of her and ran back into the forest. [[Silvia]] felt the air rush back into her lungs, filling her with breath. She was relieved for a second, before turning around to be face to face with a massive eye.
 #### Chapter 2: Aequor
