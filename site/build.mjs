@@ -5,7 +5,7 @@ import { loadVault } from "./lib/vault.mjs";
 import { buildMapSegments } from "./lib/maps.mjs";
 import { generateOgImage } from "./lib/og-image.mjs";
 import { renderExcalidrawSvg } from "./lib/excalidraw.mjs";
-import { renderInline } from "./lib/markdown.mjs";
+import { renderInline, renderMarkdown } from "./lib/markdown.mjs";
 import {
 	page,
 	finalizeLinks,
@@ -15,6 +15,7 @@ import {
 	breadcrumbsHtml,
 	cardGrid,
 	canvasNotice,
+	miniNavHtml,
 	SITE_URL,
 	SITE_NAME,
 } from "./lib/templates.mjs";
@@ -186,7 +187,9 @@ function main() {
 	buildSourcesIndex(pages);
 	buildQuestionsIndex(callouts, unresolved);
 	buildTimelinePage(pages, vault.resolveWikilink);
-	buildHome(pages, callouts, manifests);
+	buildStory(pages, vault.resolveWikilink);
+	buildVaultHome(pages, callouts, manifests);
+	buildGateway();
 
 	fs.writeFileSync(path.join(OUT_DIR, "assets", "og-image.png"), generateOgImage());
 	writeRobotsTxt();
@@ -605,12 +608,13 @@ function buildMapsPages(manifests) {
 	}
 }
 
-function buildHome(pages, callouts, manifests) {
+function buildVaultHome(pages, callouts, manifests) {
 	const realPages = pages.filter((p) => !p.isCanvas && !p.isIndex);
 	const openQuestions = callouts.length;
 	const chunkTotal = manifests.reduce((sum, m) => sum + m.chunkCount, 0);
 
 	const sectionCards = [
+		{ url: "/story/index.html", title: "Story", kicker: "Narrative", excerpt: "The origin myth, read in order — one chapter per page, no wiki chrome." },
 		{ url: "/world/index.html", title: "World", kicker: "Pantheon", excerpt: "Three gods, one bad boredom-fueled decision, and the price that's still being paid for it." },
 		{ url: "/characters/index.html", title: "Characters", kicker: "Chronicle", excerpt: "Vesta, Silvia, Ferus — and the name Cedere hasn't earned yet." },
 		{ url: "/concepts/index.html", title: "Concepts", kicker: "Design", excerpt: "Relics as mythology made mechanical — and the one rule every future relic has to obey." },
@@ -623,8 +627,8 @@ function buildHome(pages, callouts, manifests) {
 	<section class="hero">
 		<canvas class="hero__constellation" id="pantheonConstellation" aria-hidden="true"></canvas>
 		<div class="hero__inner">
-			<p class="eyebrow">A worldbuilding wiki for a pirate roguelike</p>
-			<h1 class="hero__title" data-reveal-text>The Aequor Codex</h1>
+			<p class="eyebrow">For devs &amp; worldbuilders</p>
+			<h1 class="hero__title" data-reveal-text>The Vault</h1>
 			<p class="hero__lede">Mythology, mechanics, and every open question behind <strong>Aequor</strong> — a game where escaping a debt only ever delays it. Built from the vault's own markdown; nothing here is written twice.</p>
 			<div class="hero__actions">
 				<a class="button button--primary" href="/world/index.html">Start with the pantheon</a>
@@ -647,16 +651,63 @@ function buildHome(pages, callouts, manifests) {
 		<p>This isn't a polished lore bible — it's the working design wiki, gaps and contradictions left in on purpose. The <a href="/questions/index.html">Open Questions</a> page tracks every one automatically, straight from the vault's own <code>[!gap]</code>, <code>[!contradiction]</code>, and <code>[!key-insight]</code> callouts.</p>
 	</section>`;
 
-	const description = "The worldbuilding wiki for Aequor, a mythology-driven pirate roguelike.";
+	write(
+		"/vault/index.html",
+		page({
+			title: "Vault",
+			description: "The developer wiki and worldbuilding codex behind Aequor — pantheon, characters, mechanics, maps, and every open design question.",
+			section: "vaulthome",
+			content,
+			bodyClass: "page--home",
+			url: "/vault/index.html",
+		})
+	);
+}
+
+// ---------- Gateway (site root) ----------
+// The front door: two doors, not one. Everything past this page commits to
+// either "I want the story" or "I want the working wiki" — so the two
+// options get equal visual weight and their own thematic palette (parchment
+// for the narrative, ink for the vault) rather than one being a footnote.
+
+function buildGateway() {
+	const description = "Aequor — a mythology-driven pirate roguelike. Read the origin myth, or explore the worldbuilding vault.";
+	const content = `
+	<section class="hero gate">
+		<canvas class="hero__constellation" id="pantheonConstellation" aria-hidden="true"></canvas>
+		<div class="hero__inner gate__inner">
+			<p class="eyebrow">A worldbuilding project for a pirate roguelike</p>
+			<h1 class="hero__title" data-reveal-text>The Aequor Codex</h1>
+			<p class="hero__lede">Escaping a debt only ever delays it. Read the myth that started it, or step into the working vault where the world gets built.</p>
+			<div class="gate-grid">
+				<a class="gate-card gate-card--story" href="/story/index.html">
+					<span class="gate-card__kicker">Read</span>
+					<h2 class="gate-card__title">Lore &amp; Story</h2>
+					<p class="gate-card__desc">The origin myth, told in order — the making of Primum, the birth of Silvia and Ferus, and the founding of the Sacrarium. One chapter per page.</p>
+					<span class="gate-card__cta">Begin reading <span class="arrow" aria-hidden="true">&#8594;</span></span>
+				</a>
+				<a class="gate-card gate-card--vault" href="/vault/index.html">
+					<span class="gate-card__kicker">Explore</span>
+					<h2 class="gate-card__title">Vault &amp; Dev</h2>
+					<p class="gate-card__desc">The working design wiki — pantheon, characters, mechanics, maps, and every open question, generated straight from the vault's own markdown.</p>
+					<span class="gate-card__cta">Enter the vault <span class="arrow" aria-hidden="true">&#8594;</span></span>
+				</a>
+			</div>
+		</div>
+	</section>`;
+
 	write(
 		"/index.html",
 		page({
 			title: SITE_NAME,
 			description,
-			section: "home",
 			content,
-			bodyClass: "page--home",
+			bodyClass: "page--home page--gateway",
 			url: "/index.html",
+			nav: miniNavHtml([
+				{ label: "Lore / Story", url: "/story/index.html" },
+				{ label: "Vault / Dev", url: "/vault/index.html" },
+			]),
 			jsonLd: [
 				{
 					"@context": "https://schema.org",
@@ -668,6 +719,122 @@ function buildHome(pages, callouts, manifests) {
 			],
 		})
 	);
+}
+
+// ---------- Story (paginated lore reader) ----------
+// wiki/characters/Lore/Lore in order.md is one long markdown file with scene
+// breaks (---) inside chapters and "#### Chapter N: Title" / "### Chapter N:
+// Title" headings between them (heading level is inconsistent in the source,
+// and chapter numbers repeat — a content gap, not something to silently
+// "fix" here). Splitting is done on raw markdown, not the pre-rendered HTML,
+// so each chapter gets its own independent renderMarkdown() pass and its own
+// page — the combined article at /characters/lore/lore-in-order.html is left
+// untouched for anyone who wants the whole thing in one scroll.
+
+function splitStoryChapters(rawBody) {
+	const lines = rawBody.replace(/\r\n/g, "\n").split("\n");
+	const starts = [];
+	lines.forEach((line, idx) => {
+		const m = /^#{1,6}\s*Chapter\s+\d+\s*:\s*(.+?)\s*$/.exec(line.trim());
+		if (m) starts.push({ idx, title: m[1].trim() });
+	});
+	return starts.map((s, i) => {
+		const from = s.idx + 1;
+		const to = i + 1 < starts.length ? starts[i + 1].idx : lines.length;
+		return { title: s.title, rawBody: lines.slice(from, to).join("\n").trim() };
+	});
+}
+
+function storyNav(activeUrl) {
+	return miniNavHtml([
+		{ label: "Story Index", url: "/story/index.html", active: activeUrl === "/story/index.html" },
+		{ label: "Vault / Dev", url: "/vault/index.html" },
+	]);
+}
+
+function buildStory(pages, resolveWikilink) {
+	const lorePage = pages.find((p) => p.group === "lore" && p.slug === "lore-in-order");
+	if (!lorePage) return;
+
+	const inlineCtx = { resolveWikilink, onWikilink() {}, onCallout() {} };
+	const chapters = splitStoryChapters(lorePage.rawBody).map((c, i) => {
+		const { html } = renderMarkdown(c.rawBody, inlineCtx);
+		return { ...c, n: i + 1, html, url: `/story/chapter-${i + 1}.html` };
+	});
+	if (!chapters.length) return;
+
+	// ---- Index ----
+	const tocItems = chapters
+		.map(
+			(c) => `
+		<a class="story-toc__item" href="${c.url}">
+			<span class="story-toc__num">${c.n}</span>
+			<span class="story-toc__body">
+				<h3>${c.title}</h3>
+				<p>${excerpt(c.html, 130)}</p>
+			</span>
+		</a>`
+		)
+		.join("");
+
+	const indexContent = `
+	<div class="story-layout story-layout--index">
+		<div class="section-head section-head--tight" style="padding-top:0;text-align:center;">
+			<p class="eyebrow">Lore &amp; Story</p>
+			<h1>The Origin Myth</h1>
+			<p class="section-lede" style="margin:0 auto;">The canonical, chronological telling: the making of Primum, the birth of Silvia and Ferus, and the founding of the Sacrarium. Read straight through, one chapter per page.</p>
+			<div class="hero__actions" style="justify-content:center;margin-top:1.5rem;">
+				<a class="button button--primary" href="${chapters[0].url}">Begin reading</a>
+			</div>
+		</div>
+		<ol class="story-toc">${tocItems}</ol>
+	</div>`;
+
+	write(
+		"/story/index.html",
+		page({
+			title: "Story",
+			description: "The origin myth of Aequor, read in chronological order, one chapter per page.",
+			content: indexContent,
+			bodyClass: "page--story",
+			url: "/story/index.html",
+			nav: storyNav("/story/index.html"),
+		})
+	);
+
+	// ---- Chapter pages ----
+	for (const c of chapters) {
+		const prev = chapters[c.n - 2];
+		const next = chapters[c.n];
+		const isLast = c.n === chapters.length;
+
+		const chapterContent = `
+	<div class="story-layout">
+		<div class="story-chapter__head">
+			<p class="story-chapter__eyebrow">Chapter ${c.n} of ${chapters.length}</p>
+			<h1 class="story-chapter__title">${c.title}</h1>
+		</div>
+		<article class="story-chapter__body">${c.html}</article>
+		${isLast ? `<p class="story-note">This is as far as the chronicle has been written — more chapters are still being drafted.</p>` : ""}
+		<nav class="story-nav" aria-label="Chapter">
+			${prev ? `<a href="${prev.url}">&#8592; ${prev.title}</a>` : `<a href="/story/index.html">&#8592; Story Index</a>`}
+			<span class="story-nav__index"><a href="/story/index.html">Index</a></span>
+			${next ? `<a href="${next.url}">${next.title} &#8594;</a>` : `<a href="/story/index.html">Story Index &#8594;</a>`}
+		</nav>
+	</div>`;
+
+		write(
+			c.url,
+			page({
+				title: `Ch. ${c.n}: ${c.title}`,
+				description: `Chapter ${c.n} of the Aequor origin myth: ${c.title}.`,
+				content: chapterContent,
+				bodyClass: "page--story page--story-chapter",
+				url: c.url,
+				nav: storyNav(c.url),
+			})
+		);
+	}
 }
 
 main();

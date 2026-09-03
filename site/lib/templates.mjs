@@ -19,6 +19,7 @@ export function finalizeLinks(html, pageUrl) {
 }
 
 const NAV = [
+	{ label: "Vault Home", url: "/vault/index.html", key: "vaulthome" },
 	{ label: "World", url: "/world/index.html", key: "world" },
 	{ label: "Characters", url: "/characters/index.html", key: "characters" },
 	{ label: "Concepts", url: "/concepts/index.html", key: "concepts" },
@@ -46,6 +47,29 @@ function navHtml(activeKey) {
 				<span class="sr-only">Menu</span>
 			</button>
 			<nav class="site-nav" id="siteNav">
+				<ul>${items}</ul>
+			</nav>
+		</div>
+	</header>`;
+}
+
+// A lightweight header for pages outside the dev vault (the gateway, the
+// story reader) — the full eight-item NAV reads as wiki chrome, which is
+// exactly the clutter a "just let me read the story" page shouldn't have.
+// Always visible (no collapse-behind-a-toggle breakpoint), since it only
+// ever holds two or three links.
+export function miniNavHtml(links) {
+	const items = links
+		.map((l) => `<li><a href="${l.url}"${l.active ? ' class="is-active"' : ""}>${l.label}</a></li>`)
+		.join("");
+	return `
+	<header class="site-header">
+		<div class="site-header__inner">
+			<a class="brand" href="/index.html">
+				<span class="brand__mark" aria-hidden="true">&#9670;</span>
+				<span class="brand__text">Aequor <em>Codex</em></span>
+			</a>
+			<nav class="mini-nav" aria-label="Section">
 				<ul>${items}</ul>
 			</nav>
 		</div>
@@ -134,7 +158,7 @@ function jsonLdHtml(entries) {
 		.join("\n");
 }
 
-export function page({ title, description, section, content, bodyClass = "", url = "/", noindex = false, jsonLd = [] }) {
+export function page({ title, description, section, content, bodyClass = "", url = "/", noindex = false, jsonLd = [], nav }) {
 	// The homepage's own title IS the site name — "Aequor Codex · Aequor
 	// Codex" would be a redundant <title>, so every other page gets the
 	// " · Aequor Codex" suffix and the home page doesn't.
@@ -179,7 +203,7 @@ ${jsonLdHtml(jsonLd)}
 </head>
 <body class="${bodyClass}">
 <a class="skip-link" href="#main">Skip to content</a>
-${navHtml(section)}
+${nav !== undefined ? nav : navHtml(section)}
 <main id="main">
 ${content}
 </main>

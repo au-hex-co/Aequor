@@ -126,6 +126,16 @@ code { font-family: var(--font-mono); font-size: 0.88em; }
 .site-nav a:hover, .site-nav a.is-active { color: var(--text); }
 .site-nav a:hover::after, .site-nav a.is-active::after { width: 100%; }
 
+/* A lighter header for pages outside the dev vault (gateway, story reader) —
+   always visible, no collapse-behind-a-toggle breakpoint, since it only ever
+   holds two or three links. */
+.mini-nav ul {
+	display: flex; gap: 1.3rem; flex-wrap: wrap; list-style: none; margin: 0; padding: 0;
+	font-size: 0.9rem; font-weight: 500;
+}
+.mini-nav a { color: var(--text-muted); }
+.mini-nav a:hover, .mini-nav a.is-active { color: var(--gold-bright); }
+
 /* ============================================================
    Footer
    ============================================================ */
@@ -200,6 +210,123 @@ code { font-family: var(--font-mono); font-size: 0.88em; }
 	font-weight: 600;
 }
 .hero__stats dd { margin: 0; color: var(--text-faint); font-size: 0.82rem; }
+
+/* ============================================================
+   Gateway — the two-door landing page
+   ============================================================ */
+
+.gate .hero__inner { text-align: center; }
+.gate .hero__title, .gate .hero__lede { margin-left: auto; margin-right: auto; }
+.gate .hero__lede { text-align: center; }
+
+.gate-grid {
+	display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.75rem;
+	margin-top: 3rem; text-align: left;
+}
+.gate-card {
+	position: relative; display: flex; flex-direction: column; gap: 0.9rem;
+	min-height: 280px; padding: 2.4rem 2.2rem; border-radius: var(--radius-lg);
+	border: 1px solid var(--border); overflow: hidden;
+	transition: transform 0.25s var(--ease-out), border-color 0.25s, background 0.25s;
+}
+.gate-card:hover { transform: translateY(-4px); }
+.gate-card__kicker {
+	font-family: var(--font-mono); text-transform: uppercase; letter-spacing: 0.14em; font-size: 0.75rem;
+}
+.gate-card__title { font-family: var(--font-display); font-size: clamp(1.6rem, 3vw, 2.1rem); font-weight: 600; margin: 0; }
+.gate-card__desc { font-size: 0.98rem; margin: 0; }
+.gate-card__cta {
+	margin-top: auto; padding-top: 0.4rem; font-family: var(--font-mono); font-size: 0.82rem;
+	display: inline-flex; align-items: center; gap: 0.4rem;
+}
+.gate-card__cta .arrow { transition: transform 0.2s var(--ease-out); }
+.gate-card:hover .gate-card__cta .arrow { transform: translateX(4px); }
+
+.gate-card--story {
+	background: var(--parchment);
+	background-image:
+		repeating-linear-gradient(0deg, rgba(74, 61, 40, 0.025) 0 1px, transparent 1px 3px),
+		repeating-linear-gradient(90deg, rgba(74, 61, 40, 0.02) 0 1px, transparent 1px 3px);
+	color: var(--ink-text);
+}
+.gate-card--story .gate-card__kicker { color: #8a5c17; }
+.gate-card--story .gate-card__desc { color: var(--ink-text-soft); }
+.gate-card--story .gate-card__cta { color: #2a5f4a; }
+.gate-card--story:hover { border-color: var(--gold); }
+
+.gate-card--vault { background: var(--ink-850); color: var(--text); }
+.gate-card--vault .gate-card__kicker { color: var(--teal-bright); }
+.gate-card--vault .gate-card__desc { color: var(--text-muted); }
+.gate-card--vault .gate-card__cta { color: var(--gold-bright); }
+.gate-card--vault:hover { border-color: var(--teal); background: var(--ink-700); }
+
+/* ============================================================
+   Story reader
+   ============================================================ */
+
+.story-layout { max-width: 760px; margin: 0 auto; padding: 3rem 1.5rem 6rem; }
+.story-layout--index { max-width: var(--container); }
+
+.story-toc {
+	list-style: none; margin: 2.5rem auto 0; padding: 0; display: grid; gap: 1rem;
+	max-width: 760px;
+}
+.story-toc__item {
+	display: flex; gap: 1.2rem; align-items: flex-start; padding: 1.3rem 1.5rem;
+	background: var(--ink-850); border: 1px solid var(--border); border-radius: var(--radius-lg);
+	color: var(--text); transition: transform 0.2s var(--ease-out), border-color 0.2s, background 0.2s;
+}
+.story-toc__item:hover { transform: translateY(-2px); border-color: var(--gold); background: var(--ink-700); }
+.story-toc__num {
+	font-family: var(--font-display); font-size: 1.6rem; font-weight: 600; color: var(--gold-bright);
+	min-width: 2.4rem;
+}
+.story-toc__body h3 { font-family: var(--font-display); margin: 0 0 0.3rem; font-size: 1.15rem; }
+.story-toc__body p { margin: 0; color: var(--text-muted); font-size: 0.92rem; }
+
+.story-chapter__head { text-align: center; margin-bottom: 2.2rem; }
+.story-chapter__eyebrow {
+	font-family: var(--font-mono); text-transform: uppercase; letter-spacing: 0.12em; font-size: 0.75rem;
+	color: var(--gold-bright); margin: 0 0 0.5rem;
+}
+.story-chapter__title { font-family: var(--font-display); font-size: clamp(1.9rem, 4.5vw, 2.7rem); margin: 0; }
+
+.story-chapter__body {
+	background: var(--parchment);
+	background-image:
+		repeating-linear-gradient(0deg, rgba(74, 61, 40, 0.025) 0 1px, transparent 1px 3px),
+		repeating-linear-gradient(90deg, rgba(74, 61, 40, 0.02) 0 1px, transparent 1px 3px);
+	color: var(--ink-text);
+	border-radius: var(--radius-lg);
+	padding: clamp(1.8rem, 5vw, 3.4rem);
+	box-shadow: 0 20px 50px -20px rgba(0,0,0,0.55), 0 1px 0 rgba(255,255,255,0.04) inset;
+	font-size: 1.08rem; line-height: 1.85;
+}
+.story-chapter__body p { margin: 0 0 1.2rem; }
+.story-chapter__body hr { border: 0; border-top: 1px dashed rgba(74,61,40,0.3); margin: 2rem 0; }
+.story-chapter__body strong { color: #1c1608; }
+.story-chapter__body a.wikilink { color: #2a5f4a; text-decoration: underline; text-decoration-color: rgba(42,95,74,0.35); text-underline-offset: 3px; }
+.story-chapter__body a.wikilink:hover { color: #b7573c; }
+.story-chapter__body .wikilink--stub { color: var(--ink-text-soft); border-bottom: 1px dashed rgba(74,61,40,0.45); cursor: help; }
+
+.story-note {
+	max-width: 760px; margin: 1.5rem auto 0; padding: 1rem 1.3rem;
+	border: 1px dashed var(--border-strong); border-radius: 10px;
+	color: var(--text-faint); font-size: 0.88rem; text-align: center;
+}
+
+.story-nav {
+	display: flex; justify-content: space-between; align-items: center; gap: 1rem; flex-wrap: wrap;
+	margin-top: 2.2rem; font-family: var(--font-mono); font-size: 0.85rem;
+}
+.story-nav a { color: var(--text-muted); display: inline-flex; align-items: center; gap: 0.4rem; }
+.story-nav a:hover { color: var(--gold-bright); }
+.story-nav__index { order: 3; width: 100%; text-align: center; }
+.story-nav__index a { color: var(--text-faint); }
+
+@media (min-width: 640px) {
+	.story-nav__index { order: 0; width: auto; }
+}
 
 /* ============================================================
    Section blocks / cards
