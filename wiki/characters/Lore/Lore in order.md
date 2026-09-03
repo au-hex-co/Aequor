@@ -34,7 +34,7 @@ Then the tree around the house gently shook as the welcomed her.
 
 [[Silvia]] stood on the porch of her wood hut. She had just recently turned five, and her younger brother [[Nexus]] was born today, but she wasn't allowed to watch. She was told to stand guard on the porch, so she did. She puffed her chest out and stared at the trees and bushes, daring anyone to jump out. Usually she wasn't allowed to leave the house without one of her parents; her father always went out, and her mother preferred to stay home and take care of the house, but when she turned five, her parents tentatively allowed her to go exploring on her own. Little did they know it hadn't stopped her wandering the forest alone even before that. But they had nothing to fear; they lived in a safe paradise.
 
-[[Silvia]] stood there for one minute, two minutes, five minutes, before she caved. _How am I to hold guard? There is no one here. It will be fine._ Slowly she walked down the gravel path and reached her spot. There was a small hill in a clearing, and in the middle of the rolling hills stood an even bigger tree. It towered far above the others, reaching high into the clouds.
+[[Silvia]] stood there for one minute, two minutes, five minutes, before she caved. *Its so boring, why must I stay, Ill head out. It will be fine.* Slowly she walked down the gravel path and reached her spot. There was a small hill in a clearing, and in the middle of the rolling hills stood an even bigger tree. It towered far above the others, reaching high into the clouds.
 
 She craned her little head and swiped her silver hair from her face. She looked up at the massive tree and yelled, "I'm here!"
 
@@ -44,7 +44,9 @@ When [[Silvia]] climbed onto it, the branches slowly and gently curled around he
 
 As she stood atop the clouds, [[Silvia]] looked at her home. It was a massive forest with a river running through the middle, a mountain range on one side towering so high it made the tree she stood on seem like an ant, and on the other side, an endless blue ocean with waves crashing into the land relentlessly. As she watched the sun slowly set, she saw a glint in the water, then scales flashing past, fast. As soon as she saw it, it was gone.
 
-The next morning, [[Silvia]] stayed home and, for the first time, saw someone other than her parents: her new brother, [[Nexus]]. As she held him and looked into his deep teal eyes, she felt like she was looking into an ocean. She felt joy and kinship. She felt love for him. She was too young to lift him, but it didn't matter to her.
+By the time little [[Silvia]] got home the light were out and she didn't want to disturb her tired mother so she went to bed.
+
+The next morning, [[Silvia]] stayed home and, for the first time, saw someone other than her parents: her new brother, [[Nexus]]. As she held him and looked into his deep teal eyes, she felt like she was looking into an ocean. She felt joy and kinship. She felt love for him.
 
 [[Silvia]] played with [[Nexus]] until sundown, at which point their mother picked him up for dinner, and together they sat at a sturdy wooden table. The room was lit by candles made of wax. As the candlelight flickered, [[Vesta]] brought dinner.
 
