@@ -90,16 +90,20 @@ As Silvia watched, the beast slowly circled her, watching keenly. Scared but sti
 
 The beast leapt towards her, reaching its hands out. It grabbed [[Silvia]]'s throat and pushed her hard against the rock-water. She felt the breath leave her lungs. She tried to yell, but she couldn't. She needed air. She scratched at the arms holding her throat, clawing for the sweet air that was right outside her reach, but it was to no avail. She spread her hands out trying to push her assailant off, but she was too weak. She grabbed some rock-water and flung it onto the beast, it seemed to barely flinch, but that's it.
 
-Just as [[Silvia]] closed her eyes...All the sound seemed to vacate the area, [[Silvia]] wasn't sure if it was because she was losing consciousness but she found it very peaceful, and then it was interrupted.
+Just as [[Silvia]] closed her eyes...All the sound seemed to vacate the area, [[Silvia]] wasn't sure if it was because she was losing consciousness but she found it very peaceful, and then it was interrupted. 
+
+[[Silvia]] opened her eyes to see a brilliant gold light filling the bank as the beast was burned, tiny invisible gold lashes left trails of blood along the beasts back, as the beast looked at the tiny girl in its hands it saw dazzling golden eyes staring back.
+
+But as quickly as it appeared the light disappeared. and the beast backed off still watching still circling her, when they both felt a warning *something's coming*.
 
 The roar was deafening. It wasn't terrifying, but rather mind-numbing. As the dragon flew out of the water and approached, [[Silvia]] felt the ground tremble and the chirping birds fall silent. The beast let go of her and ran back into the forest. [[Silvia]] felt the air rush back into her lungs, filling her with breath. She was relieved for a second, before turning around to be face to face with a massive eye.
 #### Chapter 2: Aequor
 
-[[Silvia]] screamed as she fell back, the massive teal eye followed her as she tried to get up and run, but before she took a step the dragon's massive tail thumped and landed in front of her. [[Silvia]], regretting her decision to come here, curled into a ball and whimpered.
+[[Silvia]] tried to scream as she fell back but her throat closed up and her body refused to listen to her. She felt like the trees she loved, watching the massive beast. [[Silvia]] couldn't run. Couldn't call for help. Regretting her decision to come looking for the dragon in front of her, she waited as a single tear fell down her cheek.
 
 The dragon, looking at this pitiful child, sighed before speaking, "You have nothing to fear from me, little one. I mean no harm to you."
-
-[[Silvia]] poked her little head from in-between her arms and looked at the beast in front of her, shocked. Other than her parents, she knew of no one else who could speak.
+[[Silvia]], rooted in the spot heard a voice, but it didn't come from the dragon, it was like the ground she stood on was talking, like the air around her whispered into her ear. 
+She watched as the scaly beautiful dragon circled her as the beast had done before ending it its eye in front of her again.
 
 "Who are you?" [[Silvia]] stammered.
 
