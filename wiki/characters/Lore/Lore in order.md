@@ -135,13 +135,15 @@ The following day [[Silvia]]'s father disappeared again like he always did, but 
 
 Three days had passed since she saw the dragon, [[Silvia]] was starting to lose hope of seeing the dragon again, she was planning to stay home and play with her brother but then she heard her parents in their room, they were talking to each other. She stood by the door hearing the muffled sounds, but she could not make out the words, eventually bored she grabbed her crying brother and left for the shore. As she approached the shore the wind started picking up.
 
-[[Silvia]] as usual started sitting and playing with her brother when she felt a slight tremble, almost a warning before seeing the shoreline recede back like the water running away. She excitedly got up waiting to see a dragon but nothing, *the dragon didn't come?* She thought as she continued to play with her brother, building the little prince a big castle. 
+[[Silvia]] as usual started sitting and playing with her brother when she felt a slight tremble, almost a warning before seeing the shoreline recede back like the water running away. She excitedly got up waiting to see a dragon but nothing, *the dragon didn't come?* She thought as she continued to play with her brother, building the little prince a big castle.
 
-"What are you building?" 
+The sand beneath her hands stilled, and the air itself seemed to lean close, ancient and patient.
+
+"What are you building?"
 
 [[Silvia]] heard the voice inside her bones but she again full with excitement turned around to look at the majestic dragon and she was not disappointed, she saw the beautiful teal scales and massive whiskers as the dragon lay in the sand its giant eye open look at her from the side, although [[Silvia]] had planned this day for ages she was left speech less at the sight of [[Aequor]], when she finally got her speech she finally looked up and said, "[[Aequor]], [[Aequor]] Look I brought my brother" as she proudly presented the small infant to the eye.
 
-[[Aequor]] looked at the smaller child and saw teal eyes looking back, **H**e looked at the infant who looked back, two teal eyes interlocked. [[Nexus]] who was originally crying stopped and looked at the ocean blue eye. Finally [[Aequor]] looked back to [[Silvia]] and replied, "He does not have it? I can sense its presence but he does not have it?"
+[[Aequor]] looked at the smaller child and saw teal eyes looking back, **H**e looked at the infant who looked back, two teal eyes interlocked. [[Nexus]] who was originally crying stopped and looked at the ocean blue eye. Finally [[Aequor]] looked back to [[Silvia]] and replied, "He does not carry it. I can feel its shape near him... and yet it is not his."
 
 [[Silvia]] confused just stared at the dragon eye before hugging her baby brother, concerned she asked the massive eye. "What does he not have? How can i get it for him?"
 
