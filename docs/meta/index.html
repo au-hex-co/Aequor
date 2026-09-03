@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Meta · Aequor Codex</title>
-<meta name="description" content="Dashboards and lint reports land here. lint-report-2026-09-02 — first full lint pass: added folder indexes, retired superseded lore drafts, filled…">
+<title>Lint Report: 2026-09-02 · Aequor Codex</title>
+<meta name="description" content="First full lint pass over the vault. Scope: every file under wiki/ . Summary Pages scanned: ~27 (pre-pass) Issues found: 19 Fixed: 19 Needs author…">
 <link rel="canonical" href="https://au-hex-co.github.io/Aequor/meta/index.html">
 <meta name="robots" content="noindex, follow">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='22' fill='%23070b11'/%3E%3Cpath d='M50 18 L82 50 L50 82 L18 50 Z' fill='%23cc9f4c'/%3E%3C/svg%3E">
@@ -15,15 +15,15 @@
 <meta name="color-scheme" content="dark light">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Aequor Codex">
-<meta property="og:title" content="Meta · Aequor Codex">
-<meta property="og:description" content="Dashboards and lint reports land here. lint-report-2026-09-02 — first full lint pass: added folder indexes, retired superseded lore drafts, filled…">
+<meta property="og:title" content="Lint Report: 2026-09-02 · Aequor Codex">
+<meta property="og:description" content="First full lint pass over the vault. Scope: every file under wiki/ . Summary Pages scanned: ~27 (pre-pass) Issues found: 19 Fixed: 19 Needs author…">
 <meta property="og:url" content="https://au-hex-co.github.io/Aequor/meta/index.html">
 <meta property="og:image" content="https://au-hex-co.github.io/Aequor/assets/og-image.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Meta · Aequor Codex">
-<meta name="twitter:description" content="Dashboards and lint reports land here. lint-report-2026-09-02 — first full lint pass: added folder indexes, retired superseded lore drafts, filled…">
+<meta name="twitter:title" content="Lint Report: 2026-09-02 · Aequor Codex">
+<meta name="twitter:description" content="First full lint pass over the vault. Scope: every file under wiki/ . Summary Pages scanned: ~27 (pre-pass) Issues found: 19 Fixed: 19 Needs author…">
 <meta name="twitter:image" content="https://au-hex-co.github.io/Aequor/assets/og-image.png">
 
 <style>@view-transition { navigation: auto; }</style>
@@ -50,12 +50,42 @@
 
 	<div class="article-layout">
 		<article class="article">
-			<div class="page-head"><nav class="breadcrumbs" aria-label="Breadcrumb"><span aria-current="page">Meta</span></nav><h1>Meta</h1><div class="meta-chips"><span class="chip">meta</span><span class="chip chip--muted">updated 2026-09-02</span></div></div>
-			<div class="article__body"><p>Dashboards and lint reports land here.</p>
-<ul><li><a class="wikilink" href="../meta/index.html">lint-report-2026-09-02</a> — first full lint pass: added folder indexes, retired superseded lore drafts, filled dead links, fixed frontmatter gaps</li></ul></div>
+			<div class="page-head"><nav class="breadcrumbs" aria-label="Breadcrumb"><span aria-current="page">Lint Report: 2026-09-02</span></nav><h1>Lint Report: 2026-09-02</h1><div class="meta-chips"><span class="chip">meta</span><span class="chip chip--status chip--developing">developing</span><span class="chip chip--muted">updated 2026-09-02</span><span class="chip chip--tag">#meta</span><span class="chip chip--tag">#lint</span></div></div>
+			<div class="article__body"><p>First full lint pass over the vault. Scope: every file under <code>wiki/</code>.</p>
+<h2 id="summary">Summary</h2>
+<ul><li>Pages scanned: ~27 (pre-pass)</li><li>Issues found: 19</li><li>Fixed: 19</li><li>Needs author review: 3 (flagged inline, not auto-resolved)</li></ul>
+<h2 id="fixed">Fixed</h2>
+<p><strong>Dead links (missing pages)</strong></p>
+<ul><li><code><a class="wikilink" href="../world/cosmology.html">Cosmology</a></code> — referenced by 8+ pages, never created. Added <a class="wikilink" href="../world/cosmology.html">Cosmology</a> with content drawn from the raw pitch doc's &quot;The World&quot; section.</li><li><code><a class="wikilink" href="../characters/the-protagonist.html">The Protagonist</a></code> — referenced by Timeline, Core Gameplay, and the source pitch page. Added <a class="wikilink" href="../characters/the-protagonist.html">The Protagonist</a> with the Cede Amare → Cedere → Caedere name arc, pulled from <code>.raw/Merchant_of_Fate_Pitch.docx</code>.</li></ul>
+<p><strong>Orphan / empty pages</strong></p>
+<ul><li><code>wiki/world/Characters/Nexus.md</code> was a completely empty file despite Nexus being a named, recurring character in <a class="wikilink" href="../characters/lore/lore-in-order.html">Lore in order</a>. Filled with a stub page and cross-links.</li></ul>
+<p><strong>Frontmatter gaps</strong></p>
+<ul><li><a class="wikilink" href="../characters/lore/lore-in-order.html">Lore in order</a>, <a class="wikilink" href="../world/silvia.html">Silvia</a>, <a class="wikilink" href="../concepts/sacrarium.html">Sacrarium</a> had no frontmatter block at all. Added <code>type</code>/<code>status</code>/<code>tags</code>/<code>created</code>/<code>updated</code>.</li></ul>
+<p><strong>Stale claims</strong></p>
+<ul><li><a class="wikilink" href="../world/primum.html">Primum</a> and <a class="wikilink" href="../concepts/nectaris.html">Nectaris</a> both carried a <code>[!gap]</code> callout asking &quot;what/who is Vesta?&quot; — stale, since <a class="wikilink" href="../world/vesta.html">Vesta</a> is a fully developed page. Removed the callouts, replaced with a normal cross-link.</li><li><a class="wikilink" href="../world/ferus.html">Ferus</a> and <a class="wikilink" href="../timeline/index.html">Timeline of the Aetas</a> both flagged a <code>[!contradiction]</code> between the clan name &quot;Ferrin&quot; and the character name &quot;Ferus.&quot; <a class="wikilink" href="../world/the-clans.html">The clans</a> (see below) now resolves this in-fiction — softened both callouts to <code>[!key-insight]</code> pointing at the new page, and noted it's still worth confirming the reading with the author.</li></ul>
+<p><strong>Missing cross-references</strong></p>
+<ul><li><a class="wikilink" href="../world/anima.html">Anima</a> didn't link to <a class="wikilink" href="../concepts/sacrarium.html">Sacrarium</a> despite being its direct origin (his heart → the orb → the Sacrarium). Added.</li><li><a class="wikilink" href="../world/silvia.html">Silvia</a> didn't link to <a class="wikilink" href="../world/nexus.html">Nexus</a> or <a class="wikilink" href="../world/the-clans.html">The clans</a>. Added, plus a proper See Also section.</li><li><a class="wikilink" href="../concepts/sacrarium.html">Sacrarium</a> had no See Also section at all. Added.</li></ul>
+<p><strong>Structural</strong></p>
+<ul><li><code>wiki/world/Charaters/</code> (typo) renamed to <code>wiki/world/Characters/</code>. Filenames unchanged, so no wikilinks broke.</li><li>Retired three superseded lore drafts — <code>Aetas of creation.md</code>, <code>Maiden of fog.md</code>, <code>The Aetas of Humanity.md</code> — now fully covered, cleaned up, and told in order by <a class="wikilink" href="../characters/lore/lore-in-order.html">Lore in order</a>. Confirmed with the author before deleting; recoverable from git history if ever needed.</li></ul>
+<p><strong>Missing indexes</strong></p>
+<ul><li>Added <code>_index.md</code> for every folder that lacked one: <code>characters/</code>, <code>characters/Lore/</code>, <code>concepts/</code>, <code>gameplay/</code>, <code>timeline/</code>, <code>world/</code>, <code>world/Characters/</code>.</li><li>Added <code>wiki/index.md</code> as the top-level, plain-markdown entry point (distinct from <code>wiki/overview.md</code>, which stays a visual Excalidraw board per the author's preference).</li></ul>
+<p><strong>Content trapped in Excalidraw canvases</strong></p>
+<ul><li>Four files (<code>wiki/overview.md</code>, <code>wiki/world/The clans.md</code>, <code>wiki/characters/Aequor (Ingame).md</code>, <code>wiki/characters/Cedere.md</code>) are Excalidraw drawings saved under page-like names. Per the author's direction, these stayed as Excalidraw (not converted to plain markdown) and were extended in place:</li></ul>
+<p>  - <strong>overview.md</strong> — added a Cosmology / Timeline / The clans branch off the existing &quot;Lore&quot; node, a Relics / Nectaris branch off &quot;Gameplay,&quot; and a The Protagonist branch off &quot;Charaters,&quot; plus a note explaining the in-game-vs-lore folder split.   - <strong>The clans.md</strong> — built out a full extended family tree for all 16 clans (founder generation + two children each, with a third generation for the three clans tied to existing canon characters — see below), Latin-rooted names in the same style as the existing cast, each person with a one-line role and wikilinks where they connect to real pages. Every original brainstorm bubble now has an arrow into its structured tree.   - <strong>Aequor (Ingame).md</strong> — linked to the lore deity <a class="wikilink" href="../world/aequor.html">Aequor</a> and <a class="wikilink" href="../world/cosmology.html">Cosmology</a>, plus an honest note that its in-game role (relic, ability, patron era) is still undeveloped.   - <strong>Cedere.md</strong> — added the Cede Amare → Cedere → Caedere name-arc diagram, linked to the new <a class="wikilink" href="../characters/the-protagonist.html">The Protagonist</a> page for full detail.</p>
+<h2 id="the-clans-family-tree-design-notes">The clans: family tree design notes</h2>
+<p>Three clans got a third generation because they tie directly into existing canon rather than being invented from scratch:</p>
+<ul><li><strong>Ferrin</strong> — founder is <a class="wikilink" href="../world/ferus.html">Ferus</a> himself; resolves the Ferrin/Ferus naming question in-fiction (see above).</li><li><strong>Silvanus</strong> — founder is <a class="wikilink" href="../world/silvia.html">Silvia</a>; the tree follows the <a class="wikilink" href="../concepts/sacrarium.html">Sacrarium</a>'s mother-to-daughter inheritance rule into a granddaughter, &quot;carries the Sacrarium into the Current Era.&quot;</li><li><strong>Nexin</strong> — founder is <a class="wikilink" href="../world/nexus.html">Nexus</a>; a grandchild still carries his unexplained teal-eyed resemblance to <a class="wikilink" href="../world/aequor.html">Aequor</a>.</li></ul>
+<p>The other 13 founders (Leorin, Atlan, Animus, Cerin, Serane, Regulus, Cassian, Octin, Valerin, Vitalis, Lucin, Natalin, Aurelin) are new names invented for this pass, each rooted in an actual Latin word matching the existing naming convention (Primum, Vesta, Tellus, Aequor, Anima, Silvia are all direct Latin nouns repurposed as names) and given a role that ties back into the Timeline where a natural hook existed (Atlan → Aetas of Atlan explorers, Cassian → Aetas of War, Regulus/Serane → Aetas of Peace and city-building, Vitalis/Natalin → Sacrarium stewardship, Aurelin → the game's gold/merchant motif).</p>
+<aside class="callout callout--gap" id="callout-1"><div class="callout__head"><span class="callout__kind">Gap</span><span class="callout__title">These 13 founders and their children are new inventions, not drawn from any source document</span></div><div class="callout__body"><p>Flagging clearly so they don't get mistaken for pre-existing canon later. Fine to treat as placeholder color to be overwritten, or to keep as-is — that's an author call.</p></div></aside>
+<h2 id="needs-author-review-not-auto-resolved">Needs author review (not auto-resolved)</h2>
+<ul><li><strong>Ferrin vs. Ferus</strong>: now resolved in-fiction via <a class="wikilink" href="../world/the-clans.html">The clans</a>, but still worth an explicit confirmation that this is the intended reading and not a leftover spelling inconsistency in the source pitch.</li><li><strong>Aequor (the god)</strong>: still has no confirmed gift, relic, or era of worship anywhere in the source material (see the <code>[!gap]</code> on <a class="wikilink" href="../world/aequor.html">Aequor</a> itself) — pre-existing gap, not introduced by this pass.</li><li><strong>The Protagonist's name-arc triggers</strong>: what actually moves the player between Cede Amare / Cedere / Caedere (run count? specific choices? story beats?) is undefined — flagged as a <code>[!gap]</code> on the new <a class="wikilink" href="../characters/the-protagonist.html">The Protagonist</a> page.</li></ul>
+<h2 id="address-validation">Address Validation</h2>
+<p>Not applicable — this vault has not adopted DragonScale addressing (no <code>scripts/allocate-address.sh</code>, no <code>.vault-meta/address-counter.txt</code>).</p>
+<h2 id="semantic-tiling">Semantic Tiling</h2>
+<p>Not run — no local ollama / <code>nomic-embed-text</code> detected in this environment.</p></div>
 			
 		</article>
-		
+		<aside class="article-aside"><nav class="toc" aria-label="On this page"><p class="toc__label">On this page</p><ul><li class="toc__lvl2"><a href="#summary">Summary</a></li><li class="toc__lvl2"><a href="#fixed">Fixed</a></li><li class="toc__lvl2"><a href="#the-clans-family-tree-design-notes">The clans: family tree design notes</a></li><li class="toc__lvl2"><a href="#needs-author-review-not-auto-resolved">Needs author review (not auto-resolved)</a></li><li class="toc__lvl2"><a href="#address-validation">Address Validation</a></li><li class="toc__lvl2"><a href="#semantic-tiling">Semantic Tiling</a></li></ul></nav></aside>
 	</div>
 </main>
 
