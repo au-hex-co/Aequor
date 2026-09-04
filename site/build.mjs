@@ -156,6 +156,7 @@ function renderArticlePage(vpage) {
 // ---------- build ----------
 
 function main() {
+	sitemapUrls.length = 0;
 	clearDirContents(OUT_DIR);
 	copyDir(STATIC_DIR, path.join(OUT_DIR, "assets"));
 	fs.writeFileSync(path.join(OUT_DIR, ".nojekyll"), "");
@@ -838,3 +839,28 @@ function buildStory(pages, resolveWikilink) {
 }
 
 main();
+
+// ---------- Watch mode ----------
+// `node site/build.mjs --watch` rebuilds docs/ automatically whenever a
+// source file changes, so editing wiki/*.md is enough — no need to remember
+// to re-run the build by hand. Debounced because editors/OneDrive can fire
+// several change events for a single save.
+if (process.argv.includes("--watch") || process.argv.includes("-w")) {
+	console.log("\nWatching wiki/ and world/ for changes (Ctrl+C to stop)...");
+	let timer = null;
+	const rebuild = (reason) => {
+		if (timer) clearTimeout(timer);
+		timer = setTimeout(() => {
+			try {
+				main();
+				console.log(`[${new Date().toLocaleTimeString()}] Rebuilt (${reason}).`);
+			} catch (err) {
+				console.error(`[${new Date().toLocaleTimeString()}] Build failed:`, err.message);
+			}
+		}, 150);
+	};
+	fs.watch(WIKI_DIR, { recursive: true }, (_event, filename) => rebuild(filename || "wiki change"));
+	for (const { file } of MAP_SOURCES) {
+		if (fs.existsSync(file)) fs.watch(file, () => rebuild(path.basename(file)));
+	}
+}

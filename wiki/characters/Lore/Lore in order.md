@@ -32,7 +32,7 @@ Then the tree around the house gently shook as the welcomed her.
 
 ---
 
-[[Silvia]] stood on the porch of her wood hut. She had just recently turned five, and her younger brother [[Nexus]] was born today, but she wasn't allowed to watch. She was told to stand guard on the porch, so she did. She puffed her chest out and stared at the trees and bushes, daring anyone to jump out. Usually she wasn't allowed to leave the house without one of her parents; her father always went out, and her mother preferred to stay home and take care of the house, but when she turned five, her parents tentatively allowed her to go exploring on her own. Little did they know it hadn't stopped her wandering the forest alone even before that. But they had nothing to fear; they lived in a safe paradise.
+[[Silvia]] stood on the porch of her wood hut. She had just recently turned five, and her younger brother [[Nexus]] was born today, but she wasn't allowed to watch. She was told to stand guard on the porch, so she did. She puffed her chest out and stared at the trees and bushes, daring anyone to jump out. Usually she wasn't allowed to leave the house without one of her parents; her father always went out, one hand trailing loose against every stalk and low branch he passed without ever seeming to notice he was doing it, and her mother preferred to stay home and take care of the house, singing the same wandering, wordless tune she always did while she worked. Silvia had never once heard her start it, only ever caught it already halfway through. When she turned five, her parents tentatively allowed her to go exploring on her own. Little did they know it hadn't stopped her wandering the forest alone even before that. But they had nothing to fear; they lived in a safe paradise.
 
 [[Silvia]] stood there for one minute, two minutes, five minutes, before she caved. *Its so boring, why must I stay, Ill head out. It will be fine.* Slowly she walked down the gravel path and reached her spot. There was a small hill in a clearing, and in the middle of the rolling hills stood an even bigger tree. It towered far above the others, reaching high into the clouds.
 
@@ -68,7 +68,9 @@ Her father laughed. "That's dew. Every morning, the air itself cries for [[Anima
 
 [[Silvia]], even more confused now, asked, "Pa, who is [[Anima]]? Why does the air cry for him?"
 
-[[Primum]] sighed. "He is the most high. He sacrificed Himself for our freedom. I'll tell you more when you're of age."
+[[Primum]] sighed. "He is the most high. He sacrificed Himself for our freedom. I'll tell you more when you're of age." 
+
+"Why not now?" [[Silvia]] complained as she stomped ahead.
 
 When [[Silvia]] looked up from the rose, she realized the forest had gone entirely quiet. Eerily quiet. As they walked, the silence held, broken only by the rushing of the creek. Though [[Silvia]] and her father called it "the creek," it spanned a vast section, home to hundreds of fish.
 
@@ -101,7 +103,9 @@ The roar was deafening. It wasn't terrifying, but rather mind-numbing. As the dr
 
 [[Silvia]] tried to scream as she fell back but her throat closed up and her body refused to listen to her. She felt like the trees she loved, watching the massive beast. [[Silvia]] couldn't run. Couldn't call for help. Regretting her decision to come looking for the dragon in front of her, she waited as a single tear fell down her cheek.
 
-The dragon, looking at this pitiful child, sighed before speaking, "You have nothing to fear from me, little one. I mean no harm to you."
+The whole world seemed to freeze as they looked at one another. The tide that had once retreated to herald **H**is arrival came crashing back all the way up to her ankles, relentless, like the dragon in front of her.
+[[Aequor]] saw a small pitiful girl and filled her mind with a calming voice.
+"You have nothing to fear from me, little one. I mean no harm to you."
 [[Silvia]], rooted in the spot heard a voice, but it didn't come from the dragon, it was like the ground she stood on was talking, like the air around her whispered into her ear. 
 She watched as the scaly beautiful dragon circled her as the beast had done before ending it its eye in front of her again.
 
@@ -137,7 +141,7 @@ Three days had passed since she saw the dragon, [[Silvia]] was starting to lose 
 
 [[Silvia]] as usual started sitting and playing with her brother when she felt a slight tremble, almost a warning before seeing the shoreline recede back like the water running away. She excitedly got up waiting to see a dragon but nothing, *the dragon didn't come?* She thought as she continued to play with her brother, building the little prince a big castle.
 
-The sand beneath her hands stilled, and the air itself seemed to lean close, ancient and patient.
+The sand beneath her hands stilled, and the air itself seemed to lean close, ancient, and patient.
 
 "What are you building?"
 
@@ -157,30 +161,71 @@ Blankly staring at him, she finally responded, "[[Silvia]]"
 
 ---
 
-### Chapter 2: The Three
-Once upon a time.
-When the world was brought forth there were three brothers. One was made from the dust of the land, [[Tellus]], unyielding as the earth itself. One was made from the water of the oceans, [[Aequor]], deep and wise as the depths he came from. And the last was made from the wisps of the air, [[Anima]], who moved as freely as the wind that made him.
+### Chapter 3: The Three
+And so [[Silvia]] sat listening to [[Aequor]] tell his story:
 
-The Three lived on Terra for 108 years, before one looked at the other bored and asked, "I sure am bored, how about you both?" [[Aequor]] and [[Tellus]] both agreed. [[Tellus]] had created mountains and caverns, but all was for simply nothing. [[Aequor]] had made trenches, reefs and lakes but all felt... bland.
+"Once upon a time.
+When the world was brought forth there were three brothers. One was made from the dust of the land, [[Tellus]], unyielding as the earth itself. One was made from the water of the oceans, [[Aequor]], deep and wise as the depths he came from. And the last was made from the wisps of the air, [[Anima]], who moved as freely as the wind that made him."
 
-So the Three collectively agreed on making life. One species for each brother. [[Tellus]] started off, he pulled a root from a massive tree and carved eyes into it and gave it the name Serpent. The snake came alive and looked at the Three and asked, "What is my duty?" [[Tellus]] looked proud, but the others too thought that it didn't fit their idea of a good creation, so [[Aequor]] then grabbed a massive rock from the shore and gave it fins. "This is a whale. A magnificent creature." But [[Anima]] saw its mechanical movements and said, "That's no creature, that is a machine!" He followed to grab the clouds and created a fire and formed it into a lion's mane with golden wings. "I call this a griffin!" he said, as the majestic beast soared through the sky.
+"Was that you [[Aequor]], or was it a different [[Aequor]]?" [[Silvia]] interrupted, before instantly going quiet as [[Aequor]]'s distant eyes locked onto hers. He slowly said, "Perhaps."
+
+The Three lived on Terra for 108 years, before one looked at the other bored and asked, "I sure am bored, how about you both?" [[Aequor]] and [[Tellus]] both agreed. [[Tellus]] had created mountains and caverns, but all was for simply nothing. [[Aequor]] had made trenches, reefs, and lakes but all felt... bland.
+
+So the Three collectively agreed on making life. One species for each brother. [[Tellus]] started off, he pulled a root from a massive tree and carved eyes into it and gave it the name Serpent. The snake came alive and looked at the Three and asked, "What is my duty?" [[Tellus]] looked proud.
+
+"But how can a snake talk?" [[Silvia]] burst out. She had seen plenty of snakes — they kept to themselves and never bothered her, but she'd never heard one talk. [[Aequor]], taken aback, said, "Ah, child — those are snakes. Perhaps Serpent is a more fitting name for this one; it was, after all, the first creation."
+
+Alas the others too thought that it didn't fit their idea of a good creation, so [[Aequor]] then grabbed a massive rock from the shore and gave it fins. "This is a whale. A magnificent creature." But [[Anima]] saw its mechanical movements and said, "That's no creature, that is a machine!" He followed to grab the clouds and created a fire and formed it into a lion's mane with golden wings. "I call this a griffin!" he said, as the majestic beast soared through the sky.
 
 Over the next 100 years they each took turns making creatures, each more bizarre and unique, but none that felt right. Each one was falling short of a criteria that the brothers couldn't think about.
 
-In the 208th year of creation, [[Anima]] suggested something radical: to each provide one aspect of a new creature. So [[Tellus]] made a mold with mud, shaping a human with a face, eyes, and more, but it did not hold its shape, it kept slipping. So [[Aequor]] provided some water for the mud to float in and to keep it together, but when it moved it moved robotically, so [[Anima]] breathed freedom into the clay figure and gave it agency.
+In the 208th year of creation, [[Anima]] suggested something radical: to each provide one aspect of a new creature. So [[Tellus]] made a mold with mud, shaping a human with a face, eyes, and more, but it did not hold its shape, it kept slipping. So [[Aequor]] provided some water for the mud to float in and to keep it together, but when it moved it moved without reason, so [[Anima]] breathed freedom into the clay figure and gave it agency.
 
 Together they named him [[Primum]].
 
 This was the mark of a new era.
 
+When [[Aequor]] finished the story, he looked at the two kids looking at him in expectation wanting more. As his eyes softened he softly told [[Silvia]], "lets meet here every 7th day. I will tell you my story and train you. In turn you tell me yours, how your week went."
+
+[[Silvia]] nodded excitedly before getting hung up on one word, "Train?" she asked.
+
+[[Aequor]] nodded his giant head causing the near by ground to get blown away, before leaping back into the water and wordlessly leaving.
+
+Week by week, little [[Silvia]] visited [[Aequor]], never missing a single one. For who would miss a visit from a dragon of creation?
+
+The first week she went, [[Aequor]] didn't do any training, but rather set up some ground rules. "I will only train you after you turn 7, and my stories will be earned, not given — prove yourself through combat."
+
+[[Silvia]] confused asked, "[[Aequor]], if I don't train how can I hear your story?"
+
+The dragon gently rested his head on the ground and said, "Come here little one, use my scales as holds and climb up. Do not assume that all combat is physical. I will teach you the ways of this world. I will show you the truth."
+
+[[Silvia]] cautiously walked up to the massive dragon's head and touched a scale softly.
+
+The second she touched the scale, she felt it before she saw it: a massive wave of teal flooding the scale and crashing toward her arm. Before she could yank her hand back, a brilliant golden light filled her veins. Her arm lit up with golden lines where it touched [[Aequor]], rising to meet the teal flood... and the two crashed together. 
+
+Slowly she pulled herself onto the scale, wedging her foot into the cracks between the massive plates. She hoisted herself the rest of the way and sat in the middle of one of the ridges along the dragon's spine.
+
+As she sat, she felt something within her tingle, spreading to every point where her skin touched the dragon — at each one a complicated golden symbol flared to life and held there, like a ward. She didn't know what it meant, so she just sat admiring the dazzling glow, until she felt the ground beneath her give way as they both flew up into the sky.
+
+[[Aequor]], who felt the child on him settle, finally spoke, "Let go of your [[Sacrarium]], let my Ichor flood you."
+
+[[Silvia]], who had never heard of either, just sat confused and asked, "How do I do that?"
+
+"Close your eyes, what do you see?" [[Aequor]] asked.
+
+[[Silvia]] closed her eyes and saw nothing. "Focus on your stomach. Imagine a fire," [[Aequor]] continued.
+
+As she followed his instructions she pictured a fire burning within her, bright and orange. Suddenly the fire started shifting. In front of [[Silvia]]'s eyes it turned golden and then shifted into a golden fragment that seemed to have rivers of brilliant golden light flowing out, filling her whole body. She described what happened to [[Aequor]], who then said, "Cover the fragment, hold it tight."
+
+Obedient as ever, [[Silvia]] didn't question the dragon. She held the fragment within her palm and squeezed, and felt the golden glow leave her body as it returned to the fragment.
+
+When the last wisps of gold left her, she felt a cold wave flood her, freezing every part of her in place. When she opened her eyes, she saw symbols everywhere. Looking at the scales, she felt dizzy at the sheer amount of information. Though [[Silvia]] had never seen these symbols before, just by looking at them she intimately knew how they worked; she could see them in the wind, the clouds, in everything.
+
+When she looked up, she saw a single massive eye with a complicated symbol at its center, and the moment she met its gaze, she passed out.
+
 ---
 
-As [[Aequor]] finished talking about his story he looked at 
-
-
----
-
-### Chapter 3: Maiden of the Fog
+### Chapter 4: Maiden of the Fog
 
 [[Primum]], though he had agency, had no knowledge and did not know how to move his own body. This disappointed the Three. So [[Aequor]], brother of wisdom, filled [[Primum]] with wisdom and resolve, and decreed it so: the older [[Primum]] and his children grew, the wiser and steadfast they would become. Then [[Tellus]], brother of the land, laid a hand on [[Primum]]'s chest and gave him duty, and with duty, gave fate a shape to his life that was owed to something beyond himself.
 
