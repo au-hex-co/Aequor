@@ -224,17 +224,46 @@ function writeSitemap() {
 	fs.writeFileSync(path.join(OUT_DIR, "sitemap.xml"), xml);
 }
 
+// Mirrors the three-way split the deleted world/Characters/_index.md folder
+// note used to spell out by hand ("The Gods" / "Primum's Line" / "The Fae")
+// -- only the three dragons are deities; everyone else downstream is mortal
+// or Fae, not a fourth-through-ninth god. Nothing in frontmatter encodes this
+// distinction cleanly (Vesta carries a "deity" tag from inheriting the
+// Sacrarium, not from being one of the three), so it's kept as an explicit
+// lookup here rather than inferred. Extend it when a new pantheon-folder page
+// is added; anything unlisted falls back into Primum's Line as a character.
+const PANTHEON_ROLE = {
+	aequor: { label: "The Gods", kicker: "Deity" },
+	anima: { label: "The Gods", kicker: "Deity" },
+	tellus: { label: "The Gods", kicker: "Deity" },
+	primum: { label: "Primum's Line", kicker: "Character" },
+	vesta: { label: "Primum's Line", kicker: "Character" },
+	ferus: { label: "Primum's Line", kicker: "Character" },
+	silvia: { label: "Primum's Line", kicker: "Character" },
+	nexus: { label: "Primum's Line", kicker: "Fae King" },
+	corvinus: { label: "The Fae", kicker: "Fae King" },
+};
+
 function buildWorldIndex(pages) {
 	const pantheon = pages.filter((p) => p.group === "pantheon" && !p.isIndex);
 	const worldExtra = pages.filter((p) => p.group === "world" && !p.isIndex);
 
-	const pantheonCards = pantheon.map((p) => ({
-		url: p.url,
-		title: p.title,
-		kicker: p.isCanvas ? "Diagram" : "Deity",
-		excerpt: canvasExcerpt(p) ?? (p.rawBody.trim() ? excerpt(p.html, 110) : "Not written yet."),
-		badge: stubBadge(p),
-	}));
+	const roleSections = [
+		{ label: "The Gods" },
+		{ label: "Primum's Line" },
+		{ label: "The Fae" },
+	];
+	for (const section of roleSections) {
+		section.cards = pantheon
+			.filter((p) => (PANTHEON_ROLE[p.slug] || { label: "Primum's Line" }).label === section.label)
+			.map((p) => ({
+				url: p.url,
+				title: p.title,
+				kicker: p.isCanvas ? "Diagram" : (PANTHEON_ROLE[p.slug] || { kicker: "Character" }).kicker,
+				excerpt: canvasExcerpt(p) ?? (p.rawBody.trim() ? excerpt(p.html, 110) : "Not written yet."),
+				badge: stubBadge(p),
+			}));
+	}
 
 	const otherCards = worldExtra.map((p) => ({
 		url: p.url,
@@ -250,10 +279,10 @@ function buildWorldIndex(pages) {
 		<h1>The Pantheon &amp; the World of Terra</h1>
 		<p class="section-lede">Three first beings — <a href="/world/tellus.html">Tellus</a>, <a href="/world/aequor.html">Aequor</a>, and <a href="/world/anima.html">Anima</a> — made the world out of boredom, then made humanity out of a question they couldn't answer. Everything downstream of that, clans, gods, relics, is a ledger of prices paid.</p>
 	</div>
-	<section class="section-block">
-		<h2>The Pantheon</h2>
-		${cardGrid(pantheonCards)}
-	</section>
+	${roleSections
+		.filter((s) => s.cards.length)
+		.map((s) => `<section class="section-block"><h2>${s.label}</h2>${cardGrid(s.cards)}</section>`)
+		.join("\n")}
 	${otherCards.length ? `<section class="section-block"><h2>Peoples &amp; Places</h2>${cardGrid(otherCards)}</section>` : ""}`;
 
 	write(
