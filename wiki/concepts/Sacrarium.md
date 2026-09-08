@@ -79,4 +79,6 @@ A man can take the Sacrarium from a woman by force — a violation counted among
 - [[Anima]]
 - [[Silvia]]
 - [[Primum]]
+- [[Nexum]] — the counterpart bond-magic, loosed on the world the moment Nexus dies and the Tellus he sheltered for centuries is finally released; where the Sacrarium is bodily and matrilineal, Nexum is behavioral and near-universal
+- [[River of Knowledge]] — Agency's structural counterpart: the Sacrarium can't exist without a self, and a self is built from the History this force holds
 - [[Lore in order]]

@@ -16,6 +16,7 @@ His flesh and bone, torn away by [[Tellus]] as the price of company, were reshap
 
 ## See Also
 - [[Cosmology]]
+- [[River of Knowledge]] — the domain Aequor's gift of wisdom is drawn from
 - [[Ferus]]
 - [[Vesta]]
 - [[Nectaris]]

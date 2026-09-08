@@ -26,9 +26,17 @@ Ten days after [[Nexus]]'s birth, drawn back to the shore at night to find the c
 
 Following this encounter, Silvia met with the dragon daily for the next ten years, during which the dragon told her the story of the world's beginning in pieces.
 
+## Later life: the promise and the spear
+
+Within her own lifetime, Silvia watches her brother [[Nexus]] begin to change — the god fused inside him since childhood slowly corroding him from within (see [[Nexus]]). She extracts a promise from him: not an oath, a passive contract, spoken plainly — don't be ruthless, don't lose yourself (see [[Nexum]] for what that costs him to keep, and what it costs him not to).
+
+It isn't enough on its own. Eventually Nexus asks her to end him before it gets worse. She can't — she loves him too much to be his killer, whatever he asks of her. Unwilling to leave him defenseless against himself and unable to grant what he actually wants, she spends her final years instead making the one thing that could: a silver spear, tipped with a scale taken from [[Anima]], gold — the only weapon besides a god's own magic capable of wounding one. She gives it to him herself, in her late thirties, a gift and a warning in the same object.
+
+Silvia dies afterward, in the ordinary way mortals do — the text does not dwell on it. Centuries later, in the war that finally kills Nexus, it is her spear that ends him (see [[Nexus]]).
+
 ## Notes
 
-- Silvia's silver hair and eyes (with gold flecks from birth) may serve as a visual marker of her carrying the [[Sacrarium]], distinguishing her from those who do not.
+- Silvia's silver hair and eyes (with gold flecks added at birth, when the [[Sacrarium]] first reacts) are not a Sacrarium marker after all — silver is [[Tellus]]'s own Ichor color, not Anima's. Why she carries it from birth, unexplained in-story, mirrors [[Nexus]] carrying [[Aequor]]'s teal the same way: each sibling marked from birth by the brother they do *not* end up bound to. Left as a deliberate, unresolved mystery — see [[Nexum plan]].
 - She is the founder of House Silvanus, the clan of the wildwood — see [[The clans]].
 - Her attacker at the shore is [[Ferus]], her elder sibling, born without agency.
 - Open thread: Silvia later grows to fear, then track, then befriend, then love Ferus, eventually asking [[Aequor]] how he came to exist.
@@ -38,6 +46,9 @@ Following this encounter, Silvia met with the dragon daily for the next ten year
 - [[Vesta]]
 - [[Primum]]
 - [[Nexus]]
+- [[Aequor]]
+- [[Tellus]]
+- [[Nexum]]
 - [[Ferus]]
 - [[Sacrarium]]
 - [[The clans]]

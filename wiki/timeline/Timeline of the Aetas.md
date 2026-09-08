@@ -21,8 +21,8 @@ Dates are given as **BM** (Before Malum) / **AM** (After Malum)
 | Aetas of Gods | 1310–1002 BM | 309 yrs | Worship centers on the brothers, chiefly [[Anima]] |
 | Aetas of Atlan | 1001–775 BM | 227 yrs | Age of exploration; the Atlan clan maps the world |
 | Aetas of Terra | 774–542 BM | 233 yrs | Worship shifts to [[Tellus]], dragon of the earth |
-| Aetas of Manus | 541–0 BM | 542 yrs | Humanity betrays the gods, leading to the death of Tellus |
-| **The Malum** | Year 0 | — | The death of [[Tellus]] |
+| Aetas of Manus | 541–0 BM | 542 yrs | The age of disaster — [[Nexus]]'s death frees a half-mad [[Tellus]], who rampages until [[Aequor]] kills him for good |
+| **The Malum** | Year 0 | — | Tellus's final death, at Aequor's hand — see [[Tellus]] |
 | Current Era | 1 AM onward | ongoing | Unnamed — awaiting its defining event |
 
 > [!key-insight] Ferrin vs. Ferus

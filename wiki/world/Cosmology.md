@@ -15,17 +15,20 @@ Each god paid a gift into Primum in a currency that was not his to spend:
 
 | God | Gift to Primum | Price paid |
 |---|---|---|
-| [[Tellus]] | Duty | Later betrayed by the humanity he gave it to — see the Malum, below |
-| [[Aequor]] | Wisdom *(inferred — see [[Aequor]])* | Not stated in the source pitch |
+| [[Tellus]] | Duty | Betrayed by his own broken oath to [[Nexus]]; finally killed by [[Aequor]] at the Malum — see below |
+| [[Aequor]] | Wisdom, drawn from his domain of History (see [[River of Knowledge]]) | Not stated in the source pitch |
 | [[Anima]] | Agency | His own heart, torn out so agency could pass beyond a single creation |
 
 Primum's descendants scattered into clans, each shaped by a piece of that original bargain — see [[The clans]]. [[Ferus]], the firstborn, was made on instinct alone before agency was understood, and was never counted among the true children — a wound the family carries into its own naming conventions generations later.
 
+> [!key-insight] Ichor vs. blood
+> **Ichor** is a god's own magic — the domain itself, colored per god — not a bodily fluid. [[Anima]]'s is gold ([[Sacrarium]]); [[Tellus]]'s is silver ([[Nexum]]); [[Aequor]]'s is teal. **Blood** is ordinary life-force, a separate thing entirely, not fixed to any of these colors — when a scene shows divine blood running one of these colors, it means that god's Ichor is actively present or winning, not that blood is inherently that color.
+
 ## The gods did not survive their own myth
 
 - [[Anima]] tore out his own heart so his children's children could breathe free of their own volition (see [[Sacrarium]]).
-- [[Tellus]] was betrayed by the very humanity he gave duty to — an event so total it splits the entire calendar in two: **Before Malum (BM)** and **After Malum (AM)**. See [[Timeline of the Aetas]].
-- [[Aequor]] alone has no confirmed death or fate in the source material — see the gap noted on his page.
+- [[Tellus]] was betrayed by his own broken oath to a five-year-old [[Nexus]] — the backlash nearly kills him outright, and he survives by sheltering inside the boy, making Nexus the first Fae King. Centuries later, Nexus's death frees a half-mad Tellus, who rampages until [[Aequor]] finally kills him for good — an event so total it splits the entire calendar in two: **Before Malum (BM)** and **After Malum (AM)**. See [[Timeline of the Aetas]] and [[Tellus]]. What sheds from Nexus's death is [[Nexum]], the law of binding oaths — born from the very oath Tellus broke.
+- [[Aequor]] has no confirmed death or fate of his own in the source material, but he is the hand behind both his brothers' endings: he tears out [[Anima]]'s heart (maiming, not killing him) and, later, delivers Tellus's final death — see [[Aequor]].
 
 The current era has no name yet. It is still being written, by whoever the player becomes — see [[The Protagonist]].
 
@@ -36,5 +39,9 @@ The current era has no name yet. It is still being written, by whoever the playe
 - [[Timeline of the Aetas]]
 - [[Lore in order]]
 - [[Primum]]
+- [[Nexus]]
+- [[Nexum]]
+- [[Sacrarium]]
+- [[River of Knowledge]]
 - [[The Protagonist]]
 - [[The clans]]

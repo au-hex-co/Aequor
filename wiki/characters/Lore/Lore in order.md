@@ -20,7 +20,17 @@ The canonical, chronological telling of the origin myth: the creation of Primum,
 
 ---
 
-#### Chapter 1: Silvia
+#### Prologue
+
+There was a river, no it was a book, no.. a telescope. Well it had no form. 
+The embodiment of knowledge, it was... Where was it? 
+
+Well Where had no meaning here. Time had no meaning here. Yet it was everywhere, and everywhen, but the book wasn't done. The river still flowed, there was yet to discover.
+
+The book flipped to a page labeled "Vesta" it wasn't in a text that was known, it was information itself. 
+
+
+~ The lens focused on Vesta ~
 
 [[Vesta]] held the small child in her arms. It was so... fragile, the soft skin of the child and the small tight grip, but it was not breathing. It lay in her arms, unmoving.
 
@@ -31,6 +41,10 @@ The canonical, chronological telling of the origin myth: the creation of Primum,
 Then the tree around the house gently shook as the welcomed her.
 
 ---
+
+#### Chapter 1: Silvia
+
+~ The Lens focused on Silvia ~
 
 [[Silvia]] stood on the porch of her wood hut. She had just recently turned five, and her younger brother [[Nexus]] was born today, but she wasn't allowed to watch. She was told to stand guard on the porch, so she did. She puffed her chest out and stared at the trees and bushes, daring anyone to jump out. Usually she wasn't allowed to leave the house without one of her parents; her father always went out, one hand trailing loose against every stalk and low branch he passed without ever seeming to notice he was doing it, and her mother preferred to stay home and take care of the house, singing the same wandering, wordless tune she always did while she worked. Silvia had never once heard her start it, only ever caught it already halfway through. When she turned five, her parents tentatively allowed her to go exploring on her own. Little did they know it hadn't stopped her wandering the forest alone even before that. But they had nothing to fear; they lived in a safe paradise.
 

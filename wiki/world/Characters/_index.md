@@ -18,4 +18,7 @@ The mythic figures behind the game's in-game character entities. See [[wiki/char
 - [[Vesta]] — the first woman, Maiden of the Fog, Mother of the Forest
 - [[Ferus]] — firstborn, made before agency was understood
 - [[Silvia]] — first daughter born with the Sacrarium, founder of House Silvanus
-- [[Nexus]] — Silvia's younger brother
+- [[Nexus]] — Silvia's younger brother, the first Fae King
+
+## The Fae
+- [[Corvinus]] — Nexus's distant descendant, the second Fae King
