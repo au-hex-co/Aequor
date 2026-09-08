@@ -164,10 +164,13 @@ function main() {
 	const vault = loadVault(WIKI_DIR);
 	const { pages, callouts, unresolved } = vault;
 
-	// Standalone content pages (sources/_index is folded into the hand-built
-	// sources index instead of publishing its own near-duplicate page).
+	// Standalone content pages. Every _index.md is a folder note: a manual link
+	// list mirroring what the section's hand-built index already generates.
+	// Not just tidiness -- gameplay/ routes every file in the folder to one
+	// shared URL, and an unfiltered _index.md would silently overwrite the
+	// real content page there.
 	for (const vpage of pages) {
-		if (vpage.group === "sources" && vpage.isIndex) continue;
+		if (vpage.isIndex) continue;
 		if (vpage.group === "timeline") continue;
 		write(vpage.url, renderArticlePage(vpage), { noindex: vpage.group === "meta" });
 	}
@@ -191,6 +194,7 @@ function main() {
 	buildStory(pages, vault.resolveWikilink);
 	buildVaultHome(pages, callouts, manifests);
 	buildGateway();
+	buildSearchIndex(pages, manifests);
 
 	fs.writeFileSync(path.join(OUT_DIR, "assets", "og-image.png"), generateOgImage());
 	writeRobotsTxt();
@@ -221,8 +225,8 @@ function writeSitemap() {
 }
 
 function buildWorldIndex(pages) {
-	const pantheon = pages.filter((p) => p.group === "pantheon");
-	const worldExtra = pages.filter((p) => p.group === "world");
+	const pantheon = pages.filter((p) => p.group === "pantheon" && !p.isIndex);
+	const worldExtra = pages.filter((p) => p.group === "world" && !p.isIndex);
 
 	const pantheonCards = pantheon.map((p) => ({
 		url: p.url,
@@ -259,8 +263,8 @@ function buildWorldIndex(pages) {
 }
 
 function buildCharactersIndex(pages) {
-	const chars = pages.filter((p) => p.group === "characters");
-	const lore = pages.filter((p) => p.group === "lore");
+	const chars = pages.filter((p) => p.group === "characters" && !p.isIndex);
+	const lore = pages.filter((p) => p.group === "lore" && !p.isIndex);
 	const primary = lore.find((p) => p.slug === "lore-in-order");
 	const fragments = lore.filter((p) => p !== primary);
 
@@ -298,7 +302,7 @@ function buildCharactersIndex(pages) {
 }
 
 function buildConceptsIndex(pages) {
-	const concepts = pages.filter((p) => p.group === "concepts");
+	const concepts = pages.filter((p) => p.group === "concepts" && !p.isIndex);
 	const cards = concepts.map((p) => ({
 		url: p.url,
 		title: p.title,
@@ -316,6 +320,31 @@ function buildConceptsIndex(pages) {
 		"/concepts/index.html",
 		page({ title: "Concepts", description: "Design concepts behind Aequor.", section: "concepts", content, url: "/concepts/index.html" })
 	);
+}
+
+// A build-time JSON index consumed client-side by static/js/search.js — the
+// only way to make a fully static site searchable without shipping a search
+// server. Folder notes and dev-only meta pages are excluded on purpose: they
+// aren't real content, and index.html for each section already lists them.
+function buildSearchIndex(pages, manifests) {
+	const entries = [];
+	for (const p of pages) {
+		if (p.isIndex || p.group === "meta") continue;
+		const label = SECTION_LABELS[p.group] ? SECTION_LABELS[p.group].label : p.group.charAt(0).toUpperCase() + p.group.slice(1);
+		entries.push({
+			title: p.title,
+			url: p.url,
+			section: label,
+			excerpt: p.isCanvas ? "" : excerpt(p.html, 160),
+		});
+	}
+	entries.push({ title: "Story", url: "/story/index.html", section: "Story", excerpt: "The origin myth, read in chronological order." });
+	for (const m of manifests) {
+		entries.push({ title: m.name, url: `/maps/${m.slug}.html`, section: "Maps", excerpt: `${m.chunkCount} painted chunks of terrain.` });
+	}
+	const dataDir = path.join(OUT_DIR, "data");
+	fs.mkdirSync(dataDir, { recursive: true });
+	fs.writeFileSync(path.join(dataDir, "search-index.json"), JSON.stringify(entries));
 }
 
 function buildSourcesIndex(pages) {
@@ -736,13 +765,19 @@ function splitStoryChapters(rawBody) {
 	const lines = rawBody.replace(/\r\n/g, "\n").split("\n");
 	const starts = [];
 	lines.forEach((line, idx) => {
-		const m = /^#{1,6}\s*Chapter\s+\d+\s*:\s*(.+?)\s*$/.exec(line.trim());
-		if (m) starts.push({ idx, title: m[1].trim() });
+		const trimmed = line.trim();
+		const chapterMatch = /^#{1,6}\s*Chapter\s+\d+\s*:\s*(.+?)\s*$/.exec(trimmed);
+		if (chapterMatch) {
+			starts.push({ idx, title: chapterMatch[1].trim(), isPrologue: false });
+			return;
+		}
+		const prologueMatch = /^#{1,6}\s*Prologue\s*$/i.exec(trimmed);
+		if (prologueMatch) starts.push({ idx, title: "Prologue", isPrologue: true });
 	});
 	return starts.map((s, i) => {
 		const from = s.idx + 1;
 		const to = i + 1 < starts.length ? starts[i + 1].idx : lines.length;
-		return { title: s.title, rawBody: lines.slice(from, to).join("\n").trim() };
+		return { title: s.title, isPrologue: s.isPrologue, rawBody: lines.slice(from, to).join("\n").trim() };
 	});
 }
 
@@ -758,18 +793,22 @@ function buildStory(pages, resolveWikilink) {
 	if (!lorePage) return;
 
 	const inlineCtx = { resolveWikilink, onWikilink() {}, onCallout() {} };
-	const chapters = splitStoryChapters(lorePage.rawBody).map((c, i) => {
+	let chapterN = 0;
+	const chapters = splitStoryChapters(lorePage.rawBody).map((c) => {
 		const { html } = renderMarkdown(c.rawBody, inlineCtx);
-		return { ...c, n: i + 1, html, url: `/story/chapter-${i + 1}.html` };
+		if (c.isPrologue) return { ...c, n: null, html, url: `/story/prologue.html` };
+		chapterN += 1;
+		return { ...c, n: chapterN, html, url: `/story/chapter-${chapterN}.html` };
 	});
 	if (!chapters.length) return;
+	const chapterCount = chapterN;
 
 	// ---- Index ----
 	const tocItems = chapters
 		.map(
 			(c) => `
 		<a class="story-toc__item" href="${c.url}">
-			<span class="story-toc__num">${c.n}</span>
+			<span class="story-toc__num">${c.isPrologue ? "&#8226;" : c.n}</span>
 			<span class="story-toc__body">
 				<h3>${c.title}</h3>
 				<p>${excerpt(c.html, 130)}</p>
@@ -804,15 +843,15 @@ function buildStory(pages, resolveWikilink) {
 	);
 
 	// ---- Chapter pages ----
-	for (const c of chapters) {
-		const prev = chapters[c.n - 2];
-		const next = chapters[c.n];
-		const isLast = c.n === chapters.length;
+	chapters.forEach((c, i) => {
+		const prev = chapters[i - 1];
+		const next = chapters[i + 1];
+		const isLast = i === chapters.length - 1;
 
 		const chapterContent = `
 	<div class="story-layout">
 		<div class="story-chapter__head">
-			<p class="story-chapter__eyebrow">Chapter ${c.n} of ${chapters.length}</p>
+			<p class="story-chapter__eyebrow">${c.isPrologue ? "Prologue" : `Chapter ${c.n} of ${chapterCount}`}</p>
 			<h1 class="story-chapter__title">${c.title}</h1>
 		</div>
 		<article class="story-chapter__body">${c.html}</article>
@@ -827,15 +866,17 @@ function buildStory(pages, resolveWikilink) {
 		write(
 			c.url,
 			page({
-				title: `Ch. ${c.n}: ${c.title}`,
-				description: `Chapter ${c.n} of the Aequor origin myth: ${c.title}.`,
+				title: c.isPrologue ? "Prologue" : `Ch. ${c.n}: ${c.title}`,
+				description: c.isPrologue
+					? "Prologue to the Aequor origin myth."
+					: `Chapter ${c.n} of the Aequor origin myth: ${c.title}.`,
 				content: chapterContent,
 				bodyClass: "page--story page--story-chapter",
 				url: c.url,
 				nav: storyNav(c.url),
 			})
 		);
-	}
+	});
 }
 
 main();

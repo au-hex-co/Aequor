@@ -12,6 +12,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;1,9..144,500&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../assets/css/site.css">
+<link rel="preload" id="searchIndexLink" href="../data/search-index.json" as="fetch" crossorigin="anonymous">
 <meta name="color-scheme" content="dark light">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Aequor Codex">
@@ -37,6 +38,10 @@
 				<span class="brand__mark" aria-hidden="true">&#9670;</span>
 				<span class="brand__text">Aequor <em>Codex</em></span>
 			</a>
+			<div class="site-search" id="siteSearch" role="search">
+				<input type="search" id="siteSearchInput" class="site-search__input" placeholder="Search the vault…" aria-label="Search the vault" autocomplete="off" spellcheck="false">
+				<ul class="site-search__results" id="siteSearchResults" hidden></ul>
+			</div>
 			<button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="siteNav">
 				<span></span><span></span><span></span>
 				<span class="sr-only">Menu</span>
@@ -73,28 +78,21 @@
 			<h3 class="card__title">The Protagonist</h3>
 			<p class="card__excerpt">The player character's identity is not fixed at the start; it is earned, and lost, across three names. See…</p>
 			
-		</a>
-
-		<a class="card" href="../characters/index.html">
-			<span class="card__kicker">Character</span>
-			<h3 class="card__title">Characters (In-Game)</h3>
-			<p class="card__excerpt">Player-facing character material — how these figures show up in an actual run, as distinct from their mythic…</p>
-			
 		</a></div></section>
 	<section class="section-block">
 		<h2>Lore Chronicle</h2>
 		<div class="card-grid">
+		<a class="card" href="../characters/lore/epilouge.html">
+			<span class="card__kicker">Fragment</span>
+			<h3 class="card__title">Epilouge</h3>
+			<p class="card__excerpt">Nexus lay on the ground, his whole body hurting, but the pain didn't feel bad to him. Finally rid of that…</p>
+			
+		</a>
+
 		<a class="card" href="../characters/lore/lore-in-order.html">
 			<span class="card__kicker">Reading order</span>
 			<h3 class="card__title">Lore in Order</h3>
 			<p class="card__excerpt">The canonical, chronological telling of the origin myth: the creation of Primum, the making of Vesta, the…</p>
-			
-		</a>
-
-		<a class="card" href="../characters/lore/index.html">
-			<span class="card__kicker">Fragment</span>
-			<h3 class="card__title">Lore</h3>
-			<p class="card__excerpt">Lore in order — the canonical, chronological telling of the origin myth (creation of Primum, the making of…</p>
 			
 		</a></div>
 	</section>
@@ -106,6 +104,7 @@
 			<p class="site-footer__meta">Source vault lives in this repository under <code>wiki/</code>. Built with a zero-dependency static generator in <code>site/</code>.</p>
 		</div>
 	</footer>
+<script src="../assets/js/search.js" defer></script>
 <script src="../assets/js/site.js" defer></script>
 
 </body>

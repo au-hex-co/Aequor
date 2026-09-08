@@ -12,6 +12,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;1,9..144,500&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../assets/css/site.css">
+<link rel="preload" id="searchIndexLink" href="../data/search-index.json" as="fetch" crossorigin="anonymous">
 <meta name="color-scheme" content="dark light">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Aequor Codex">
@@ -37,6 +38,10 @@
 				<span class="brand__mark" aria-hidden="true">&#9670;</span>
 				<span class="brand__text">Aequor <em>Codex</em></span>
 			</a>
+			<div class="site-search" id="siteSearch" role="search">
+				<input type="search" id="siteSearchInput" class="site-search__input" placeholder="Search the vault…" aria-label="Search the vault" autocomplete="off" spellcheck="false">
+				<ul class="site-search__results" id="siteSearchResults" hidden></ul>
+			</div>
 			<button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="siteNav">
 				<span></span><span></span><span></span>
 				<span class="sr-only">Menu</span>
@@ -61,6 +66,20 @@
 			
 		</a>
 
+		<a class="card" href="../concepts/nexum-plan.html">
+			<span class="card__kicker">concept</span>
+			<h3 class="card__title">Nexum plan</h3>
+			<p class="card__excerpt">A working record of the full reasoning trail behind Nexum , the Malum, and the death of Nexus — everything discussed across this…</p>
+			
+		</a>
+
+		<a class="card" href="../concepts/nexum.html">
+			<span class="card__kicker">concept</span>
+			<h3 class="card__title">Nexum</h3>
+			<p class="card__excerpt">Type: Ambient law / bond-magic, settled over the world at the Malum Origin: The residue of the oath Tellus broke against a…</p>
+			
+		</a>
+
 		<a class="card" href="../concepts/relics.html">
 			<span class="card__kicker">concept</span>
 			<h3 class="card__title">Relics</h3>
@@ -68,17 +87,17 @@
 			
 		</a>
 
+		<a class="card" href="../concepts/river-of-knowledge.html">
+			<span class="card__kicker">concept</span>
+			<h3 class="card__title">River of Knowledge</h3>
+			<p class="card__excerpt">Type: In-universe concept — not physical, not a place or object; made of information itself. No game mechanic attached (unlike…</p>
+			
+		</a>
+
 		<a class="card" href="../concepts/sacrarium.html">
 			<span class="card__kicker">concept</span>
 			<h3 class="card__title">Sacrarium</h3>
 			<p class="card__excerpt">Type: Inherited trait / bodily gift, carried by all fertile women descended from Vesta Origin: Given by Tellus and Aequor (the…</p>
-			
-		</a>
-
-		<a class="card" href="../concepts/index.html">
-			<span class="card__kicker">meta</span>
-			<h3 class="card__title">Concepts</h3>
-			<p class="card__excerpt">Design-mechanical ideas — where mythology becomes a system. Relics — the design philosophy: mythology made mechanical Nectaris —…</p>
 			
 		</a></div></section>
 </main>
@@ -89,6 +108,7 @@
 			<p class="site-footer__meta">Source vault lives in this repository under <code>wiki/</code>. Built with a zero-dependency static generator in <code>site/</code>.</p>
 		</div>
 	</footer>
+<script src="../assets/js/search.js" defer></script>
 <script src="../assets/js/site.js" defer></script>
 
 </body>

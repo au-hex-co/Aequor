@@ -12,6 +12,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;1,9..144,500&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../assets/css/site.css">
+<link rel="preload" id="searchIndexLink" href="../data/search-index.json" as="fetch" crossorigin="anonymous">
 <meta name="color-scheme" content="dark light">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Aequor Codex">
@@ -37,6 +38,10 @@
 				<span class="brand__mark" aria-hidden="true">&#9670;</span>
 				<span class="brand__text">Aequor <em>Codex</em></span>
 			</a>
+			<div class="site-search" id="siteSearch" role="search">
+				<input type="search" id="siteSearchInput" class="site-search__input" placeholder="Search the vault…" aria-label="Search the vault" autocomplete="off" spellcheck="false">
+				<ul class="site-search__results" id="siteSearchResults" hidden></ul>
+			</div>
 			<button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="siteNav">
 				<span></span><span></span><span></span>
 				<span class="sr-only">Menu</span>
@@ -55,72 +60,71 @@
 	</div>
 	<section class="section-block">
 		<h2>The Pantheon</h2>
-		<div class="card-grid"></div>
-	</section>
-	<section class="section-block"><h2>Peoples &amp; Places</h2><div class="card-grid">
+		<div class="card-grid">
 		<a class="card" href="../world/aequor.html">
-			<span class="card__kicker">World</span>
+			<span class="card__kicker">Deity</span>
 			<h3 class="card__title">Aequor (deity)</h3>
 			<p class="card__excerpt">One of the three first beings, dragon of the ocean. Along with Tellus and Anima , Aequor helped create Primum…</p>
-			<span class="card__badge">stub</span>
+			
 		</a>
 
 		<a class="card" href="../world/anima.html">
-			<span class="card__kicker">World</span>
+			<span class="card__kicker">Deity</span>
 			<h3 class="card__title">Anima</h3>
 			<p class="card__excerpt">One of the three first beings, dragon of the wind. Along with Tellus and Aequor , Anima helped create Primum…</p>
+			
+		</a>
+
+		<a class="card" href="../world/corvinus.html">
+			<span class="card__kicker">Deity</span>
+			<h3 class="card__title">Corvinus</h3>
+			<p class="card__excerpt">A distant descendant of Nexus — by the time of Nexus's death, the Fae King's own children have long since…</p>
 			<span class="card__badge">stub</span>
 		</a>
 
 		<a class="card" href="../world/ferus.html">
-			<span class="card__kicker">World</span>
+			<span class="card__kicker">Deity</span>
 			<h3 class="card__title">Ferus</h3>
 			<p class="card__excerpt">The firstborn child of Primum , made on instinct alone before agency was understood. Ferus was never counted…</p>
 			<span class="card__badge">stub</span>
 		</a>
 
 		<a class="card" href="../world/nexus.html">
-			<span class="card__kicker">World</span>
+			<span class="card__kicker">Deity</span>
 			<h3 class="card__title">Nexus</h3>
 			<p class="card__excerpt">Second child of Vesta and Primum , younger brother of Silvia by five years. Born with deep teal eyes — the…</p>
-			<span class="card__badge">stub</span>
+			
 		</a>
 
 		<a class="card" href="../world/primum.html">
-			<span class="card__kicker">World</span>
+			<span class="card__kicker">Deity</span>
 			<h3 class="card__title">Primum</h3>
 			<p class="card__excerpt">The first man, made by Tellus , Aequor , and Anima out of boredom with their own creation. Given three gifts…</p>
 			
 		</a>
 
 		<a class="card" href="../world/silvia.html">
-			<span class="card__kicker">World</span>
+			<span class="card__kicker">Deity</span>
 			<h3 class="card__title">Silvia</h3>
 			<p class="card__excerpt">Type: First daughter of Vesta and Primum , founder of the wildwood line Domain: The wildwood, kinship with…</p>
 			
 		</a>
 
 		<a class="card" href="../world/tellus.html">
-			<span class="card__kicker">World</span>
+			<span class="card__kicker">Deity</span>
 			<h3 class="card__title">Tellus</h3>
 			<p class="card__excerpt">One of the three first beings, dragon of the earth. Along with Anima and Aequor , Tellus helped create Primum…</p>
 			
 		</a>
 
 		<a class="card" href="../world/vesta.html">
-			<span class="card__kicker">World</span>
+			<span class="card__kicker">Deity</span>
 			<h3 class="card__title">Vesta</h3>
 			<p class="card__excerpt">Overview Vesta is the second human, and the first woman, shaped upon Terra. Where Primum was formed whole…</p>
 			
-		</a>
-
-		<a class="card" href="../world/index.html">
-			<span class="card__kicker">World</span>
-			<h3 class="card__title">Characters (Lore)</h3>
-			<p class="card__excerpt">The mythic figures behind the game's in-game character entities. See Characters for the in-game side (e.g.…</p>
-			
-		</a>
-
+		</a></div>
+	</section>
+	<section class="section-block"><h2>Peoples &amp; Places</h2><div class="card-grid">
 		<a class="card" href="../world/cosmology.html">
 			<span class="card__kicker">World</span>
 			<h3 class="card__title">Cosmology</h3>
@@ -133,13 +137,6 @@
 			<h3 class="card__title">The clans</h3>
 			<p class="card__excerpt">An Excalidraw diagram, rendered below.</p>
 			
-		</a>
-
-		<a class="card" href="../world/index.html">
-			<span class="card__kicker">World</span>
-			<h3 class="card__title">World (Lore)</h3>
-			<p class="card__excerpt">Mythology and world lore — the deities and figures behind the game's in-game character entities. See…</p>
-			
 		</a></div></section>
 </main>
 
@@ -149,6 +146,7 @@
 			<p class="site-footer__meta">Source vault lives in this repository under <code>wiki/</code>. Built with a zero-dependency static generator in <code>site/</code>.</p>
 		</div>
 	</footer>
+<script src="../assets/js/search.js" defer></script>
 <script src="../assets/js/site.js" defer></script>
 
 </body>

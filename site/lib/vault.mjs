@@ -21,13 +21,13 @@ function walk(dir) {
 }
 
 // Maps a wiki-relative path to where the page lives on the published site.
-// The vault's folder names are its own working structure (a typo'd
-// "Charaters" subfolder, a stray "Lore" grouping); the site route is
+// The vault's folder names are its own working structure (a "Characters"
+// subfolder nested under world/, a stray "Lore" grouping); the site route is
 // deliberately flatter and doesn't need to mirror it exactly.
 function routeFor(section, rest, filenameNoExt) {
 	const slug = slugify(filenameNoExt);
 
-	if (section === "world" && rest[0] === "Charaters") return { url: `/world/${slug}.html`, group: "pantheon" };
+	if (section === "world" && rest[0] === "Characters") return { url: `/world/${slug}.html`, group: "pantheon" };
 	if (section === "world") return { url: `/world/${slug}.html`, group: "world" };
 
 	if (section === "characters" && rest[0] === "Lore") return { url: `/characters/lore/${slug}.html`, group: "lore" };

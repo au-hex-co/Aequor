@@ -42,6 +42,10 @@ function navHtml(activeKey) {
 				<span class="brand__mark" aria-hidden="true">&#9670;</span>
 				<span class="brand__text">Aequor <em>Codex</em></span>
 			</a>
+			<div class="site-search" id="siteSearch" role="search">
+				<input type="search" id="siteSearchInput" class="site-search__input" placeholder="Search the vault…" aria-label="Search the vault" autocomplete="off" spellcheck="false">
+				<ul class="site-search__results" id="siteSearchResults" hidden></ul>
+			</div>
 			<button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="siteNav">
 				<span></span><span></span><span></span>
 				<span class="sr-only">Menu</span>
@@ -185,6 +189,7 @@ ${noindex ? '<meta name="robots" content="noindex, follow">' : ""}
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;1,9..144,500&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/assets/css/site.css">
+<link rel="preload" id="searchIndexLink" href="/data/search-index.json" as="fetch" crossorigin="anonymous">
 <meta name="color-scheme" content="dark light">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="${SITE_NAME}">
@@ -208,6 +213,7 @@ ${nav !== undefined ? nav : navHtml(section)}
 ${content}
 </main>
 ${footerHtml()}
+<script src="/assets/js/search.js" defer></script>
 <script src="/assets/js/site.js" defer></script>
 ${bodyClass.includes("page--map") ? '<script src="/assets/js/map3d-viewer.js" defer></script><script src="/assets/js/map-viewer.js" defer></script>' : ""}
 </body>
