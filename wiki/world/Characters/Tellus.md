@@ -10,6 +10,8 @@ updated: 2026-09-08
 
 One of the three first beings, dragon of the earth. Along with [[Anima]] and [[Aequor|Aequor]], Tellus helped create [[Primum]], the first man, and gave him the gift of **duty**. His Ichor — his own magic, not his blood — runs **silver**, the color [[Nexum]] draws from him; see [[Nexum]] for how it combines with [[Anima]]'s gold once both are loosed together.
 
+His domain, Fate, is the direct antithesis of [[Aequor]]'s History (see [[River of Knowledge]]) — a closed, predetermined script rather than a still-growing record. The force behind it is [[Chains of Fate]] (*Sors Fortuna*), imaged through a wheel, a scale, and chains: a fixed cyclical path, a verdict already weighed, and the literal restraint of the body.
+
 ## Fate
 
 Tellus was betrayed by the very humanity he gave duty to — the event known as **the Malum**, so total it splits the entire calendar into Before Malum (BM) and After Malum (AM). See [[Timeline of the Aetas]].
@@ -38,4 +40,6 @@ His mountains are said to be the by-product of 108 years of divine boredom — "
 - [[Nectaris]]
 - [[Nexus]]
 - [[Nexum]]
+- [[Chains of Fate]]
+- [[River of Knowledge]]
 - [[Timeline of the Aetas]]

@@ -19,6 +19,7 @@ The mythic figures behind the game's in-game character entities. See [[wiki/char
 - [[Ferus]] — firstborn, made before agency was understood
 - [[Silvia]] — first daughter born with the Sacrarium, founder of House Silvanus
 - [[Nexus]] — Silvia's younger brother, the first Fae King
+- [[Levinus]] — elf, Silvia's mate, given wisdom by Aequor and duty by Tellus
 
 ## The Fae
 - [[Corvinus]] — Nexus's distant descendant, the second Fae King

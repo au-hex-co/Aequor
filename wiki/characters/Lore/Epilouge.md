@@ -24,7 +24,7 @@ Corvinus who didn't know how to feel fell to his knees, his tears streaming down
 "I swear... I swear to be a better king than Nexus."  Corvinus reluctantly said.
 The second the words left his mouth the air seemed to thicken. The blood that was pooling on the ground seemed to rise forming chains.
 
-Entranced watching the golden blood rise Corvinus didn't move as the golden chains wrapped around his neck. The whole castle was filled with a lustrous silver light as Nexus said, "Little raven, we are all bound by duty, we all cannot escape fate. Yours is to lead your people. Now go, they need you, they need your protection, your reassurance."
+Entranced watching the golden blood rise Corvinus didn't move as the silver chains wrapped around his neck. The whole castle was filled with a lustrous silver light as Nexus said, "Little raven, we are all bound by duty, we all cannot escape fate. Yours is to lead your people. Now go, they need you, they need your protection, your reassurance."
 
 Corvinus hesitated unwilling to leave his king... no father behind, but his oath pulled at him, he felt an urge to run away. The more he tried to fight it the more it fought back.
 

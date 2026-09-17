@@ -14,3 +14,6 @@ Design-mechanical ideas — where mythology becomes a system.
 - [[Nexum]] — the law of binding oaths, loosed on the world the moment Nexus dies and the Tellus fused inside him is set free
 - [[Nexum plan]] — session working notes: the full reasoning trail behind Nexum's origin, mechanics, and the death of Nexus
 - [[River of Knowledge]] — Aequor's Ichor, the formless in-universe force behind his domain of History; growing-block time, the Three Domains, and the manuscript's `~` marker
+- [[Chains of Fate]] — Tellus's Sors Fortuna, the closed-script antithesis of the River of Knowledge; imaged through a wheel, a scale, and chains
+- [[Compass of Agency]] — Anima's Liberum Arbitrium, the choosing instant between History and Fate; imaged through a compass, a key, and a quill
+- [[The Narrator]] — the prologue's "I," a reader living inside the story who can't interfere with it or reveal himself to its people, but can speak straight to the player

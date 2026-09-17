@@ -12,7 +12,7 @@ sources: ["[[Cosmology]]"]
 **Type:** In-universe concept — not physical, not a place or object; made of information itself. No game mechanic attached (unlike [[Nectaris]], [[Sacrarium]], [[Nexum]])
 **Origin:** Predates and exceeds the Three — the wellspring [[Aequor]]'s domain draws from, rather than Aequor himself
 **Domain:** History — what has become, and the still-open frontier of what is becoming
-**Also known as:** Aequor's Ichor (the in-world name doubling as the working title for this vault's knowledge base)
+**Also known as:** Fons Omnisciens ("the All-Knowing Source," Latin — a name for the force itself); Aequor's Ichor (the in-world name doubling as the working title for this vault's knowledge base)
 
 ## Description
 
@@ -62,9 +62,14 @@ A narration convention tied directly to this force. `~` is reserved for two spec
 1. **A genuine POV shift** to a different character's focus — e.g. *the lens focused on ~Nexus*.
 2. **A time-skip**, phrased through water/river imagery rather than stated outright as a mechanic — e.g. *the lens flowed down the river 1000 years*.
 
+A bare `~`, with no "lens focused on" phrasing, marks the one POV shift with no name to give it: [[The Narrator]]'s "I" dropping into the Book's own formless voice at the start of the prologue. Named shifts get named; this one doesn't, because its target isn't a character.
+
 The glyph is meant to be learned by the reader through repetition across the manuscript, not explained on the page.
 
 ## Notes
+
+- Fate, [[Tellus]]'s domain, carries the direct antithesis of this force: [[Chains of Fate]] (*Sors Fortuna*), imaged through a wheel, a scale, and chains rather than a river, a book, or a telescope.
+- [[The Narrator]] opens this force literally as a bound book in the prologue — wrapped in [[Chains of Fate]]'s silver chains, a gold feather ([[Compass of Agency]]'s quill) nestled inside. All three domains appear as one object in his hands before the lens drops into the Book's own voice.
 
 - Resolves a stale gap note in [[Cosmology]] and [[Aequor]], which had marked Aequor's gift to Primum as merely "inferred" wisdom. [[Lore in order]], Chapter 4, actually states it outright — "Aequor, brother of wisdom, filled Primum with wisdom and resolve" — so the gift itself was never in question, only its underlying domain was. History is that domain: wisdom is what History looks like when handed to a mortal, with real structural consequences behind it (growing-block time, the antithesis to Fate, the dependency Agency has on it).
 - The prologue's refusal to settle on one metaphor (river / book / telescope) is intentional and should stay unresolved on the page.
@@ -74,4 +79,5 @@ The glyph is meant to be learned by the reader through repetition across the man
 - [[Cosmology]]
 - [[Sacrarium]]
 - [[Nexum]]
+- [[Chains of Fate]]
 - [[Lore in order]]

@@ -15,14 +15,20 @@ Each god paid a gift into Primum in a currency that was not his to spend:
 
 | God | Gift to Primum | Price paid |
 |---|---|---|
-| [[Tellus]] | Duty | Betrayed by his own broken oath to [[Nexus]]; finally killed by [[Aequor]] at the Malum — see below |
+| [[Tellus]] | Duty, drawn from his domain of Fate (see [[Chains of Fate]]) | Betrayed by his own broken oath to [[Nexus]]; finally killed by [[Aequor]] at the Malum — see below |
 | [[Aequor]] | Wisdom, drawn from his domain of History (see [[River of Knowledge]]) | Not stated in the source pitch |
-| [[Anima]] | Agency | His own heart, torn out so agency could pass beyond a single creation |
+| [[Anima]] | Agency, drawn from his domain (see [[Compass of Agency]]) | His own heart, torn out so agency could pass beyond a single creation |
 
 Primum's descendants scattered into clans, each shaped by a piece of that original bargain — see [[The clans]]. [[Ferus]], the firstborn, was made on instinct alone before agency was understood, and was never counted among the true children — a wound the family carries into its own naming conventions generations later.
 
 > [!key-insight] Ichor vs. blood
 > **Ichor** is a god's own magic — the domain itself, colored per god — not a bodily fluid. [[Anima]]'s is gold ([[Sacrarium]]); [[Tellus]]'s is silver ([[Nexum]]); [[Aequor]]'s is teal. **Blood** is ordinary life-force, a separate thing entirely, not fixed to any of these colors — when a scene shows divine blood running one of these colors, it means that god's Ichor is actively present or winning, not that blood is inherently that color.
+
+## A fourth domain, outside the Three
+
+[[The Narrator]] names a fourth domain — **Identity** — but it isn't a fourth god's domain sitting beside History, Fate, and Agency in their triangle. The other three are lore: made and sourced inside the story, one per god. Identity is a different tier entirely — the medium itself, sourced from whoever is actually consuming the story, not from Tellus, Aequor, or Anima.
+
+That domain flexes with the medium it's read through. When the medium is a book, its holder can only read — barred from the story the same way [[Chains of Fate]] forecloses a script already written. When the medium is a game, its holder can act — closer to [[Compass of Agency]], but acting on the story from outside it, not choosing as a character inside it. This is why the equally-strong triangle above isn't disturbed by a fourth member: Identity doesn't compete with History, Fate, or Agency for a seat in it. It's the frame the triangle sits inside.
 
 ## The gods did not survive their own myth
 
@@ -43,5 +49,7 @@ The current era has no name yet. It is still being written, by whoever the playe
 - [[Nexum]]
 - [[Sacrarium]]
 - [[River of Knowledge]]
+- [[Compass of Agency]]
+- [[The Narrator]]
 - [[The Protagonist]]
 - [[The clans]]
