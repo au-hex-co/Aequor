@@ -52,7 +52,7 @@ Then the tree around the house gently shook as they welcomed her.
 
 ~ The Lens focused on Silvia ~
 
-[[Silvia]] stood on the porch of her wood hut. She had just recently turned five, and her younger brother [[Nexus]] was born today, but she wasn't allowed to watch. She was told to stand guard on the porch, so she did. She puffed her chest out and stared at the trees and bushes, daring anyone to jump out. 
+[[Silvia]] stood on the porch of her wood hut. She had just recently turned eight, and her younger brother [[Nexus]] was born today, but she wasn't allowed to watch. She was told to stand guard on the porch, so she did. She puffed her chest out and stared at the trees and bushes, daring anyone to jump out. 
 
 Usually she wasn't allowed to leave the house without one of her parents; her father always went out, one hand trailing loose against every stalk and low branch he passed, without ever seeming to notice he was doing it, and her mother preferred to stay home and take care of the house, singing the same wandering, wordless tune she always did while she worked. 
 
@@ -222,7 +222,7 @@ When [[Aequor]] finished the story, he looked at the two children, who stared ba
 
 Week by week, little [[Silvia]] visited [[Aequor]], never missing a single one. For who would miss a visit from a dragon of creation?
 
-The first week she went, [[Aequor]] didn't do any training, but rather set up some ground rules. "I will only train you after you turn 7, and my stories will be earned, not given: prove yourself through combat."
+The first week she went, [[Aequor]] didn't do any training, but rather set up some ground rules. "I will only train you after you turn eleven, and my stories will be earned, not given: prove yourself through combat."
 
 [[Silvia]], confused, asked, "[[Aequor]], if I don't train, how can I hear your story?"
 
@@ -300,11 +300,35 @@ Though the elves could speak they were missing something so **H**e chucked them 
 Apparently [[Aequor]] had brought [[Silvia]] here to rest after she...
 After she what? she couldn't remember. 
 
+"Just rest now dear." Serena told her
+
+"I feel fine. See!" Silvia said jumping up on the bed. Though Silvia had been through a lot, her anguish was mental and didn't affect her ability to move around.
+
+When she finally looked at Serena, she saw a pretty, young, and tidy woman, though she looked younger while Silvia was laying down now she realized that Serena was old, older than her parents!
+
+[[Silvia]] just stood on the bed talking everything in, Serena stood with a tree-bark sash around her hips which then extended into leaves to form a skirt, with a similar setup as a shirt she also wore a golden circlet.
+
+The room they were in was barely furnished, but as [[Silvia]] studied the walls she realized it wasn't wood like her father had, it was ALIVE, they were in a tree.
+
+~ The lens focused on Nexus ~
+
+Nexus lay on the floor, in front of him a white haze, he did not know what was going on but he didn't have to. Every time he saw his parents they had a concerned look on their faces.
+
+"I don't where she is Vesta! Ill have to ask the brothers." his father yelled back at his mother. 
+
+He didn't like watching his mother cry. So as he lay he felt restless, he tried to reach out and see past the haze but to no avail.
+
+Slowly he saw his mothers black and white face tear through the haze and approach him and pick him up. He felt at home.
+
+
+
+
 
 
 ---
 
-### Chapter Unknown: Maiden of the Fog
+### Chapter 5: Maiden of the Fog
+~ The lens unfocused ~
 
 [[Primum]], though he had agency, had no knowledge and did not know how to move his own body. This disappointed the Three. So [[Aequor]], brother of wisdom, filled [[Primum]] with wisdom and resolve, and decreed it so: the older [[Primum]] and his children grew, the wiser and steadfast they would become. Then [[Tellus]], brother of the land, laid a hand on [[Primum]]'s chest and gave him duty, and with duty, gave fate a shape to his life that was owed to something beyond himself.
 
@@ -312,7 +336,7 @@ Now able to move and talk, [[Primum]] looked at the brothers, his creators, and 
 
 This same question had already been asked by the snake, the first creation. The Three looked at each other, clueless. For what purpose did they make [[Primum]]? What was his job?
 
-Finally, [[Tellus]] spoke, loud and clear, "[[Primum]], you were made to entertain and keep us company on this lush planet."
+Finally, [[Tellus]] spoke, loud, and clear, "[[Primum]], you were made to entertain and keep us company on this lush planet."
 
 [[Primum]] seemed to brighten. He had a tangible purpose, but he still seemed a little sad, so [[Anima]] asked, "[[Primum]], what makes you so sad? Surely freedom is worth more than the shackles of duty? You do not have to fulfill your purpose, you are free!"
 
