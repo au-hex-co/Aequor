@@ -46,15 +46,17 @@ PAGES_PER_SIDE   = 28      # sheets in each half of the book (more = finer, but 
 PAGE_THICKNESS   = 0.0004  # thickness of one sheet of paper (must be less than PAGE_HALF / PAGES_PER_SIDE)
 PAGE_ARCH_HEIGHT = 0.009   # how high the top sheets bow up when the book is open (metres)
 PAGE_ARCH_POS    = 0.030   # distance from the centre fold where the bow is highest (metres)
-PAGE_RISE_WIDTH  = 0.030   # how far from the fold a sheet takes to climb up to its place in the stack
+PAGE_RISE_WIDTH  = 0.012   # how far from the fold a sheet takes to climb up to its place in the stack (smaller = steeper V)
+GUTTER_ROUND     = 0.004   # roundness of the bottom of the V where the pages drop into the spine fold
+GUTTER_STACK     = 0.003   # thickness of the squeezed page block at the very bottom of the fold
 PAGE_RIPPLE      = 0.0025  # waviness of the sheets: strongest at the fore-edge of the top sheets, none at the binding (metres; 0 = flat)
 TEXT_ON          = True    # lines of printed text on the pages
 BACK_FAN         = 0.1     # how far the lower sheets are spread outward at the fold (0 = none, 1 = lots)
-STACK_OFFSET     = 0.010   # gap (each side) between the centre fold and where the pages start; the cloth bridges it
+STACK_OFFSET     = 0.0008  # gap (each side) between the centre fold and where the pages start (small = pages meet in the fold)
 
 # --- Cloth hinge in the centre fold ---
-FABRIC_ON     = True     # cloth strip joining the two page stacks
-FABRIC_W      = 0.03     # how far the cloth reaches onto each page (metres)
+FABRIC_ON     = True     # cloth strip lining the fold, joining the two page stacks to the spine
+FABRIC_W      = 0.014    # how far the cloth reaches up each side of the fold (metres)
 FABRIC_COLOR  = (0.50, 0.42, 0.29, 1)   # cloth colour
 
 # --- Title plate on the front cover ---
@@ -297,10 +299,12 @@ def sheet_height(x, t):
     """Height above the floor of an OPEN sheet at distance x from the centre fold.
     t = 0 for the sheet resting on the cover ... 1 for the sheet in the middle of the book."""
     xa = STACK_OFFSET + BACK_FAN * H2 * (1 - t)            # where this sheet is attached (lower = further out)
-    r = smoothstep((x - xa) / PAGE_RISE_WIDTH)             # climbs from the floor to its place in the stack
+    d = max(0.0, x - xa)
+    # climbs steeply out of the gutter with a rounded bottom, like pages dropping into the spine fold
+    r = 1 - math.exp(-(math.hypot(d, GUTTER_ROUND) - GUTTER_ROUND) / PAGE_RISE_WIDTH)
     c = PAGE_ARCH_POS
     hump = (x / c) * math.exp(1 - x / c)                   # rises quickly, peaks at x = c, then eases away
-    return CT + r * (t * H2 + PAGE_ARCH_HEIGHT * t ** 1.5 * hump)
+    return CT + t * GUTTER_STACK + r * (t * (H2 - GUTTER_STACK) + PAGE_ARCH_HEIGHT * t ** 1.5 * hump)
 
 
 def sheet_path(t, length):
@@ -334,7 +338,7 @@ def sheet_point(path, s, zfun):
     return x, zfun(x)
 
 
-RIPPLE_START = STACK_OFFSET + FABRIC_W      # no waves under the cloth hinge
+RIPPLE_START = STACK_OFFSET + (FABRIC_W if FABRIC_ON else 0.012)   # no waves in the fold (or under the cloth hinge)
 RIPPLE_RAMP = BOOK_W - RIPPLE_START         # waves grow gradually all the way out to the fore-edge
 
 
@@ -400,7 +404,7 @@ def make_sheet(name, mirror, idx, coll, nseg=64, nsegy=48):
 
 def fabric_z(x):
     """The cloth lies flat on the spine across the gap, then follows the top sheet."""
-    return CT + 0.0002 if x < STACK_OFFSET else sheet_height(x, 1.0) + 0.0002
+    return sheet_height(max(x, STACK_OFFSET), 1.0) + 0.0002
 
 
 def fabric_path(length):
@@ -805,7 +809,7 @@ for i in range(N):
         shape_keys.append(sk)
 
 # --- cloth hinge strip lying on the middle sheets next to the centre fold
-fabric_l = None
+fabric_l = fabric_r = None
 if FABRIC_ON:
     mat_fabric = make_fabric_mat()
     for nm, mirror in (("Fabric_R", False), ("Fabric_L", True)):
@@ -825,6 +829,8 @@ if FABRIC_ON:
         fab.data.materials.append(mat_fabric)
         if mirror:
             fabric_l = fab
+        else:
+            fabric_r = fab
 
 # --- the back cover (fixed) and the HARD spine
 back = make_box("BackCover", (0, -OVERHANG, 0), (COV_W, BOOK_H + OVERHANG, CT), coll)
@@ -850,6 +856,26 @@ for i in range(BAND_COUNT):
     smooth_and_bevel(b, 0.0008, 2)
     b.data.materials.append(mat_leather_spine)
     bands.append(b)
+
+# --- cloth lining over the inside face of the spine (like the cloth glued inside a real case).
+# It rides on the spine, so the cloth fills the fold at every stage of opening.
+liner = None
+if FABRIC_ON:
+    lx = CT / 2 + 0.0002                                           # just in front of the spine's inner face
+    lz0, lz1 = spine_z0 - P1.z, spine_z1 - P1.z
+    lme = bpy.data.meshes.new("SpineLiner")
+    lme.from_pydata([(lx, 0, lz0), (lx, BOOK_H, lz0), (lx, BOOK_H, lz1), (lx, 0, lz1)], [], [(0, 1, 2, 3)])
+    lme.update()
+    luv = lme.uv_layers.new(name="UVMap")
+    for li, uv in zip(lme.polygons[0].loop_indices, ((0, 0), (0, 1), (1, 1), (1, 0))):
+        luv.data[li].uv = uv
+    liner = bpy.data.objects.new("SpineLiner", lme)
+    liner.location = P1
+    coll.objects.link(liner)
+    sol = liner.modifiers.new("Thickness", 'SOLIDIFY')
+    sol.thickness = 0.0003
+    sol.offset = -1
+    liner.data.materials.append(mat_fabric)
 
 # --- the front cover. It turns around the hinge line P2 where it meets the spine.
 P2 = Vector((-RJ, 0, TOTAL_T - CT / 2))
@@ -979,7 +1005,7 @@ def adopt(child, parent):
     child.matrix_parent_inverse = parent.matrix_world.inverted()
 
 
-for b in bands:                       # bands and the spine's anchors ride on the hard spine
+for b in bands + ([liner] if liner is not None else []):   # bands, cloth lining and the spine's anchors ride on the hard spine
     adopt(b, spine)
 for e in (anc_B, anc_Bh, anc_C, anc_Ch):
     adopt(e, spine)
@@ -993,9 +1019,12 @@ for sh in sheets_l:
     adopt(sh, pages_left)
 for sh in sheets_r:
     adopt(sh, pages_right)
-for child in (fabric_l, plate, stitches):
+for child in (plate, stitches):
     if child is not None:
         adopt(child, front)
+if fabric_l is not None:              # each cloth strip rides with its own page stack
+    adopt(fabric_l, pages_left)
+    adopt(fabric_r, pages_right)
 
 # Both hinges turn the same amount: 90 degrees (negative = lifts UP and over).
 spine.rotation_mode = 'XYZ'
@@ -1005,6 +1034,63 @@ add_driver(front, "rotation_euler", 1, "-1.5707963*o", ctl)
 # Every sheet (and the cloth) curves open together with the covers.
 for sk in shape_keys:
     add_driver(sk, "value", -1, "o", ctl)
+
+# --- Keep the page block glued to the spine while the book opens.
+# The two top sheets (the two faces of one real leaf) must always meet at the middle of the spine's inner
+# face, which swings round with the spine. We measure how far each stack's top sheet is from that point
+# at a series of openings, and let each stack slide by exactly that much (a lookup curve driven by "open").
+def add_lookup_driver(owner, prop, index, samples, ctl):
+    """Make owner.prop = a curve through (open, value) samples, so any 'open' value gives the right offset."""
+    fc = owner.driver_add(prop, index)
+    for m in list(fc.modifiers):
+        fc.modifiers.remove(m)
+    d = fc.driver
+    d.type = 'SUM'
+    v = d.variables.new()
+    v.name = "o"
+    v.type = 'SINGLE_PROP'
+    v.targets[0].id = ctl
+    v.targets[0].data_path = '["open"]'
+    for o_i, val in samples:
+        kp = fc.keyframe_points.insert(o_i, val, options={'FAST'})
+        kp.interpolation = 'LINEAR'
+    fc.update()
+
+
+def fold_slide_samples(steps=40):
+    r_top, l_top = sheets_r[-1], sheets_l[0]               # the two sheets that face each other in the middle
+    mid_local = Vector((CT / 2, 0.0, MID - P1.z))          # middle of the spine's inner face (spine space)
+    rows = []
+    for k in range(steps + 1):
+        o = k / steps
+        ctl["open"] = o
+        bpy.context.view_layer.update()
+        dg = bpy.context.evaluated_depsgraph_get()
+        target = spine.evaluated_get(dg).matrix_world @ mid_local
+        pts = []
+        for sh in (r_top, l_top):
+            ev = sh.evaluated_get(dg)
+            me_ev = ev.to_mesh()
+            pts.append(ev.matrix_world @ me_ev.vertices[0].co)   # the bound edge of the sheet
+            ev.to_mesh_clear()
+        rows.append((o, target - pts[0], target - pts[1], front.evaluated_get(dg).matrix_world.to_3x3().inverted()))
+    d0, d1 = rows[0], rows[-1]
+    out_r, out_l = [], []
+    for o, dr, dl, rot_inv in rows:
+        # fade the correction to zero at fully closed and fully open, so those two poses are exactly as designed
+        dr = dr - (1 - o) * d0[1] - o * d1[1]
+        dl = dl - (1 - o) * d0[2] - o * d1[2]
+        out_r.append((o, dr))
+        out_l.append((o, rot_inv @ dl))                    # the left stack lives in the front cover's turned frame
+    return out_r, out_l
+
+
+slide_r, slide_l = fold_slide_samples()
+for owner, table in ((pages_right, slide_r), (pages_left, slide_l)):
+    for axis in (0, 1, 2):
+        add_lookup_driver(owner, "location", axis, [(o, v[axis]) for o, v in table], ctl)
+ctl["open"] = 0.0
+bpy.context.view_layer.update()
 
 # Joint curves: their end points follow the anchors.
 jb0.co = (A[0], A[1], 0.0)
