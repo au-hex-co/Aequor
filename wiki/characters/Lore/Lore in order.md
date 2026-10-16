@@ -12,6 +12,7 @@ sources: ["[[merchant-of-fate-pitch]]"]
 The canonical, chronological telling of the origin myth: the creation of Primum, the making of Vesta, the birth of Ferus and Silvia, and the founding of the Sacrarium. This supersedes earlier draft fragments. It is the single source of truth for these scenes.
 
 ## See Also
+
 - [[Cosmology]]
 - [[Vesta]]
 - [[Silvia]]
@@ -24,17 +25,16 @@ The canonical, chronological telling of the origin myth: the creation of Primum,
 
 Who am I? I am that I am... I experience, and I am made of my experience, but I have no self. I simply watch this world, unable to interfere, unable to understand what's happening. I am a reader to the story. Yet I live within the story.
 
-In front of me lay a bound book, it was wrapped with silver chains, When I opened it, I saw a gold feather nestled into the book. 
+In front of me lay a bound book, it was wrapped with silver chains, When I opened it, I saw a gold feather nestled into the book.
 
 ~
 
-There was a river, no it was a book, no.. a telescope. Well it had no form. 
-The embodiment of knowledge, it was... Where was it? 
+There was a river, no it was a book, no.. a telescope. Well it had no form.
+The embodiment of knowledge, it was... Where was it?
 
 Well Where had no meaning here. Time had no meaning here. Here had no meaning here. Yet it was everywhere, and everywhen, but the book wasn't done. The river still flowed, there was yet to discover.
 
-The book flipped to a page labeled "Vesta" it wasn't in a text that was known, it was information itself. 
-
+The book flipped to a page labeled "Vesta" it wasn't in a text that was known, it was information itself.
 
 ~ The Lens focused on Vesta ~
 
@@ -48,13 +48,13 @@ Then the tree around the house gently shook as they welcomed her.
 
 ---
 
-#### Chapter 1: Silvia
+#### Chapter 1: Of the wildwood.
 
 ~ The Lens focused on Silvia ~
 
-[[Silvia]] stood on the porch of her wood hut. She had just recently turned eight, and her younger brother [[Nexus]] was born today, but she wasn't allowed to watch. She was told to stand guard on the porch, so she did. She puffed her chest out and stared at the trees and bushes, daring anyone to jump out. 
+[[Silvia]] stood on the porch of her wood hut. She had just recently turned eight, and her younger brother [[Nexus]] was born today, but she wasn't allowed to watch. She was told to stand guard on the porch, so she did. She puffed her chest out and stared at the trees and bushes, daring anyone to jump out.
 
-Usually she wasn't allowed to leave the house without one of her parents; her father always went out, one hand trailing loose against every stalk and low branch he passed, without ever seeming to notice he was doing it, and her mother preferred to stay home and take care of the house, singing the same wandering, wordless tune she always did while she worked. 
+Usually she wasn't allowed to leave the house without one of her parents; her father always went out, one hand trailing loose against every stalk and low branch he passed, without ever seeming to notice he was doing it, and her mother preferred to stay home and take care of the house, singing the same wandering, wordless tune she always did while she worked.
 
 [[Silvia]] had never once heard her start it, only ever caught it already halfway through. When she turned five, her parents tentatively allowed her to go exploring on her own. Little did they know that hadn't stopped her wandering the forest alone even before she was five. But they had nothing to fear; they lived in a safe paradise.
 
@@ -74,9 +74,9 @@ The next morning, [[Silvia]] stayed home and, for the first time, saw someone ot
 
 [[Silvia]] played with [[Nexus]] until sundown, at which point their mother picked him up for dinner, and together they sat at a sturdy wooden table. The room was lit by wax candles. As the candlelight flickered, [[Vesta]] brought dinner.
 
-When [[Silvia]] woke up, she took her mother and brother to the clearing. It was a short five-minute walk, but halfway through, [[Vesta]], exhausted, turned back for home, leaving the two siblings to finish their trek alone. 
+When [[Silvia]] woke up, she took her mother and brother to the clearing. It was a short five-minute walk, but halfway through, [[Vesta]], exhausted, turned back for home, leaving the two siblings to finish their trek alone.
 
-When [[Silvia]] reached the tree with her brother, she climbed to the top while holding him, the tree easing their climb by gently pushing them up. She sat down and pouted. "Why do you only make sounds? I want someone to talk to," she said. 
+When [[Silvia]] reached the tree with her brother, she climbed to the top while holding him, the tree easing their climb by gently pushing them up. She sat down and pouted. "Why do you only make sounds? I want someone to talk to," she said.
 She always wanted a companion, someone to keep her company. She leaned back into the branches and felt them caress her as she continued, "Mom said you would be able to talk like us, and to give it time. I can't wait!"
 
 As the sun set, she held her brother tightly and whispered, "It's you and me."
@@ -95,7 +95,7 @@ Her father laughed. "That's dew. Every morning, the air itself cries for [[Anima
 
 [[Silvia]], even more confused now, asked, "Pa, who is [[Anima]]? Why does the air cry for him?"
 
-[[Primum]] sighed. "He is the most high. He sacrificed Himself for our freedom. I'll tell you more when you're of age." 
+[[Primum]] sighed. "He is the most high. He sacrificed Himself for our freedom. I'll tell you more when you're of age."
 
 "Why not now?" [[Silvia]] complained as she stomped ahead.
 
@@ -127,15 +127,14 @@ But as quickly as it appeared, the light disappeared. The beast backed off, stil
 
 The roar was deafening. It wasn't terrifying, but rather mind-numbing. As the dragon flew out of the water and approached, [[Silvia]] felt the ground tremble and the chirping birds fall silent. The beast let go of her and ran back into the forest. [[Silvia]] felt the air rush back into her lungs, filling her with breath. She was relieved for a second, before turning around to be face to face with a massive eye.
 
-
-#### Chapter 2: Aequor
+#### Chapter 2: Paragon of water.
 
 [[Silvia]] tried to scream as she fell back, but her throat closed up and her body refused to listen to her. She felt rooted like the trees she loved as she watched the beast. [[Silvia]] couldn't run. Couldn't call for help. Regretting her decision to come looking for the dragon in front of her, she waited. A single tear fell down her cheek.
 
 The whole world seemed to freeze as they looked at one another. The tide that had once retreated to herald **H**is arrival came crashing back all the way up to her ankles, relentless, like the dragon in front of her.
 [[Aequor]] saw a small pitiful girl with silver eyes and softly said,
 "You have nothing to fear from me, little one. I mean no harm to you."
-[[Silvia]], rooted in the spot, heard a voice, but it didn't come from the dragon; it was like the ground she stood on was talking, like the air around her whispered into her ear. 
+[[Silvia]], rooted in the spot, heard a voice, but it didn't come from the dragon; it was like the ground she stood on was talking, like the air around her whispered into her ear.
 She watched as the beautiful, scaled dragon circled her the way the beast had, before settling with its eye in front of her again.
 
 "Who are you?" [[Silvia]] stammered.
@@ -144,7 +143,6 @@ The dragon rested his head on the sea bank and looked at [[Silvia]]. Just as the
 
 [[Silvia]] looked at the majestic beast and saw the blue scales outlined with white and an ancient face with two deep-set eyes on either side. She kept backing away until she bumped into the dragon's tail, and fell to the ground in shock.
 [[Aequor]] looked at the small stunned child and said, "You are safe now, child. However, if you are ever in danger, say my name and I will help you. Now, child, return home."
-
 
 "Wait!" [[Silvia]] tried to yell, hands at her throat, as she watched the dragon defy the ground, fly up, and dive into the water. Scared from the experience, she ran home.
 
@@ -180,7 +178,7 @@ The sand beneath her hands stilled, and the air itself seemed to lean close, anc
 
 [[Silvia]], confused, just stared at the dragon's eye before hugging her baby brother. Concerned, she asked, "What does he not have? How can I get it for him?"
 
-[[Aequor]]'s eyes softened and asked, "What's your name, child?" 
+[[Aequor]]'s eyes softened and asked, "What's your name, child?"
 
 Blankly staring at him, she finally responded, "[[Silvia]]."
 
@@ -190,7 +188,8 @@ Blankly staring at him, she finally responded, "[[Silvia]]."
 
 ---
 
-### Chapter 3: The Three
+### Chapter 3: The Brothers.
+
 And so [[Silvia]] sat listening to [[Aequor]] tell his story:
 
 "Once upon a time.
@@ -230,7 +229,7 @@ The dragon gently rested his head on the ground and said, "Come here, little one
 
 [[Silvia]] cautiously walked up to the dragon's head and touched a scale softly.
 
-The second she touched the scale, she felt it before she saw it: a surge of teal flooding the scale and crashing toward her arm. Before she could yank her hand back, a brilliant golden light filled her veins. Her arm lit up with golden lines where it touched [[Aequor]], rising to meet the teal flood... and the two crashed together. 
+The second she touched the scale, she felt it before she saw it: a surge of teal flooding the scale and crashing toward her arm. Before she could yank her hand back, a brilliant golden light filled her veins. Her arm lit up with golden lines where it touched [[Aequor]], rising to meet the teal flood... and the two crashed together.
 
 Slowly she pulled herself onto the scale, wedging her foot into the cracks between the plates. She hoisted herself the rest of the way and sat in the middle of one of the ridges along the dragon's spine.
 
@@ -253,82 +252,10 @@ When the last wisps of gold left her, she felt a cold wave flood her, freezing e
 When she looked up, she saw a single massive eye with a complicated symbol at its center, and the moment she met its gaze, she passed out.
 
 ---
-#### Chapter 4: Child of god
 
-When [[Silvia]] awoke she saw a strange roof, it was made from hay not wood? Where was she?
-She suddenly sat up trying to remember what had happened to her, suddenly she remembered, the symbols... And she was out again.
+### Chapter 4: Maiden of the Fog
 
-This time when she woke up, she saw a man with deep green eyes, trying to make sense of where she was, she started trying to remember what happened.
-"Stop!" realizing [[Silvia]] was awake, the man standing by her bed yelled. 
-
-[[Silvia]], Confused, tried to take in the man. He was tall, taller than her father with pointed ears and a pure white robe with golden edges.
-
-"What?" she asked, confused. "Where am I? How did I get here?"
-
-Before she could continue the man interrupted again. "STOP! Do not think about how you got here, Lord [[Aequor]] told me you would faint if you remembered."
-
-Alas lest the man knew, if you ask a child not to think about something, that's the first thing they think about.
-
----
-
-This time when [[Silvia]] woke up, she was on a massive rock in a clearing. Since she was young she had explored all the island, but this was the first time she saw this clearing.
-
-Surrounding her was a massive amount of people, each with pointed ears and pale white skin. She sat up and saw a massive brown eye, another dragon.
-
-Before she could continue that thought, the majestic dragon in front of her slowly lowered its head and told her, "Swear on my name that you will forget the symbols you saw. Think about me, I am Tellus, dragon of earth."
-
-Though [[Silvia]] was trying to remember what symbols the great dragon was talking about she said softly without challenge, "I swear on Tellus that I won't remember those symbols"
-
-The second she said those words, silver chains rose from the ground wrapping around her neck like a collar before melting into her skin. Confused [[Silvia]] tried to remember where she was, what she saw. This time however there was a massive silver wall in her mind. The more she tried to push at the wall, the more she realized it would not budge.
-
-She opened her eyes to see the people around the clearing... PEOPLE? Excited she leapt to her feet, and fell back on her butt.
-
-"Sit, child. You have not moved for three days. Do not rush things." The dragon said before slowly getting up letting his massive body leap into the air. "I will see you soon."
-
-As soon as the dragon left a small group of three women and three men ran to [[Silvia]].
-
----
-
-Silvia lay in a bed now, looking back up at the ceiling she remembered from her dream. This time however the man that was there was replaced by a kindhearted woman named Serena
-
-Serena brought a warm bowl to [[Silvia]], it was filled with the most delicious stew [[Silvia]] had ever tasted.
-
-While being brought here, she was told the full story from the elves, 
-Long long ago, when Anima made the griffins, he too made the elves. 
-Though the elves could speak they were missing something so **H**e chucked them to this island and they have lived here together ever since, still worshiping the three gods.
-
-Apparently [[Aequor]] had brought [[Silvia]] here to rest after she...
-After she what? she couldn't remember. 
-
-"Just rest now dear." Serena told her
-
-"I feel fine. See!" Silvia said jumping up on the bed. Though Silvia had been through a lot, her anguish was mental and didn't affect her ability to move around.
-
-When she finally looked at Serena, she saw a pretty, young, and tidy woman, though she looked younger while Silvia was laying down now she realized that Serena was old, older than her parents!
-
-[[Silvia]] just stood on the bed talking everything in, Serena stood with a tree-bark sash around her hips which then extended into leaves to form a skirt, with a similar setup as a shirt she also wore a golden circlet.
-
-The room they were in was barely furnished, but as [[Silvia]] studied the walls she realized it wasn't wood like her father had, it was ALIVE, they were in a tree.
-
-~ The lens focused on Nexus ~
-
-Nexus lay on the floor, in front of him a white haze, he did not know what was going on but he didn't have to. Every time he saw his parents they had a concerned look on their faces.
-
-"I don't where she is Vesta! Ill have to ask the brothers." his father yelled back at his mother. 
-
-He didn't like watching his mother cry. So as he lay he felt restless, he tried to reach out and see past the haze but to no avail.
-
-Slowly he saw his mothers black and white face tear through the haze and approach him and pick him up. He felt at home.
-
-
-
-
-
-
----
-
-### Chapter 5: Maiden of the Fog
-~ The lens unfocused ~
+A foggy vison was inserted into Silvia
 
 [[Primum]], though he had agency, had no knowledge and did not know how to move his own body. This disappointed the Three. So [[Aequor]], brother of wisdom, filled [[Primum]] with wisdom and resolve, and decreed it so: the older [[Primum]] and his children grew, the wiser and steadfast they would become. Then [[Tellus]], brother of the land, laid a hand on [[Primum]]'s chest and gave him duty, and with duty, gave fate a shape to his life that was owed to something beyond himself.
 
@@ -447,3 +374,77 @@ There was a rumbling as [[Vesta]] clawed at herself, trying to ease the pain tha
 As she yelled, she gave the tree closest to her the ability to speak, the ability to think. She didn't realize or understand what she had done.
 
 "Oh Maiden of the fog, rest, for when you wake, the pain you feel we will remember in your place. Oh Mother of the forest, rest, for now you create life."
+
+---
+
+#### Chapter 5: Child of god
+
+~ The lens focused on Silvia ~
+
+When [[Silvia]] awoke she saw a strange roof, it was made from hay not wood? Where was she?
+She suddenly sat up trying to remember what had happened to her, suddenly she remembered, the symbols... And she was out again.
+
+This time when she woke up, she saw a man with deep green eyes, trying to make sense of where she was, she started trying to remember what happened.
+"Stop!" realizing [[Silvia]] was awake, the man standing by her bed yelled.
+
+[[Silvia]], Confused, tried to take in the man. He was tall, taller than her father with pointed ears and a pure white robe with golden edges.
+
+"What?" she asked, confused. "Where am I? How did I get here?"
+
+Before she could continue the man interrupted again. "STOP! Do not think about how you got here, Lord [[Aequor]] told me you would faint if you remembered."
+
+Alas lest the man knew, if you ask a child not to think about something, that's the first thing they think about.
+
+---
+
+This time when [[Silvia]] woke up, she was on a massive rock in a clearing. Since she was young she had explored all the island, but this was the first time she saw this clearing.
+
+Surrounding her was a massive amount of people, each with pointed ears and pale white skin. She sat up and saw a massive brown eye, another dragon.
+
+Before she could continue that thought, the majestic dragon in front of her slowly lowered its head and told her, "Swear on my name that you will forget the symbols you saw. Think about me, I am Tellus, dragon of earth."
+
+Though [[Silvia]] was trying to remember what symbols the great dragon was talking about she said softly without challenge, "I swear on Tellus that I won't remember those symbols"
+
+The second she said those words, silver chains rose from the ground wrapping around her neck like a collar before melting into her skin. Confused [[Silvia]] tried to remember where she was, what she saw. This time however there was a massive silver wall in her mind. The more she tried to push at the wall, the more she realized it would not budge.
+
+She opened her eyes to see the people around the clearing... PEOPLE? Excited she leapt to her feet, and fell back on her butt.
+
+"Sit, child. You have not moved for three days. Do not rush things." The dragon said before slowly getting up letting his massive body leap into the air. "I will see you soon."
+
+As soon as the dragon left a small group of three women and three men ran to [[Silvia]].
+
+---
+
+Silvia lay in a bed now, looking back up at the ceiling she remembered from her dream. This time however the man that was there was replaced by a kindhearted woman named Serena
+
+Serena brought a warm bowl to [[Silvia]], it was filled with the most delicious stew [[Silvia]] had ever tasted.
+
+While being brought here, she was told the full story from the elves,
+Long long ago, when Anima made the griffins, he too made the elves.
+Though the elves could speak they were missing something so **H**e chucked them to this island and they have lived here together ever since, still worshiping the three gods.
+
+Apparently [[Aequor]] had brought [[Silvia]] here to rest after she...
+After she what? she couldn't remember.
+
+"Just rest now dear." Serena told her
+
+"I feel fine. See!" Silvia said jumping up on the bed. Though Silvia had been through a lot, her anguish was mental and didn't affect her ability to move around.
+
+When she finally looked at Serena, she saw a pretty, young, and tidy woman, though she looked younger while Silvia was laying down now she realized that Serena was old, older than her parents!
+
+[[Silvia]] just stood on the bed talking everything in, Serena stood with a tree-bark sash around her hips which then extended into leaves to form a skirt, with a similar setup as a shirt she also wore a golden circlet.
+
+The room they were in was barely furnished, but as [[Silvia]] studied the walls she realized it wasn't wood like her father had, it was ALIVE, they were in a tree.
+
+~ The lens focused on Nexus ~
+
+Nexus lay on the floor, in front of him a white haze, he did not know what was going on but he didn't have to. Every time he saw his parents they had a concerned look on their faces.
+
+"I don't where she is Vesta! Ill have to ask the brothers." his father yelled back at his mother.
+
+He didn't like watching his mother cry. So as he lay he felt restless, he tried to reach out and see past the haze but to no avail.
+
+Slowly he saw his mothers black and white face tear through the haze and approach him and pick him up. He felt at home.
+
+
+
