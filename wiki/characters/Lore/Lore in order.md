@@ -54,9 +54,7 @@ Then the tree around the house gently shook as they welcomed her.
 
 [[Silvia]] stood on the porch of her wood hut. She had just recently turned eight, and her younger brother [[Nexus]] was born today, but she wasn't allowed to watch. She was told to stand guard on the porch, so she did. She puffed her chest out and stared at the trees and bushes, daring anyone to jump out.
 
-Usually she wasn't allowed to leave the house without one of her parents; her father always went out, one hand trailing loose against every stalk and low branch he passed, without ever seeming to notice he was doing it, and her mother preferred to stay home and take care of the house, singing the same wandering, wordless tune she always did while she worked.
-
-[[Silvia]] had never once heard her start it, only ever caught it already halfway through. When she turned five, her parents tentatively allowed her to go exploring on her own. Little did they know that hadn't stopped her wandering the forest alone even before she was five. But they had nothing to fear; they lived in a safe paradise.
+Usually she wasn't allowed to leave the house without one of her parents but lest that stop this eight year old from exlporing the vast paradise they lived in. When she turned five, her parents tentatively allowed her to go exploring on her own. Little did they know that hadn't stopped her wandering the forest alone even before she was five. But they had nothing to fear; they lived in a safe paradise.
 
 [[Silvia]] stood there for one minute, two minutes, five minutes, before she caved. *It's so boring, why must I stay? I'll head out. It will be fine.* Slowly she walked down the gravel path and reached her spot. There was a small hill in a clearing, and in the middle of the rolling hills stood an even bigger tree. It towered far above the others, reaching high into the clouds.
 
@@ -64,17 +62,62 @@ She craned her little head and swiped her silver hair from her face. She looked 
 
 The second her voice pierced the quiet, the ground started to shake, and the tree in front of her began to shift. A massive branch swept down and unfurled before [[Silvia]] like an open palm.
 
-When [[Silvia]] climbed onto it, the branches slowly and gently curled around her, holding her as they rose, carrying her high up into the sky.
+Unbothered, [[Silvia]] climbed onto it, the branches slowly and gently curled around her, holding her as they rose, carrying her high up into the sky.
 
 As she stood atop the clouds, [[Silvia]] looked at her home. It was a sprawling forest with a river running through the middle, a mountain range on one side towering so high it made the tree she stood on seem like an ant, and on the other side, an endless blue ocean with waves crashing into the land relentlessly. As she watched the sun slowly set, she saw a glint in the water, then scales flashing past, fast. As soon as she saw it, it was gone.
 
-By the time little [[Silvia]] got home, the lights were out, and she didn't want to disturb her tired mother, so she went to bed.
+[[Silvia]] spent the next 10 minutes looking for the flash of scales again but to no avail. As she lay on her stomach looking out towards the ocean when she felt a soft wet spot on her cheek, excited she exclaimed, "Nux!"
 
-The next morning, [[Silvia]] stayed home and, for the first time, saw someone other than her parents: her new brother, [[Nexus]]. As she held him and looked into his deep teal eyes, she felt like she was looking into an ocean. She felt joy and kinship. She felt love for him.
+She grabbed the little squirrel and hugged it tight, Yip Yip, it kept squirming before diving into her hair and she giggled.
 
-[[Silvia]] played with [[Nexus]] until sundown, at which point their mother picked him up for dinner, and together they sat at a sturdy wooden table. The room was lit by wax candles. As the candlelight flickered, [[Vesta]] brought dinner.
+As the sun set [[Silvia]] climbed down and left Nux to his nest and headed home. As she walked down the gravel path she felt the forest comealive as it filled with crickets and a dull hum, as if the trees themselves had a heartbeat.
 
-When [[Silvia]] woke up, she took her mother and brother to the clearing. It was a short five-minute walk, but halfway through, [[Vesta]], exhausted, turned back for home, leaving the two siblings to finish their trek alone.
+Slowly she reached the cottage nested into the dark forest and slowly walked inside. Walking into the living room she saw her parents door open. She peeked her little head in to see her mother colapsed on the bed, her father sleeping on the bed. Slowly she shifted into her room and closed her door.
+
+Her father was a planning man, he had made a house with 3 rooms, though he was thinking about expanding it now. Silvia climbed into her cot and looked at her ceiling. Infront of her was a massive web of stellaberries, the vines were covering her roof in a dense pattern with dotted flowers. 
+The flowers glowed gently with thin translucent feathers with a red accent. As she turned side to side she finally gave up and stood on her cot reaching for the flower.
+When [[Silvia]] sat back down she had a petal in her mouth and dozed of to sleep assoon as her head hit the pillow.
+
+The next morning, [[Silvia]] woke up way later than she usally did, the stellaberries petals had a unique propety that it would give you the most endearing dream and the quietest night, but intern it lasted longer.
+
+When her father had come back with the flower he had also come with a warning, "Do not under any circumstance eat the fruit alright?"
+Though she wished to listen she was never tested as the plant was yet to bear fruit.
+
+Slowly she got out of bed feeling haze, around her the worlds colors looked muted. *I'm dreaming?* [[Silvia]] thought.
+As she walked into the hall she saw a little child he was on his back on the floor padded with cotton. Above his head were glowing bright letters "NEXUS". 
+
+"Silvia, you're up!" Vesta said cheerfully, "Must have been a nights sleep, did you use the stellaberry?"
+*Silvia, Shes awake this late? Must have used the stellaberry, Im so tired*
+~Silvia awoke late due to the stellaberries effect~
+
+Though Vesta only spoke once Silvia heard three, this usally faded after a couple minutes and only happent if she used the berrypetals. 
+
+"Come see your brother." Vesta continued when she saw her daughter unmovingly standing at the door.
+*Oh my sweet boy, He reminds me of... Alas Vesta you have him now, Now what should I name him?*
+~Vesta thought about NEXUS and reminiesed of the past~
+
+"Nexus, You should name him Nexus." Silvia said,
+
+When Silvia approached the little child she saw that the color was slowly leeching into the world. 
+
+The child infront of her wailed as he put her head close to his,
+
+*Don't know, Fear, Smell good*
+~Nexus did not recognise his sister~
+
+[[Silvia]] grinned, but in a flash all the color returned at once and the world felt normal again.
+
+[[Silvia]] attempted played with [[Nexus]] until sundown, alas he fell asleep long before leaving silvia admiring her brother, at which point their mother picked him up for dinner, and together they sat at a sturdy wooden table. The room was lit by wax candles. As the candlelight flickered, [[Vesta]] brought dinner.
+
+Slowly Silvia awoke, this time she controlled herself and stopped herself from using the berry, though its dreams were the best, it was making her sleep longer and longer.
+
+She got out of bed and walked out to see a bright sun and her mother tending to the small plants they had while humming a haunting tune. "Where is Nexus?" [[Silvia]] asked.
+
+[[Vesta]] looked up to see [[Silvia]] standing on the deck while doing a big yawn. "In bed, If you wake him up you have to keep him company!" she warned her daughter.
+
+"Deal!" Silvia yelled before running inside.
+
+
 
 When [[Silvia]] reached the tree with her brother, she climbed to the top while holding him, the tree easing their climb by gently pushing them up. She sat down and pouted. "Why do you only make sounds? I want someone to talk to," she said.
 She always wanted a companion, someone to keep her company. She leaned back into the branches and felt them caress her as she continued, "Mom said you would be able to talk like us, and to give it time. I can't wait!"

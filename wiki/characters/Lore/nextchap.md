@@ -59,6 +59,12 @@ Lev looked at her confused, "I only fed on-"
 
 "Please" she whispered unable to stand to look at such pain she had fallen to her knees and had her head in her hands.
 
+After they left the cave Silvia looked at Lev with concern, "W.. Who are they? Why are they like that?"
+
+Lev looked at her confused, "It's not that important its just a chore."
+
+Silvia tried pushing more but Lev just changed the topic.
+
 When they left they set off in a different direction completely, they walked slowly down the bank.
 
 Slowly they approached a river. This river couldn't really be called a river, it was barely a stream with a small waterfall. 
@@ -119,7 +125,7 @@ In a cage that was massive the size of a house, there were fifteen children, eac
 
 Silvia feeling bile run up her throat ran to the chief, Serena and asked, "What's the meaning of this? Who are those children? Why are they caged?"
 
-Though Silvia had asked Lev he just had ignored her, this time however Serena answered, "They are the forsaken, abandoned by our lord."
+Serena looked sombere as she answered, "They are the forsaken, abandoned by our lord."
 
 She pointed at the cage and said, "They have no mind, but for the Solstice where they are granted what they most seek for one hour." 
 
