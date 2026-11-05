@@ -40,7 +40,7 @@ Lev using the torch slapped the young elvish girl across the face with the fire,
 That's when Silvia noticed the chains binding them to the walls.
 She clung tightly to Lev as they walked through the cave, at each point stopping breifly to see another child this one not older than three. still chained still bloody.
 
-Silvia saw, a three, two sixes, two nine, a four, three eights, five sevens and one infant. the infant was in a cot, but all six sides were closed.
+Silvia counted without meaning to: a three-year-old, two sixes, two nines, a four, three eights, five sevens, and one infant. The infant lay in a cot, but all six sides were closed.
 
 "Why are we here" She asked, 
 
@@ -122,6 +122,8 @@ She saw a young girl with messy hair, tattered leather and bronzed skin from run
 As she approached the main clearing with the stone she saw a face she never wished to see again.
 
 In a cage that was massive the size of a house, there were fifteen children, each chained unable to move.
+
+Silvia's stomach dropped. The same silver chains from the cave, the same hollow eyes above bloodied nails. This wasn't a new scene to Silvia, it was one in the cave.
 
 Silvia feeling bile run up her throat ran to the chief, Serena and asked, "What's the meaning of this? Who are those children? Why are they caged?"
 

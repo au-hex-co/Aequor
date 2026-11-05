@@ -298,7 +298,7 @@ When she looked up, she saw a single massive eye with a complicated symbol at it
 
 ### Chapter 4: Maiden of the Fog
 
-A foggy vison was inserted into Silvia
+A foggy vision was inserted into Silvia
 
 [[Primum]], though he had agency, had no knowledge and did not know how to move his own body. This disappointed the Three. So [[Aequor]], brother of wisdom, filled [[Primum]] with wisdom and resolve, and decreed it so: the older [[Primum]] and his children grew, the wiser and steadfast they would become. Then [[Tellus]], brother of the land, laid a hand on [[Primum]]'s chest and gave him duty, and with duty, gave fate a shape to his life that was owed to something beyond himself.
 
@@ -417,6 +417,41 @@ There was a rumbling as [[Vesta]] clawed at herself, trying to ease the pain tha
 As she yelled, she gave the tree closest to her the ability to speak, the ability to think. She didn't realize or understand what she had done.
 
 "Oh Maiden of the fog, rest, for when you wake, the pain you feel we will remember in your place. Oh Mother of the forest, rest, for now you create life."
+
+~ Vestas Journal 
+
+I... I can't explain the pain I experienced and now they want me to do it again... is it not my duty, is it not my job??
+
+I have lay with Primum everyday, he's hoping beyond all hope for another child, but I don't think I can rear a child. My poor boy, Vesta. Get a grip. He's no more than a beast, you heard Primum.
+
+-- 
+
+I don't to lay with Primum today, but I'm scared, what if he leaves and asks for someone better. I'm afraid of being useful. Everyday he goes and entertains the dragons, He is their favorite, how else would I be treated if I go against him...
+
+Vesta, focus you cannot think such thoughts you have to dote on Primum that is your job... but who... is to dote on me?
+
+
+--
+
+Our child, my precious daughter came today with a wound on her throat, it looked like someone held her by the throat. When I spoke to Primum he was dismissive, I'm afraid of what he will do to our poor girl. 
+
+--
+
+Primum is... I love him... But... He makes me... UHHH.... 
+
+Vesta calm down. It is your **Duty** to keep your husband company.
+
+So what if I must be uncomfortable for a few days. Having Nexus my baby boy wasn't nearly as bad as the other ~~two~~ one.
+
+--
+
+Where is she... Silvie my dear girl, I don't... I don't want to think what Primum would do to her... He... He's too kind, there is no way he would hurt my baby
+
+I will do anything, Tellus I will pay any price. Please return my baby safety back to me...
+
+
+~
+
 
 ---
 
