@@ -115,9 +115,9 @@ She got out of bed and walked out to see a bright sun and her mother tending to 
 
 [[Vesta]] looked up to see [[Silvia]] standing on the deck while doing a big yawn. "In bed, If you wake him up you have to keep him company!" she warned her daughter.
 
-"Deal!" Silvia yelled before running inside.
+"Deal!" Silvia yelled before running inside, when she reached her parents room she saw the massive bed with a little infant on it.
 
-
+Silvia slowly picked up Nexus and started on the gravel path to her clearing.
 
 When [[Silvia]] reached the tree with her brother, she climbed to the top while holding him, the tree easing their climb by gently pushing them up. She sat down and pouted. "Why do you only make sounds? I want someone to talk to," she said.
 She always wanted a companion, someone to keep her company. She leaned back into the branches and felt them caress her as she continued, "Mom said you would be able to talk like us, and to give it time. I can't wait!"
