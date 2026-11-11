@@ -19,7 +19,7 @@ Practically skipping with joy Silvia exclaimed her name out, "Silvia, but tell m
 
 So Lev explained as the walked. 
 
-"We have inhabited this land for 60 winters, every time we are born we have a ritual the solstice, the next one is in three days actually! its when I officially turn 10."
+"We have inhabited this land for 60 winters, every time we are born we have a ritual the solstice, the next one is in three days actually! its when I officially turn 10. Dispite aleady having lived my 10th winter."
 
 "What's the solstice?", Silvia asked.
 
@@ -62,23 +62,38 @@ Lev looked at her confused, "I only fed on-"
 After they left the cave Silvia looked at Lev with concern, "W.. Who are they? Why are they like that?"
 
 Lev looked at her confused, "It's not that important its just a chore."
+Silvia looked at Lev horrified, "Those are chilren, they are our age, why do you have them chained?"
 
-Silvia tried pushing more but Lev just changed the topic.
+Lev looked at Silvia before slowly realising she was crying. 
 
-When they left they set off in a different direction completely, they walked slowly down the bank.
+"They aren't children, they were forsaken by our lord for a reason, and oneday he will come and shine down on us again!" Lev exclaimed trying to stop Silvia from crying, 
 
-Slowly they approached a river. This river couldn't really be called a river, it was barely a stream with a small waterfall. 
+"No, No, No.. I refuse to believe it, what I saw in there, she was... they are.." Silvia stammered colapsing to her knees.
 
-Lev leaned forward softly touching the water before saying,
+Lev didn't know what to do, though he had seen plenty of girls in his village, not one had ever broken down like, least of all about the forsaken... 
+Slowly he got closer knelt and laid a hand on Silvia's shoulder.
 
-"Dragon of water, Brother of resolve, Tamer of time.
-I beg for your attention, I beg for your assistance.
-The mighty Aequor"
+"Don't touch me!" Silvia snapped pushing him away before running down the creek.
+Lev wanted to follow, to chase, but after seeing how she ran, he though it would be better to get the elder to put a search party together
 
-The second he said the final word the whole world went quiet.
-Silvia felt her blood bubble as the noise of the creek got drowned out by the sound of her heart beating faster and faster.
+Slowly Silvia approached a river. This river couldn't really be called a river, it was barely a stream with a small waterfall. 
+
+As she apporached the bank she saw the children begging to be freed, colapsing she sobbed. "Mom, dad, Aequor... Please"
+Sobbing on the bank with her head in her hands she felt the air thicken, before slowly outlining a tall lustrous figure.
+
+The figure seemed to have the shape of a woman made outlined with water, slowly it looked at her before slowly appoaching and knelt before her. 
+
+"I am Eluvia" She said, "Aequor tasked me with your protection, speak child what bothers you so?"
 
 Then she saw the ground tremble as the dragon of water flew from the south and approached fast.
+
+"I saw children, they were around my age..." Silvia sobbed, "They... They were, Why would the elves think thats okay?" 
+
+Eluvia slowly aproached floating over the rockwater, "They aren't children Silvia, They have no will."
+
+"NO" Silvia yelled jumping up and looking at Eluvia like she was a monster, "I want to talk with A-"
+
+"Me?" Silvia heard a voice inserted into her head. 
 
 ~
 
@@ -90,7 +105,13 @@ Aequor stood shocked. Unmoving, he slowly rumbled, but no words entered Silvia's
 
 Silvia looked up at the big dragon waiting for a answer she had a feeling she wouldn't get.
 
-Aequor finally said, "You have been here seven days, your parents were worried sick. So I apologize, it was my mistake that almost cost you your life. I should have know you couldn't handle history."
+"You cannot say that those children in that cave arent children right?" Silvia asked turning back to see Eluvia who mysteriously dissapeared. 
+
+Aequors giant body coiled around the small girl as it seepemed to shimmer, "You have a gentle soul, Silvia. But Eluvia is right, Without Animas blessing, they have no will, and without mine and the domain of duty they can't even be called machines.
+
+Silvia looked up at Aequor and sobbed.
+
+Aequor finally said, "You have been here over three days, your parents were worried sick. So I apologize, it was my mistake that almost cost you your life. I should have know you couldn't handle history."
 
 Silvia looked blankly at Aequor, "What are you talking about? You would never hurt me."
 
