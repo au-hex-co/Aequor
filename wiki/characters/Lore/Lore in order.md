@@ -54,7 +54,7 @@ Then the tree around the house gently shook as they welcomed her.
 
 [[Silvia]] stood on the porch of her wood hut. She had just recently turned eight, and her younger brother [[Nexus]] was born today, but she wasn't allowed to watch. She was told to stand guard on the porch, so she did. She puffed her chest out and stared at the trees and bushes, daring anyone to jump out.
 
-Usually she wasn't allowed to leave the house without one of her parents but lest that stop this eight year old from exlporing the vast paradise they lived in. When she turned five, her parents tentatively allowed her to go exploring on her own. Little did they know that hadn't stopped her wandering the forest alone even before she was five. But they had nothing to fear; they lived in a safe paradise.
+Her parents tentatively allowed her to go exploring on her own. While Silvia was reckless they lived in a safe paradise so her parents didn't mind.
 
 [[Silvia]] stood there for one minute, two minutes, five minutes, before she caved. *It's so boring, why must I stay? I'll head out. It will be fine.* Slowly she walked down the gravel path and reached her spot. There was a small hill in a clearing, and in the middle of the rolling hills stood an even bigger tree. It towered far above the others, reaching high into the clouds.
 
@@ -90,7 +90,7 @@ As she walked into the hall she saw a little child he was on his back on the flo
 *Silvia, Shes awake this late? Must have used the stellaberry, Im so tired*
 ~Silvia awoke late due to the stellaberries effect~
 
-Though Vesta only spoke once Silvia heard three, this usally faded after a couple minutes and only happent if she used the berrypetals. 
+Though Vesta only spoke once Silvia heard three, this usally faded after a couple minutes and only happent if she used the berries'petals. 
 
 "Come see your brother." Vesta continued when she saw her daughter unmovingly standing at the door.
 *Oh my sweet boy, He reminds me of... Alas Vesta you have him now, Now what should I name him?*
@@ -124,9 +124,17 @@ She always wanted a companion, someone to keep her company. She leaned back into
 
 As the sun set, she held her brother tightly and whispered, "It's you and me."
 
----
+#### Chapter 2: Everlasting dream.
 
-[[Silvia]] woke to her father gently shaking her awake. "Let's go to the creek!" he said. Suddenly filled with energy, [[Silvia]] jumped up and scampered to her brother's room. She saw her mother lying on the cotton bed, the one it had taken her father a year to make, hugging her baby boy. Not wanting to disturb her, [[Silvia]] slipped out quietly to meet her father on the porch.
+When [[Silvia]] awoke she saw her father sitting on her bed. Through blurry eyes [[Silvia]] yawned while sitting up, 
+
+"Silvia, Have you been eating the petals?" Primum asked, his voice was very soft and gentle.
+
+Sheepishily the young girl nodded. 
+
+"You are too old Silvia, everytime you eat the petal you seem to sleep longer. The brothers are mighty and can resist this but us. We have to be more carefull." Primum warned.
+
+Silvia looked up at her tall father and nodded slowly. Primum sighed ruffling her hair, "Alright lets go to the creek strech those knees."
 
 His little girl reached the porch, pulling some leather over her feet to protect her toes, and said, "Mum was sleeping. I didn't want to wake her up." Then she ran forward into the misty forest, her father following behind.
 
@@ -146,11 +154,56 @@ When [[Silvia]] looked up from the rose, she realized the forest had gone entire
 
 When [[Primum]] reached its edge, sensing a teaching moment, he turned to his daughter. "On the edge of a river is a bank, so right now, I'm standing on a bank. But the edge of the sea is called a shore." [[Silvia]], intrigued, repeated the words in halting syllables: "Sh...o...re. Ba...enk." They felt strange in her mouth, but right, somehow, all the same.
 
-As they walked up the bank, they saw a footprint alongside a handprint, like someone had crawled past. The moment [[Primum]] saw it, he went quiet, and they returned home without fishing. But [[Silvia]] wasn't bothered; they were in a **Safe** paradise.
+As they walked up the bank, they saw a footprint alongside a handprint, like someone had crawled past. 
 
-The next day, [[Silvia]] played with [[Nexus]] and carried him everywhere. The following morning, however, she was so tired from playing that she stayed asleep long past midday. When she finally woke up, the house was quiet. No one was home. Feeling lonely, she went to her spot, her tree. When she reached the top, she looked out to the sea, searching for that glint of the beast moving through the water.
+Silvia ran upto the prints and crouched down, Primum also followed,
+"Pa it looks like your hand!" Silvia said.
 
-When she got home around midnight, she slowly entered the bedroom. There was a crate lined with cotton fluff, nesting a small child who was sleeping soundly, and beside it the cotton bed, where she could see the outline of her parents in the moonlight, intertwined together. Not wanting to disturb them, she slowly left and walked out of the house. She wasn't sleepy at all, so she decided she would go look for that beast. Happily trotting, [[Silvia]] headed for the sea.
+Primum looked down at the hand print and put his hand inside the print it was a little smaller but the shape matched really well.
+
+"Let'go" Primum said and picked up his daughter.
+
+---
+
+The next day [[Silvia]] stayed home with [[Nexus]] playing with him for hours before he fell asleep in the girls arms, not wanting to distub him she let him sleep.
+
+she went into her room and lay on her cot, looking up at the pulsing stellaberries. 
+She tried to sleep for 1 hour, 2 hours and finally she reached up and grabbed two petals, Though one petal made her sleep very long, the effect of joy in the dreams was fading. 
+
+She shoved the two petals in her mouth and swallowed before she could change her mind.
+
+When she opened her eyes, she was in a clearing with her favourite tree. Slowly she walked up to the colorfull tree and touched it softly.
+
+"What are you doing." She head a voice behind her. 
+
+It was a young girl around her age looking back. The girl had messy brown hair and shaggy fur along her body.
+
+"Who are you?" Silvia asked. 
+
+"Silvia, You named me, Have you forgotten me already?" she asked.
+
+Silvia was stumped the only things she had named were Nexus, and Nux. Nux?
+
+"Nux?" Silvia asked confused.
+
+Nux exited ran up to Silvia, "You didn't forget!"
+
+"But you werent human." Silvia said confused though she was happy to look past such a minor detail.
+
+"As if that matters" said another voice.
+
+This time Silvia did another turn to see a young boy, he was wearing white fabric covering most of his body.
+
+Silvia did however recognise this person. "Nexus?" She asked confused.
+
+Arms slowly wrapped around silvia, she felt her mother lean over her. 
+"Silvia, You are happy right, You wouldn't leave us?"
+
+"Ma, What do you mean" Silvia asked stepping back, at that moment she realised she wasnt in a clearing she was in their cottage, and slowly the edges of her vision started to loose its lustre.
+
+"I'm dreaming..." Silvia said befroe waking up in a cold sweat.
+
+#### Chapter 3: Paragon of water.
 
 As [[Silvia]] approached the shore, she felt something weird against her feet. It was solid, but it kept slipping and running like water, running between her toes as her small feet slowly sank. Despite the strange shifting ground, she kept moving towards the deep blue ocean, trying to find that scaly beast she had seen before.
 
@@ -170,7 +223,7 @@ But as quickly as it appeared, the light disappeared. The beast backed off, stil
 
 The roar was deafening. It wasn't terrifying, but rather mind-numbing. As the dragon flew out of the water and approached, [[Silvia]] felt the ground tremble and the chirping birds fall silent. The beast let go of her and ran back into the forest. [[Silvia]] felt the air rush back into her lungs, filling her with breath. She was relieved for a second, before turning around to be face to face with a massive eye.
 
-#### Chapter 2: Paragon of water.
+---
 
 [[Silvia]] tried to scream as she fell back, but her throat closed up and her body refused to listen to her. She felt rooted like the trees she loved as she watched the beast. [[Silvia]] couldn't run. Couldn't call for help. Regretting her decision to come looking for the dragon in front of her, she waited. A single tear fell down her cheek.
 
@@ -231,7 +284,7 @@ Blankly staring at him, she finally responded, "[[Silvia]]."
 
 ---
 
-### Chapter 3: The Brothers.
+### Chapter 4: The Brothers.
 
 And so [[Silvia]] sat listening to [[Aequor]] tell his story:
 
@@ -296,7 +349,7 @@ When she looked up, she saw a single massive eye with a complicated symbol at it
 
 ---
 
-### Chapter 4: Maiden of the Fog
+### Chapter 5: Maiden of the Fog
 
 A foggy vision was inserted into Silvia
 
@@ -455,7 +508,7 @@ I will do anything, Tellus I will pay any price. Please return my baby safety ba
 
 ---
 
-#### Chapter 5: Child of god
+#### Chapter 6: Child of god
 
 ~ The lens focused on Silvia ~
 
