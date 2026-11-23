@@ -12,18 +12,18 @@ History is measured in **Aetas** — ages named for the event that defined them,
 
 Dates are given as **BM** (Before Malum) / **AM** (After Malum) 
 
-| Aetas | Range | Length | Defining event |
-|---|---|---|---|
-| Aetas of Creation | 3001–2793 BM | 209 yrs | The brothers create Man ([[Primum]]) |
-| Aetas of Man | 2792–2435 BM | 358 yrs | The children of Primum form clans |
-| Aetas of Peace | 2434–2301 BM | 134 yrs | Humans build cities and trade for goods |
-| Aetas of War | 2300–1311 BM | 990 yrs | A thousand-year war between clans; **Ferrin** nearly wiped out |
-| Aetas of Gods | 1310–1002 BM | 309 yrs | Worship centers on the brothers, chiefly [[Anima]] |
-| Aetas of Atlan | 1001–775 BM | 227 yrs | Age of exploration; the Atlan clan maps the world |
-| Aetas of Terra | 774–542 BM | 233 yrs | Worship shifts to [[Tellus]], dragon of the earth |
-| Aetas of Manus | 541–0 BM | 542 yrs | The age of disaster — [[Nexus]]'s death frees a half-mad [[Tellus]], who rampages until [[Aequor]] kills him for good |
-| **The Malum** | Year 0 | — | Tellus's final death, at Aequor's hand — see [[Tellus]] |
-| Current Era | 1 AM onward | ongoing | Unnamed — awaiting its defining event |
+| Aetas             | Range        | Length  | Defining event                                                                                                        |
+| ----------------- | ------------ | ------- | --------------------------------------------------------------------------------------------------------------------- |
+| Aetas of Creation | 3001–2793 BM | 209 yrs | The brothers create Man ([[Primum]])                                                                                  |
+| Aetas of Man      | 2792–2435 BM | 358 yrs | The children of Primum form clans                                                                                     |
+| Aetas of Peace    | 2434–2301 BM | 134 yrs | Humans build cities and trade for goods                                                                               |
+| Aetas of War      | 2300–1311 BM | 990 yrs | A thousand-year war between clans; **Ferrin** nearly wiped out                                                        |
+| Aetas of Gods     | 1310–1002 BM | 309 yrs | Worship centers on the brothers, chiefly [[Anima]]                                                                    |
+| Aetas of Atlan    | 1001–775 BM  | 227 yrs | Age of exploration; the Atlan clan maps the world                                                                     |
+| Aetas of Terra    | 774–542 BM   | 233 yrs | Worship shifts to [[Tellus]], dragon of the earth                                                                     |
+| Aetas of Manus    | 541–0 BM     | 542 yrs | The age of disaster — [[Nexus]]'s death frees a half-mad [[Tellus]], who rampages until [[Aequor]] kills him for good |
+| **The Malum**     | Year 0       | —       | Tellus's final death, at Aequor's hand — see [[Tellus]]                                                               |
+| Current Era       | 1 AM onward  | ongoing | Unnamed — awaiting its defining event                                                                                 |
 
 > [!key-insight] Ferrin vs. Ferus
 > This table names the clan **"Ferrin"** as nearly wiped out in the Aetas of War. The main pitch text names the firstborn **"Ferus."** See [[The clans]] and [[Ferus]] — treated as the same lineage (Ferrin = "the line of Ferus"), pending confirmation with the author.

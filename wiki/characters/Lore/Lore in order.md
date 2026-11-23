@@ -6,7 +6,7 @@ created: 2026-08-24
 updated: 2026-09-15
 sources: ["[[merchant-of-fate-pitch]]"]
 ---
-
+xs
 # Lore in Order
 
 The canonical, chronological telling of the origin myth: the creation of Primum, the making of Vesta, the birth of Ferus and Silvia, and the founding of the Sacrarium. This supersedes earlier draft fragments. It is the single source of truth for these scenes.
@@ -54,7 +54,11 @@ Then the tree around the house gently shook as they welcomed her.
 
 [[Silvia]] stood on the porch of her wood hut. She had just recently turned eight, and her younger brother [[Nexus]] was born today, but she wasn't allowed to watch. She was told to stand guard on the porch, so she did. She puffed her chest out and stared at the trees and bushes, daring anyone to jump out.
 
+<<<<<<< Updated upstream
 Her parents tentatively allowed her to go exploring on her own. While Silvia was reckless they lived in a safe paradise so her parents didn't mind.
+=======
+Usually she wasn't allowed to leave the house without one of her parents but lest that stop this eight year old from exploring the vast paradise they lived in. When she turned five, her parents tentatively allowed her to go exploring on her own. Little did they know that hadn't stopped her wandering the forest alone even before she was five. But they had nothing to fear; they lived in a safe paradise.
+>>>>>>> Stashed changes
 
 [[Silvia]] stood there for one minute, two minutes, five minutes, before she caved. *It's so boring, why must I stay? I'll head out. It will be fine.* Slowly she walked down the gravel path and reached her spot. There was a small hill in a clearing, and in the middle of the rolling hills stood an even bigger tree. It towered far above the others, reaching high into the clouds.
 
@@ -70,15 +74,15 @@ As she stood atop the clouds, [[Silvia]] looked at her home. It was a sprawling 
 
 She grabbed the little squirrel and hugged it tight, Yip Yip, it kept squirming before diving into her hair and she giggled.
 
-As the sun set [[Silvia]] climbed down and left Nux to his nest and headed home. As she walked down the gravel path she felt the forest comealive as it filled with crickets and a dull hum, as if the trees themselves had a heartbeat.
+As the sun set [[Silvia]] climbed down and left Nux to his nest and headed home. As she walked down the gravel path she felt the forest come alive as it filled with crickets and a dull hum, as if the trees themselves had a heartbeat.
 
-Slowly she reached the cottage nested into the dark forest and slowly walked inside. Walking into the living room she saw her parents door open. She peeked her little head in to see her mother colapsed on the bed, her father sleeping on the bed. Slowly she shifted into her room and closed her door.
+Slowly she reached the cottage nested into the dark forest and slowly walked inside. Walking into the living room she saw her parents door open. She peeked her little head in to see her mother collapsed on the bed, her father sleeping on the bed. Slowly she shifted into her room and closed her door.
 
-Her father was a planning man, he had made a house with 3 rooms, though he was thinking about expanding it now. Silvia climbed into her cot and looked at her ceiling. Infront of her was a massive web of stellaberries, the vines were covering her roof in a dense pattern with dotted flowers. 
+Her father was a planning man, he had made a house with 3 rooms, though he was thinking about expanding it now. Silvia climbed into her cot and looked at her ceiling. In front of her was a massive web of stellaberries, the vines were covering her roof in a dense pattern with dotted flowers. 
 The flowers glowed gently with thin translucent feathers with a red accent. As she turned side to side she finally gave up and stood on her cot reaching for the flower.
-When [[Silvia]] sat back down she had a petal in her mouth and dozed of to sleep assoon as her head hit the pillow.
+When [[Silvia]] sat back down she had a petal in her mouth and dozed of to sleep as soon as her head hit the pillow.
 
-The next morning, [[Silvia]] woke up way later than she usally did, the stellaberries petals had a unique propety that it would give you the most endearing dream and the quietest night, but intern it lasted longer.
+The next morning, [[Silvia]] woke up way later than she usually did, the stellaberries petals had a unique property that it would give you the most endearing dream and the quietest night, but intern it lasted longer.
 
 When her father had come back with the flower he had also come with a warning, "Do not under any circumstance eat the fruit alright?"
 Though she wished to listen she was never tested as the plant was yet to bear fruit.
@@ -577,5 +581,319 @@ He didn't like watching his mother cry. So as he lay he felt restless, he tried 
 
 Slowly he saw his mothers black and white face tear through the haze and approach him and pick him up. He felt at home.
 
+### Chapter 6: The land of elves.
+~ The lens focused on Silvia~
+
+"Is she awake?" a small voice called from the doorway as Silvia and Serena sat on the bed and chair respectively.
+
+Hearing the young boy Silvia snapped her head to the door to see a smaller boy, a whole head shorter than her, grabbing on to the door with clenched fists.
+
+Excited Silvia jumped out of the bed and ran to the door, "You can speak to!! What's your name? How old are you?" she continued.
+
+"I'm Levinus, I just lived my 10th winter" he replied softly, "I'm here to show you around"
+
+The elf village was in a dense forest of Arx trees, the twisted trunks of the dark trees made a home, shelter for the creatures of the forest. As Silvia looked around she saw groups of people moving around, all carrying something or running to get something, but when Silvia walked into the open square, a small clearing from the trees with a small rock in the middle, everyone stopped and looked at her.
+
+Though Silvia was worried being stared at by so many people, Lev didn't care he kept dragging her to the clearing and past it to the and the left the forest together. 
+
+Leaving the trees behind, Lev finally spoke. "What's your name?"
+
+Practically skipping with joy Silvia exclaimed her name out, "Silvia, but tell me Lev, what are you? Why didn't I ever find you on the island?"
+
+So Lev explained as the walked. 
+
+"We have inhabited this land for 60 winters, every time we are born we have a ritual the solstice, the next one is in three days actually! its when I officially turn 10. Dispite aleady having lived my 10th winter."
+
+"What's the solstice?", Silvia asked.
+
+Excited Lev exclaimed, "The day our lord covers the sun. The day Anima returns."
+
+Before Silvia could ask who Anima was, they reached their destination. 
+It was a musty cave with a ominous path lit with dim torches, 
+Lev grabbed and escorted Silvia inside lighting the way.
+
+\*Clang\*
+
+A hand lunged out of the darkness and reached for Silvia, the hand was pale and small no older than six, the nails were bloody as if scratching at a wall all day. 
+
+What followed was a scream, it was horrifying. It was filled with pain and malice.
+
+Lev using the torch slapped the young elvish girl across the face with the fire, the beast fell back down and tried to get back up but couldn't.
+
+That's when Silvia noticed the chains binding them to the walls.
+She clung tightly to Lev as they walked through the cave, at each point stopping breifly to see another child this one not older than three. still chained still bloody.
+
+Silvia counted without meaning to: a three-year-old, two sixes, two nines, a four, three eights, five sevens, and one infant. The infant lay in a cot, but all six sides were closed.
+
+"Why are we here" She asked, 
+
+"To feed them."
+
+Lev didn't stop he finally reached the end of the cave 
+
+He gently pulled of a small fabric covering a pit filled with rotting dead animals.
+He took one and threw it to the nearest child, barely 5, who ran onto the dead rabbit and tore into the animal.
+
+Silvia felt bile rise in her throat as she saw the elf rip flesh of bones and eat barely chewing.
+
+"Can we leave" She asked softly tears streaming down her face, 
+
+Lev looked at her confused, "I only fed on-"
+
+"Please" she whispered unable to stand to look at such pain she had fallen to her knees and had her head in her hands.
+
+After they left the cave Silvia looked at Lev with concern, "W.. Who are they? Why are they like that?"
+
+Lev looked at her confused, "It's not that important its just a chore."
+Silvia looked at Lev horrified, "Those are chilren, they are our age, why do you have them chained?"
+
+Lev looked at Silvia before slowly realising she was crying. 
+
+"They aren't children, they were forsaken by our lord for a reason, and oneday he will come and shine down on us again!" Lev exclaimed trying to stop Silvia from crying, 
+
+"No, No, No.. I refuse to believe it, what I saw in there, she was... they are.." Silvia stammered colapsing to her knees.
+
+Lev didn't know what to do, though he had seen plenty of girls in his village, not one had ever broken down like, least of all about the forsaken... 
+Slowly he got closer knelt and laid a hand on Silvia's shoulder.
+
+"Don't touch me!" Silvia snapped pushing him away before running down the creek.
+Lev wanted to follow, to chase, but after seeing how she ran, he though it would be better to get the elder to put a search party together
+
+Slowly Silvia approached a river. This river couldn't really be called a river, it was barely a stream with a small waterfall. 
+
+As she apporached the bank she saw the children begging to be freed, colapsing she sobbed. "Mom, dad, Aequor... Please"
+Sobbing on the bank with her head in her hands she felt the air thicken, before slowly outlining a tall lustrous figure.
+
+The figure seemed to have the shape of a woman made outlined with water, slowly it looked at her before slowly appoaching and knelt before her. 
+
+"I am Eluvia" She said, "Aequor tasked me with your protection, speak child what bothers you so?"
+
+Then she saw the ground tremble as the dragon of water flew from the south and approached fast.
+
+"I saw children, they were around my age..." Silvia sobbed, "They... They were, Why would the elves think thats okay?" 
+
+Eluvia slowly aproached floating over the rockwater, "They aren't children Silvia, They have no will."
+
+"NO" Silvia yelled jumping up and looking at Eluvia like she was a monster, "I want to talk with A-"
+
+"Me?" Silvia heard a voice inserted into her head. 
+
+~
+
+Silvia saw the great dragon land on the bank and move its bighead in front of her, "You are safe." it sighed, "I knew only Tellus could help you."
+
+Silvia ran up to Aequor and asked while hugging the big dragon, "What do you mean Aequor? Who is Tellus?"
+
+Aequor stood shocked. Unmoving, he slowly rumbled, but no words entered Silvia's mind.
+
+Silvia looked up at the big dragon waiting for a answer she had a feeling she wouldn't get.
+
+"You cannot say that those children in that cave arent children right?" Silvia asked turning back to see Eluvia who mysteriously dissapeared. 
+
+Aequors giant body coiled around the small girl as it seepemed to shimmer, "You have a gentle soul, Silvia. But Eluvia is right, Without Animas blessing, they have no will, and without mine and the domain of duty they can't even be called machines."
+
+Silvia looked up at Aequor and sobbed.
+
+Aequor finally said, "You have been here over three days, your parents were worried sick. So I apologize, it was my mistake that almost cost you your life. I should have know you couldn't handle history."
+
+Silvia looked blankly at Aequor, "What are you talking about? You would never hurt me."
+
+Aequor looked at the small girl hugging him and felt... ...
+
+#### Chapter 7: Aurelia
+
+When Silvia returned to the village she saw Lev waiting there with Serena, she walked up to them with a straight face and walked right past, 
+
+Lev reached out, "Silvia..." Serena however stopped him from chasing
+
+Silvia sat on her bed trying to understand *Why doesn't anyone see them as children?*, At that moment she heard a knock, slowly she looked up to see Serena.
+
+The kind woman slowly walked to her bed and didn't say anything.
+
+"They are children" Silvia spoke breaking the silence.
+
+Serena just sighed, "Silvia, how about this, I will bring the oldest girl  to you, and for the next seven days you will see."
+
+Silvia looked up at Serena and said, "Yes, but she will get actual food and care"
+
+"But it's dangerous, I can't let my people get hurt tending to it." Serena protested
+
+But Silvia sat on her bed not backing down, and with each second that passed Serena saw gold flecks entering Silvia's eyes.
+
+Finally Serena caved, "Lev go get the oldest one."
+
+Both Serena and Silvia waited in silence while Lev was bringing the girl
+
+~
+
+When Lev arrived back with a thick gray chain attached to a young girl, she looked to be about Silvia's age with pointed ears and brown long hair, knotted in a mess with leaves, rocks, and bones tangled within. she stood there chewing one a bone.
+
+Lev went up to the wall and tied the girl to the think branch, during which the girl lunged at Lev wrapping both arm around him. Who promptly took this as a opportunity to throw her over his shoulder.
+
+The girl scampered back balling up on the floor.
+
+"I told you its dangerous, but oh how would Lev know." Lev spat at Silvia.
+
+"You hurt her" Silvia said running to the girl on the ground.
+
+Lev stared at her dumbfounded, "She jumped at me and you are worried about HER?"
+
+Silvia didn't say anything waiting for them to leave
+
+As soon as she was alone with the girl, Silvia softy spoke to no one. "Eluvia, are you there?"
+
+"Yes, mistress." A calm voice replied back, "Lord Aequor asked me to look after you."
+
+"Can you get me some stellaberry petals?" Silvia asked.
+
+---
+
+Silvia was sitting on the floor looking at the girl in front of her, her arms were covered in scratches. For the last hour she had been trying to approach the girl to nothing but hostility.
+
+Suddenly three translucent petals softly and gently landed in Silvia's lap.
+
+Silvia was conflicted, she remembered the dream.
+"You wouldn't leave us right? You wouldn't leave US right?" 
+
+The voices circled Silvia, but she closed her eyes, and swallowed all three petals.
+
+---
+Silvia awoke to her favorite tree again, this time however the colors were muted.
+
+*I'm dreaming.* Silvia though. However, that didn't jolt her awake as usual.
+
+Silvia looked around, she saw her mother.
+Through the discoloration Silvia noticed her mother had the wrong dimensions, one arm was too long, the other was covered in fuzzy hair. 
+
+The mother smiled and asked. "You can see me?"
+
+"Yes, Who are you?" Silvia asked, stepping back. Suddenly she felt she walked backwards into a slimy surface. 
+
+Silvia turned to see the beast from the shore, but this time he was drenched like he just drowned, During the brief moment she had her back to the mother, the arms of the mother slowly wrapped around her like vines.
+
+*You're not real* Silvia though. "YOU ARE NOT REAL" she yelled.
+
+But the vines that were discolored felt real. As the vines approached her throat, she heard a voice from the mother. "I am the plant you so carelessly eat, I am the stellaberry, And now you stepped to far. You will be with me for eternity."
+
+Silvia this time however didn't give up. She looked inside like Aequor taught her, 
+Inside herself, she saw discolored memories, each one she looked at she saw a young girl, wanting.
+
+Pushing past the gray the finally saw her first colorful thing in this whole landscape.
+
+A brilliant piece of gold was inside.
+
+She grabbed onto the piece and let it flow through her whole body. Slowly her body gained its color back. Everything else remained discolored.
+
+Behind her she heard screaming as the vines let go of Silvia, as she turned around she didn't see anyone, rather she saw a brilliant white castle with massive golden gates. Aurelia 
+
+---
+
+The Castle looked out of place in the grayed-out fields, The light seemed to form a bridge to the castle.
+
+Silvia slowly walked towards the castle. When she approached the gate, she tried to push the massive gates to no reaction. Unable to open the gate she decided to squeeze her body through the thing bars big enough for her to barely squeeze past.
+
+Immediately after stepping into the castle of old. The fog that made up the floor cleared a path for her to the citadel in the center.
+
+Silvia looked around and saw golden stairs leading to foggy houses, It was not a castle, it was a city. Aurelia
+
+Silvia walked down the path and approached the massive citadel, it was a massive building towering taller than a hundred of her trees. It was thin towering building with a massive dome one time, stranded high in the sky.
+
+Silvia approached the base, though the base was thin compared to the height, it was the size of ten houses.
+
+Silvia saw a door and walked up to it, turning the golden knob. Slowly the young girl turned the knob and walked inside to see a massive foggy tree with a massive leaf at floor level.
+
+Unsure on what to do, or where she was going Silvia stepped onto the leaf and she felt herself ascend as the tree propelled herself faster and faster.
+
+Unable to stand anymore Silvia fell to her back pressed to the leaf as it sped up.
+The pressure was too much. She couldn't breathe, every time she tried she felt the air refusing to leave her lungs. Her eyes closed to avoid the incoming air that was battering against her.
+
+Unable to breathe Silvia fainted. 
+
+#### Chapter 8: A Child Once More.
+
+When Silvia awoke she looked up and saw a massive eye.
+In front of her was a MASSIVE long and beautiful dragon. The dragons scales were white with specks of gold here and there, and unlike Aequor this dragons eyes were black, a deep black.
+
+Silvia looked at this magnificent dragon slowly stood up. The dragon seeing the girl spoke each word shaking the citadel.
+
+"You are awake. Silvia, I welcome you to Aurelia, My kingdom."
+*A human? Her will is named Silvia?*
+
+Silvia looked at the massive unmoving dragon and saw thick chains wrapping the giant dragon, the chains glimmered silver and fully stopped the dragons movement, it couldn't even look a different way. 
+
+As Silvia slowly approached the dragon, she saw a scar along its belly, and on the floor was a pool of dried golden blood.
+
+"Who are you?" Silvia asked turning back to the head of the majestic dragon.
+
+The dragon chuckled and said "I am Anima"
+*I was Anima.*
+
+"What do you mean you were?" Silvia asked confused. "And Who trapped you here and hurt you like this."
+
+The dragon was silent a moment before replying, "I am weakened and not as strong, and as to who chained me it was Tellus."
+*I am missing me. Tellus that beast.*
+
+Silvia's eyes glimmered with recognition realizing she was talking with a dragon of creation she immediately bowed.
+
+When she finished bowing she looked at the massive dragon reaching out for the nose she asked. "What can I do for you great Anima?"
+
+"Save me"
+*Save me*
+~Save him~
+
+Silvia confused asked again. "How do I do that?"
+
+Just before Anima was about to answer, she felt the stellaberries effects wear off.
+She felt herself get yanked back out of the castle gates and gasped as she awoke in her bed surrounded by elves. All the elves were discolored. 
+
+*I'm dreaming* was the first thought that came to Silvia's mind.
+
+---
+
+Soon after that thought Silvia sat up and looked at the people excitedly.
+
+"You're awake." Lev said exited.
+*She's awake!*
+~Lev was concerned~
+
+"Dear heavens girl, how do you sleep for two days? The solstice is already tomorrow." Serena added.
+*I'm concerned, ever since she arrived things have been weird.*
+
+Silvia, immediately looked at the chained girl,
+
+~The chained girl was hungry~
+
+*Not even a name? And no Thought? Even Nexus newborn had thought....* Silvia realized.
+
+*Were they right? There's no point to them because they can't think?*
+She questioned herself.
+*NO, They are still human, they deserve respect, and once I free Anima. Perhaps they can BE once more.*
+
+Realizing she was being stared at and being revitalized by her inner thoughts she jumped to her feet and replied, "I'm fine!"
+
+Serena looked Silvia up and down and just gave up. Slowly the two elves walked out leaving behind three trays of food, Silvia's breakfast, lunch, and dinner she had missed while sleeping yesterday.
+
+Silvia slowly slid a tray over to the girl who was hugging herself in the corner of the room. She stood there watching as the girl scarfed down the food
+
+While she was eating Silvia slowly walked up to the girl who was on the floor and sat down next to the girl. 
+
+The girl was grabbing the fruit and other things just biting into it with no cares, it was like watching an animal. As she watched the girl Silvia felt her stomach grumble. She looked over to her plate of food when she felt a weight slam into her.
+
+Silvia was pinned down by the girl... But rather than biting her, the girl just held Silvia tight and fell asleep!?
+
+Cautiously Silvia picked up her arm and slowly sat on her bed, however the moment she lost contact the girl awoke and tried to lunge towards Silvia.
+
+*You want me to stay?* Silvia thought. She was confused. *Why is she showing want? Is it her instinct?*
+
+Silvia slowly approached the girl, who as soon as Silvia was in her reach grabbed on and held tight. Silvia reached around her and grabbed her chain with her hands and pictured her Sacrarium with her.
+
+She saw a shard of gold, within the fragment was a different dimension, Silvia who couldn't picture the extra three dimensions saw a infinitely tessellating structure linked to each other.
+
+Then she saw a void. *Its too dark there.* She though. As she watched, she saw a massive piece of the Sacrarium break off and fly towards the darkness.
+
+Suddenly a flash of gold light filled the room, only the chain didn't break, but the light streamed into the girl in Silvia's hands. 
+
+*Where, What*
+~ Aurora was born ~
 
 
