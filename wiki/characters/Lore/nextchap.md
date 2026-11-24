@@ -134,4 +134,4 @@ Just as she felt the vines touch her she felt herself snap back to her body and 
 
 Silvia travelled through the foggy city before taking the leaf up, finally when she awoke on the top floor she turned and saw the chained dragon slowly open its eyes. 
 
-"You returned!" It said weakly.
+"You returned!" He said weakly.
